@@ -6,7 +6,6 @@ const path = require('path');
 
 app.use('/dist', express.static('dist'));
 
-
 const isLoggedIn = async(req, res, next)=> {
   try {
     req.user = await User.findByToken(req.headers.authorization);
@@ -21,6 +20,11 @@ app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 
 app.use('/api/orders', require('../routes/orders'));
 app.use('/api/sessions', require('../routes/sessions'));
+app.use('/api/users', require('../routes/users'));
+app.use('/api/products', require('../routes/products'));
+app.use('/api/reviews', require('../routes/reviews'));
+app.use('/api/addresses', require('../routes/addresses'));
+app.use('/api/wishlists', require('../routes/wishlists'));
 
 app.use((err, req, res, next)=> {
   console.log(err);

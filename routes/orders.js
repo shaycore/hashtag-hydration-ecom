@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express.Router();
 const { isLoggedIn } = require('./middleware');
+const { Order } = require('../db');
 
 module.exports = app;
 
@@ -31,3 +32,43 @@ app.get('/cart', isLoggedIn, async(req, res, next)=> {
     next(ex);
   }
 });
+
+app.get('/orders', async(req, res, next)=> {
+    try {
+      res.send(await Order.findAll());
+    }
+    catch(ex){
+      next(ex);
+    }
+  });
+
+app.post('/orders', isLoggedIn, async(req, res, next)=> {
+  try {
+    res.status(201).send(await Order.create(req.body));
+  }
+  catch(ex){
+    next(ex);
+  }
+
+});
+
+app.put('/orders/:id', isLoggedIn, async(req, res, next)=> {
+  try {
+    const order = await Order.findByPk(req.params.id);
+    res.send(await order.update(req.body));
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
+app.delete('/orders/:id', isLoggedIn, async(req, res, next)=> {
+    try {
+      const order = await Order.findByPk(req.params.id);
+      await order.destroy();
+      res.send.status(204);
+    }
+    catch(ex){
+      next(ex);
+    }
+  });

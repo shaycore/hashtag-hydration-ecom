@@ -1,0 +1,9 @@
+Completed
+x Set up the Models
+x Sync and Seed Data
+
+Next Steps:
+- Debugging the Get Routes (Paulina & Shay 8/13/22)
+- Next steps to come after Debugging
+
+Upcoming Steps:
