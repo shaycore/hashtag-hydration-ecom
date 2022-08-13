@@ -1,10 +1,44 @@
 const conn = require('./conn');
 const { Sequelize } = conn;
+const { STRING, DECIMAL, TEXT, VIRTUAL } = Sequelize;
 
 const Product = conn.define('product', {
   name: {
-    type: Sequelize.STRING
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  type: {
+    type: STRING
+  },
+  description: {
+    type: TEXT
+  },
+  size: {
+    type: STRING,
+    allowNull: false,
+    defaultValue: "O/S"
+  },
+  color: {
+    type: STRING,
+    allowNull: false
+  },
+  image: {
+    type: STRING
+  },
+  price: {
+    type: DECIMAL(),
+    allowNull: false
+  },
+  rating: {
+    type: VIRTUAL,
+    get: function() {
+      return "Not Available";
+    }
   }
+
 });
 
 module.exports = Product;

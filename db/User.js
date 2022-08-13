@@ -1,5 +1,6 @@
 const conn = require('./conn');
 const { Sequelize } = conn;
+const { STRING, BOOLEAN, VIRTUAL } = Sequelize;
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -7,10 +8,38 @@ const bcrypt = require('bcrypt');
 
 const User = conn.define('user', {
   username: {
-    type: Sequelize.STRING
+    type: STRING
   },
   password: {
-    type: Sequelize.STRING
+    type: STRING
+  },
+  firstName: {
+    type: STRING
+  },
+  lastName: {
+    type: STRING
+  },
+  email: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true,
+      notEmpty: true
+    }
+  },
+  isGuest: {
+    type: BOOLEAN,
+    defaultValue: true
+  },
+  isAdmin: {
+    type: BOOLEAN,
+    defaultValue: false
+  },
+  fullName: {
+    type: VIRTUAL,
+    get: function(){
+      return `${this.firstName} ${this.lastName}`;
+    }
   }
 });
 
