@@ -19,7 +19,7 @@ randomizeProduct = () => {
         description: faker.commerce.productDescription(),
         size: "XL",
         color: faker.color.human(),
-        image: faker.image.fashion(),
+        image: `${faker.image.fashion(250,250)}?random=${Math.round(Math.random() * 100)}`,
         price: faker.commerce.price()
     }
 }

@@ -12,7 +12,7 @@ const Products = ({ products }) => {
                     products.map( product => {
                         return (
                             <li key={ product.id }>
-                                <Link to={`/product/${product.id}`}>
+                                <Link to={`/products/${product.id}`}>
                                     { product.name }
                                 </Link>
                                 {/* <button onClick={ ()=> deleteCampus(campus)}>x</button> */}
