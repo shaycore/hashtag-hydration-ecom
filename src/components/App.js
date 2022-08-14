@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { fetchCart, exchangeToken, logout } from './store';
+import { fetchCart, exchangeToken, logout } from '../store';
 import { Link, Route } from 'react-router-dom';
 import SignIn from './SignIn';
-import Cart from './Cart';
+import Cart from './Pages/Cart';
 
 class App extends React.Component{
   componentDidMount(){
