@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { fetchCart, exchangeToken, logout } from '../store';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, HashRouter } from 'react-router-dom';
 import SignIn from './SignIn';
 import Cart from './Pages/Cart';
-// import Nav from './Nav';
+import Nav from './Nav';
 
 class App extends React.Component{
   componentDidMount(){
@@ -18,11 +18,10 @@ class App extends React.Component{
   render(){
     const { auth, logout, cart } = this.props;
     return (
-      // <HashRouter>
-      //   <div>
-      //       <Route component={ Nav }/>
-      //   </div>
-      // </HashRouter>
+      <HashRouter>
+        <div>
+            <Route component={ Nav }/>
+        </div>
       <main>
          <h1>Grace Shopper</h1>
         {
@@ -39,6 +38,7 @@ class App extends React.Component{
           ): null 
         } 
       </main>
+      </HashRouter>
     );
 
   }
