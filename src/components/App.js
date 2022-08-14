@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { fetchCart, exchangeToken, logout, fetchProducts } from '../store';
-import { Link, Route, HashRouter as Router } from 'react-router-dom';
+import { Switch, Link, Route, HashRouter as Router } from 'react-router-dom';
 import SignIn from './SignIn';
 import Cart from './Pages/Cart';
 import Nav from './Nav';
 import Home from './Pages/Home';
 import Products from './Product/Products';
+import NotFound from './Pages/404';
 
 class App extends React.Component{
   componentDidMount(){
@@ -39,9 +40,11 @@ class App extends React.Component{
                 </Fragment>
               ): null 
             } 
-            <Route exact path='/' component={ Home } />
-            <Route exact path='/products' component={ Products } />
-
+            <Switch>
+              <Route exact path='/' component={ Home } />
+              <Route exact path='/products' component={ Products } />
+              <Route path="" component={NotFound} />
+            </Switch>
           </main>
         </div>
       </Router>
