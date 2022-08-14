@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { fetchCart, exchangeToken, logout } from '../store';
+import { fetchCart, exchangeToken, logout, fetchProducts } from '../store';
 import { Link, Route, HashRouter as Router } from 'react-router-dom';
 import SignIn from './SignIn';
 import Cart from './Pages/Cart';
@@ -11,6 +11,7 @@ import Products from './Product/Products';
 class App extends React.Component{
   componentDidMount(){
     this.props.exchangeToken();
+    this.props.fetchProducts();
   }
   componentDidUpdate(prevProps){
     if(!prevProps.auth.id && this.props.auth.id){
@@ -39,7 +40,7 @@ class App extends React.Component{
               ): null 
             } 
             <Route exact path='/' component={ Home } />
-            {/* <Route exact path='/products' component={ Products } /> */}
+            <Route exact path='/products' component={ Products } />
 
           </main>
         </div>
@@ -52,7 +53,8 @@ const mapDispatch = (dispatch)=> {
   return {
     exchangeToken: ()=> dispatch(exchangeToken()),
     logout: ()=> dispatch(logout()),
-    fetchCart: ()=> dispatch(fetchCart())
+    fetchCart: ()=> dispatch(fetchCart()),
+    fetchProducts: ()=>dispatch(fetchProducts())
   };
 };
 const mapStateToProps = (state)=> {
