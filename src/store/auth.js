@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const auth = (state = {}, action)=> {
-  if(type === 'SET_AUTH'){
+  if(action.type === 'SET_AUTH'){
     state = action.auth;
   }
   return state;
@@ -44,5 +44,5 @@ export const login = (credentials)=> {
 
   };
 };
-
+  
 export default auth;

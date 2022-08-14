@@ -1,7 +1,7 @@
 import axios from 'axios';
-const SET_CART = 'SET_CART'
+
 const cart = (state = { lineItems: [ ] }, action)=> {
-  if(action.type === SET_CART){
+  if(action.type === 'SET_CART'){
     state = action.cart;
   }
   return state;
@@ -14,7 +14,7 @@ export const fetchCart = ()=> {
         authorization: window.localStorage.getItem('token')
       }
     });
-    dispatch({ type: SET_CART, cart: response.data });
+    dispatch({ type: 'SET_CART', cart: response.data });
 
   };
 };
