@@ -5,7 +5,7 @@ const { Coupon } = require('../db');
 
 module.exports = app;
 
-app.get('/coupons', async(req, res, next)=> {
+app.get('/', async(req, res, next)=> {
     try {
       res.send(await Coupon.findAll());
     }
@@ -14,7 +14,7 @@ app.get('/coupons', async(req, res, next)=> {
     }
   });
 
-app.post('/coupons', isLoggedIn, async(req, res, next)=> {
+app.post('/', isLoggedIn, async(req, res, next)=> {
   try {
     res.status(201).send(await Coupon.create(req.body));
   }
@@ -24,7 +24,7 @@ app.post('/coupons', isLoggedIn, async(req, res, next)=> {
 
 });
 
-app.put('/coupons/:id', isLoggedIn, async(req, res, next)=> {
+app.put('/:id', isLoggedIn, async(req, res, next)=> {
   try {
     const coupon = await Coupon.findByPk(req.params.id);
     res.send(await coupon.update(req.body));
@@ -34,7 +34,7 @@ app.put('/coupons/:id', isLoggedIn, async(req, res, next)=> {
   }
 });
 
-app.delete('/coupons/:id', isLoggedIn, async(req, res, next)=> {
+app.delete('/:id', isLoggedIn, async(req, res, next)=> {
     try {
       const coupon = await Coupon.findByPk(req.params.id);
       await coupon.destroy();

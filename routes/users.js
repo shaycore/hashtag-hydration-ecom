@@ -5,7 +5,7 @@ const { User } = require('../db');
 
 module.exports = app;
 
-app.get('/users', async(req, res, next)=> {
+app.get('/', async(req, res, next)=> {
     try {
       res.send(await User.findAll());
     }
@@ -14,7 +14,7 @@ app.get('/users', async(req, res, next)=> {
     }
   });
 
-app.post('/users', isLoggedIn, async(req, res, next)=> {
+app.post('/', isLoggedIn, async(req, res, next)=> {
   try {
     res.status(201).send(await User.create(req.body));
   }
@@ -24,7 +24,7 @@ app.post('/users', isLoggedIn, async(req, res, next)=> {
 
 });
 
-app.put('/users/:id', isLoggedIn, async(req, res, next)=> {
+app.put('/:id', isLoggedIn, async(req, res, next)=> {
   try {
     const user = await Users.findByPk(req.params.id);
     res.send(await user.update(req.body));
@@ -34,7 +34,7 @@ app.put('/users/:id', isLoggedIn, async(req, res, next)=> {
   }
 });
 
-app.delete('/user/:id', isLoggedIn, async(req, res, next)=> {
+app.delete('/:id', isLoggedIn, async(req, res, next)=> {
     try {
       const user = await User.findByPk(req.params.id);
       await user.destroy();

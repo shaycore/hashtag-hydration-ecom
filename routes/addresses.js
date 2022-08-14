@@ -5,7 +5,7 @@ const { Addresses } = require('../db');
 
 module.exports = app;
 
-app.get('/addresses', async(req, res, next)=> {
+app.get('/', async(req, res, next)=> {
     try {
       res.send(await Address.findAll());
     }
@@ -14,7 +14,7 @@ app.get('/addresses', async(req, res, next)=> {
     }
   });
 
-app.post('/addresses', isLoggedIn, async(req, res, next)=> {
+app.post('/', isLoggedIn, async(req, res, next)=> {
   try {
     res.status(201).send(await Address.create(req.body));
   }
@@ -24,7 +24,7 @@ app.post('/addresses', isLoggedIn, async(req, res, next)=> {
 
 });
 
-app.put('/addresses/:id', isLoggedIn, async(req, res, next)=> {
+app.put('/:id', isLoggedIn, async(req, res, next)=> {
   try {
     const address = await Address.findByPk(req.params.id);
     res.send(await address.update(req.body));
@@ -34,7 +34,7 @@ app.put('/addresses/:id', isLoggedIn, async(req, res, next)=> {
   }
 });
 
-app.delete('/addresses/:id', isLoggedIn, async(req, res, next)=> {
+app.delete('/:id', isLoggedIn, async(req, res, next)=> {
     try {
       const address = await Address.findByPk(req.params.id);
       await address.destroy();

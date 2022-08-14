@@ -33,7 +33,7 @@ app.get('/cart', isLoggedIn, async(req, res, next)=> {
   }
 });
 
-app.get('/orders', async(req, res, next)=> {
+app.get('/', async(req, res, next)=> {
     try {
       res.send(await Order.findAll());
     }
@@ -42,7 +42,7 @@ app.get('/orders', async(req, res, next)=> {
     }
   });
 
-app.post('/orders', isLoggedIn, async(req, res, next)=> {
+app.post('/', isLoggedIn, async(req, res, next)=> {
   try {
     res.status(201).send(await Order.create(req.body));
   }
@@ -52,7 +52,7 @@ app.post('/orders', isLoggedIn, async(req, res, next)=> {
 
 });
 
-app.put('/orders/:id', isLoggedIn, async(req, res, next)=> {
+app.put('/:id', isLoggedIn, async(req, res, next)=> {
   try {
     const order = await Order.findByPk(req.params.id);
     res.send(await order.update(req.body));
@@ -62,7 +62,7 @@ app.put('/orders/:id', isLoggedIn, async(req, res, next)=> {
   }
 });
 
-app.delete('/orders/:id', isLoggedIn, async(req, res, next)=> {
+app.delete('/:id', isLoggedIn, async(req, res, next)=> {
     try {
       const order = await Order.findByPk(req.params.id);
       await order.destroy();

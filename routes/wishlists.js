@@ -5,7 +5,7 @@ const { Wishlist } = require('../db');
 
 module.exports = app;
 
-app.get('/wishlists', async(req, res, next)=> {
+app.get('/', async(req, res, next)=> {
     try {
       res.send(await Wishlist.findAll());
     }
@@ -14,7 +14,7 @@ app.get('/wishlists', async(req, res, next)=> {
     }
   });
 
-app.post('/wishlists', isLoggedIn, async(req, res, next)=> {
+app.post('/', isLoggedIn, async(req, res, next)=> {
   try {
     res.status(201).send(await Wishlist.create(req.body));
   }
@@ -24,7 +24,7 @@ app.post('/wishlists', isLoggedIn, async(req, res, next)=> {
 
 });
 
-app.put('/wishlists/:id', isLoggedIn, async(req, res, next)=> {
+app.put('/:id', isLoggedIn, async(req, res, next)=> {
   try {
     const wishlists = await Wishlists.findByPk(req.params.id);
     res.send(await wishlists.update(req.body));
@@ -34,7 +34,7 @@ app.put('/wishlists/:id', isLoggedIn, async(req, res, next)=> {
   }
 });
 
-app.delete('/wishlists/:id', isLoggedIn, async(req, res, next)=> {
+app.delete('/:id', isLoggedIn, async(req, res, next)=> {
     try {
       const wishlists = await Wishlist.findByPk(req.params.id);
       await wishlists.destroy();

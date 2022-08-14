@@ -5,7 +5,7 @@ const { Review } = require('../db');
 
 module.exports = app;
 
-app.get('/reviews', async(req, res, next)=> {
+app.get('/', async(req, res, next)=> {
     try {
       res.send(await Review.findAll());
     }
@@ -14,7 +14,7 @@ app.get('/reviews', async(req, res, next)=> {
     }
   });
 
-app.post('/reviews', isLoggedIn, async(req, res, next)=> {
+app.post('/', isLoggedIn, async(req, res, next)=> {
   try {
     res.status(201).send(await Review.create(req.body));
   }
@@ -24,7 +24,7 @@ app.post('/reviews', isLoggedIn, async(req, res, next)=> {
 
 });
 
-app.put('/reviews/:id', isLoggedIn, async(req, res, next)=> {
+app.put('/:id', isLoggedIn, async(req, res, next)=> {
   try {
     const review = await Review.findByPk(req.params.id);
     res.send(await review.update(req.body));
@@ -34,7 +34,7 @@ app.put('/reviews/:id', isLoggedIn, async(req, res, next)=> {
   }
 });
 
-app.delete('/reviews/:id', isLoggedIn, async(req, res, next)=> {
+app.delete('/:id', isLoggedIn, async(req, res, next)=> {
     try {
       const review = await Review.findByPk(req.params.id);
       await review.destroy();

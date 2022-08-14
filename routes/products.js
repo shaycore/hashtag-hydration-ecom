@@ -5,7 +5,7 @@ const { Product } = require('../db');
 
 module.exports = app;
 
-app.get('/products', async(req, res, next)=> {
+app.get('/', async(req, res, next)=> {
     try {
       res.send(await Product.findAll());
     }
@@ -14,7 +14,7 @@ app.get('/products', async(req, res, next)=> {
     }
   });
 
-app.post('/products', isLoggedIn, async(req, res, next)=> {
+app.post('/', isLoggedIn, async(req, res, next)=> {
   try {
     res.status(201).send(await Product.create(req.body));
   }
@@ -24,7 +24,7 @@ app.post('/products', isLoggedIn, async(req, res, next)=> {
 
 });
 
-app.put('/products/:id', isLoggedIn, async(req, res, next)=> {
+app.put('/:id', isLoggedIn, async(req, res, next)=> {
   try {
     const product = await Product.findByPk(req.params.id);
     res.send(await product.update(req.body));
@@ -34,7 +34,7 @@ app.put('/products/:id', isLoggedIn, async(req, res, next)=> {
   }
 });
 
-app.delete('/products/:id', isLoggedIn, async(req, res, next)=> {
+app.delete('/:id', isLoggedIn, async(req, res, next)=> {
     try {
       const product = await Product.findByPk(req.params.id);
       await product.destroy();
