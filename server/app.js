@@ -6,6 +6,8 @@ const path = require('path');
 
 app.use('/dist', express.static('dist'));
 
+app.use('/assets', express.static('assets'));
+
 const isLoggedIn = async(req, res, next)=> {
   try {
     req.user = await User.findByToken(req.headers.authorization);
