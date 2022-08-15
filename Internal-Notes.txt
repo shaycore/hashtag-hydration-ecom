@@ -1,0 +1,59 @@
+PROCESS NOTES
+
+> General Git Commands
+    - `git pull origin main`: Pull the Main Repo (most up to date)
+    - `git checkout branch-name`: Switch to your feature branch
+    - `git branch -a`: View all Branches
+    - `git push origin`: Push to github
+
+> PROCESS
+* NOTE: ALL your changes should ALWAYS follow the process. NEVER push directly to main
+* You should NEVER be working on the main branch
+* TRY NOT to make broad tickets; break into smaller tickets
+
+1. Create your Ticket
+    - Go to 'Issues' and Create new Issue using a short but sweet title + descriptive body
+    - Assign ticket to yourself if you are working on it - this will let us know who's on what
+    - Once you create a ticket, under "Development" you can create a Feature Branch
+
+2. Work on your Ticket:
+    - `git pull origin main`: Pull repo fresh from main
+    - `git checkout branch-name`: Make sure you're on your branch.
+
+3. Commit your changes
+    - TEST to make sure your changes haven't caused any issues with functionality
+    - Commit your changes as you would any other time (git add, git commit -m "Descriptive but Short Message")
+    - Commit often and incrementally! DO NOT PUSH YET!
+    - `git pull origin main`: Every time you commit, re-pull the main repo using `git pull origin main`
+    
+        - IF YOU RUN INTO MERGE CONFLICTS WHEN PULLING
+            - Go through the conflict and RESOLVE.
+            - Recommit your changes
+        - IF All looks good
+            - Continue coding/committing 
+    
+    - `git push origin`: Once you're done with all your commits, push changes to github with `git push origin`
+
+4. PULL REQUEST
+    - Once you push your changes, go to 'Pull Request' Tab in Repo
+    - Click "New Pull Request"
+    - Base should be 'Main' (/shaycore) and 'Compare' should be the feature branch you pushed to
+    - Add Description and Submit Request
+
+5. REVIEW REQUESTS / APPROVE
+    - DO NOT approve your own requests. (I've allowed the ability to, in case of emergencies, but this is bad practice)
+    - IF THERE ARE MERGE CONFLICTS 
+        - Review, Decline, and leave Notes.
+        - Submitter to review, correct merge conflicts, and resubmit requests
+    - IF THERE ARE NO CONFLICTS / REVIEW LOOKS good
+        - Approve the Request
+        - Close Ticket
+        - Delete Branch
+    * Feel free to PING in our slack if you need something reviewed!!
+
+
+OVERALL NOTES:
+- Always be pulling the main repo as you commit as this will prevent conflicts
+- Keep an eye out on the tickets being worked on to not do double work
+- ALWAYS make a ticket no matter how small the change you're making to the code!
+
