@@ -38,8 +38,8 @@ export const deleteProduct = (product) => {
 
 export const updateProduct = (product) => {
   return async(dispatch) => {
-      campus = (await axios.put(`/api/products/${ product.id }`, product )).data;
-      dispatch({ type: 'UPDATE_PRODUCT', campus })
+      product = (await axios.put(`/api/products/${ product.id }`, product )).data;
+      dispatch({ type: 'UPDATE_PRODUCT', product })
   }
 }
 
