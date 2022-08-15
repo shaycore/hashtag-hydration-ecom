@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ProductForm from './ProductForm';
 // import { } from "../store";
 
 const Products = ({ products }) => {
@@ -21,19 +22,18 @@ const Products = ({ products }) => {
                     })
                 }
             </ul>
+            <h2>Create New Product</h2>
+            <ProductForm />
         </main>
     );
 }
 
-const mapState = ({ products }) => {
-    return {
-        products
-    };
-};
+const mapStateToProps = (state) => state;
+
 
 // const mapDispatch = (dispatch, { history, match }) => {
 //     return {
 //     }
 // };
 
-export default connect(mapState, null)(Products);
+export default connect(mapStateToProps, null)(Products);
