@@ -28,15 +28,6 @@ app.use('/api/reviews', require('../routes/reviews'));
 app.use('/api/addresses', require('../routes/addresses'));
 app.use('/api/wishlists', require('../routes/wishlists'));
 
-// app.get('/api/users', async(req, res, next)=> {
-//   try {
-//     res.send(await User.findAll());
-//   }
-//   catch(ex){
-//     next(ex);
-//   }
-// });
-
 app.use((err, req, res, next)=> {
   console.log(err);
   res.status(err.status || 500).send({ error: err });
