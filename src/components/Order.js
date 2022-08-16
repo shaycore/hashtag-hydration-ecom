@@ -35,10 +35,10 @@ class Order extends Component {
     const { getCartTotal, getSalesTax } = this;
     return (
       <div className='ordersinfo'>
-        <h2 className='product2'>Order Information</h2>
+        <h2>Order Information</h2>
           {order.map((item) => {
               return (
-                <table className='content-order' key={item.id}>
+                <table key={item.id}>
                   <tbody>
                     <tr>
                       <th></th>
@@ -64,7 +64,7 @@ class Order extends Component {
               </table>
             );
         })}
-        <table className='cartcheckout'>
+        <table>
           <tbody>
             <tr>
               <td>Shipping</td>
