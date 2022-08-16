@@ -8,15 +8,6 @@ app.use('/dist', express.static('dist'));
 
 app.use('/assets', express.static('assets'));
 
-const isLoggedIn = async(req, res, next)=> {
-  try {
-    req.user = await User.findByToken(req.headers.authorization);
-    next();
-  }
-  catch(ex){
-    next(ex);
-  }
-};
 
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 
@@ -27,6 +18,7 @@ app.use('/api/products', require('../routes/products'));
 app.use('/api/reviews', require('../routes/reviews'));
 app.use('/api/addresses', require('../routes/addresses'));
 app.use('/api/wishlists', require('../routes/wishlists'));
+
 
 // app.get('/api/users', async(req, res, next)=> {
 //   try {
