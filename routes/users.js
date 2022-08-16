@@ -26,7 +26,7 @@ app.post('/', isLoggedIn, async(req, res, next)=> {
 
 app.put('/:id', isLoggedIn, async(req, res, next)=> {
   try {
-    const user = await Users.findByPk(req.params.id);
+    const user = await User.findByPk(req.params.id);
     res.send(await user.update(req.body));
   }
   catch(ex){
