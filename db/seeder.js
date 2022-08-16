@@ -24,15 +24,26 @@ randomizeProduct = () => {
     }
 }
 
+randomizeLineItem = () => {
+    return {
+        quantity: Math.floor((Math.random() * 3) + 1),
+        orderId: 1,
+        productId: Math.floor((Math.random() * 10) + 1)
+    }
+}
+
 const USERS = [];
 const PRODUCTS = [];
+const LINEITEMS = [];
 
 Array.from({length: 3}).forEach(()=>USERS.push(randomizeUser()));
 Array.from({length: 10}).forEach(()=>PRODUCTS.push(randomizeProduct()));
+Array.from({length: 2}).forEach(()=>LINEITEMS.push(randomizeLineItem()));
 
 module.exports = {
     USERS,
     PRODUCTS,
+    LINEITEMS,
     randomizeUser,
     randomizeProduct
 }

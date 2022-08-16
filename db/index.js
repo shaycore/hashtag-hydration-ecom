@@ -8,7 +8,7 @@ const Address = require('./Address');
 const Review = require('./Review');
 const Wishlist = require('./Wishlist');
 const Coupon = require('./Coupon');
-const { USERS, PRODUCTS } = require('./seeder');
+const { USERS, PRODUCTS, LINEITEMS } = require('./seeder');
 
 User.hasMany(Order);
 User.hasMany(Address);
@@ -31,6 +31,26 @@ const syncAndSeed = async() => {
   );
   await Promise.all(
     PRODUCTS.map((product)=> Product.create(product))
+  );
+  const prof = await User.create({ 
+    username: 'prof', 
+    password: 'password',
+    firstName: 'professor',
+    lastName: 'prof',
+    email: 'professor@fullstackacademy.com',
+    isGuest: false,
+    isAdmin: false
+  });
+  const admin = await User.create({ 
+    username: 'admin', 
+    password: 'password',
+    email: 'admin@fullstackacademy.com',
+    isGuest: false,
+    isAdmin: true
+  });
+  await Order.create({ id: 1, userId: prof.id });
+  await Promise.all(
+    LINEITEMS.map((lineitem)=> LineItem.create(lineitem))
   );
 };
 
