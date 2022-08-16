@@ -18,6 +18,7 @@ PROCESS NOTES
 
 2. Work on your Ticket:
     - `git pull origin main`: Pull repo fresh from main
+    - `git fetch origin`: Grab your branch
     - `git checkout branch-name`: Make sure you're on your branch.
 
 3. Commit your changes
