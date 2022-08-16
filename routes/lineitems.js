@@ -7,7 +7,7 @@ module.exports = app;
 
 app.get('/', async(req, res, next)=> {
     try {
-      res.send(await Product.findAll());
+      res.send(await LineItem.findAll());
     }
     catch(ex){
       next(ex);

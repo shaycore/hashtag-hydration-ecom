@@ -8,7 +8,7 @@ const Address = require('./Address');
 const Review = require('./Review');
 const Wishlist = require('./Wishlist');
 const Coupon = require('./Coupon');
-const { USERS, PRODUCTS } = require('./seeder');
+const { USERS, PRODUCTS, LINEITEMS } = require('./seeder');
 
 User.hasMany(Order);
 User.hasMany(Address);
@@ -31,6 +31,10 @@ const syncAndSeed = async() => {
   );
   await Promise.all(
     PRODUCTS.map((product)=> Product.create(product))
+  );
+  await Order.create({ id: 1, userId: 1 });
+  await Promise.all(
+    LINEITEMS.map((lineitem)=> LineItem.create(lineitem))
   );
 };
 
