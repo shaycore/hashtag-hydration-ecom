@@ -32,7 +32,23 @@ const syncAndSeed = async() => {
   await Promise.all(
     PRODUCTS.map((product)=> Product.create(product))
   );
-  await Order.create({ id: 1, userId: 1 });
+  const prof = await User.create({ 
+    username: 'prof', 
+    password: 'password',
+    firstName: 'professor',
+    lastName: 'prof',
+    email: 'professor@fullstackacademy.com',
+    isGuest: false,
+    isAdmin: false
+  });
+  const admin = await User.create({ 
+    username: 'admin', 
+    password: 'password',
+    email: 'admin@fullstackacademy.com',
+    isGuest: false,
+    isAdmin: true
+  });
+  await Order.create({ id: 1, userId: prof.id });
   await Promise.all(
     LINEITEMS.map((lineitem)=> LineItem.create(lineitem))
   );

@@ -38,7 +38,7 @@ const LINEITEMS = [];
 
 Array.from({length: 3}).forEach(()=>USERS.push(randomizeUser()));
 Array.from({length: 10}).forEach(()=>PRODUCTS.push(randomizeProduct()));
-Array.from({length: 5}).forEach(()=>LINEITEMS.push(randomizeLineItem()));
+Array.from({length: 2}).forEach(()=>LINEITEMS.push(randomizeLineItem()));
 
 module.exports = {
     USERS,
