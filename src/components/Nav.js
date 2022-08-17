@@ -13,6 +13,9 @@ const Nav = () => {
                 <Link to='/'>
                     <li>SIGN IN</li>
                 </Link>
+                <Link to='/orders'>
+                    <li>ORDERS</li>
+                </Link>
         </nav>
     )
 };
