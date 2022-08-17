@@ -8,7 +8,8 @@ randomizeUser = () => {
         lastName: faker.name.lastName(),
         email: faker.internet.email(),
         isGuest: 0,
-        isAdmin: 0
+        isAdmin: 0,
+        avatar: faker.image.avatar()
     }
 }
 

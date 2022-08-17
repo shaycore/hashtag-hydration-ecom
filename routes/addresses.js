@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express.Router();
 const { isLoggedIn } = require('./middleware');
-const { Addresses } = require('../db');
+const { Address } = require('../db');
 
 module.exports = app;
 
