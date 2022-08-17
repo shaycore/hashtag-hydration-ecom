@@ -11,13 +11,14 @@ const Coupon = require('./Coupon');
 const { USERS, PRODUCTS, LINEITEMS } = require('./seeder');
 
 User.hasMany(Order);
+Order.hasMany(LineItem);
+LineItem.belongsTo(Product);
+
 User.hasMany(Address);
 User.hasMany(Review);
 Review.belongsTo(User);
 Review.belongsTo(Product);
 Product.hasMany(Review);
-Order.hasMany(LineItem);
-LineItem.belongsTo(Product);
 Coupon.belongsTo(Order);
 Wishlist.belongsTo(User);
 Wishlist.hasMany(Product);
@@ -29,7 +30,7 @@ const syncAndSeed = async() => {
   await Promise.all(
     USERS.map((user)=> User.create(user))
   );
-  await Promise.all(
+  const items = await Promise.all(
     PRODUCTS.map((product)=> Product.create(product))
   );
   const prof = await User.create({ 
@@ -48,10 +49,10 @@ const syncAndSeed = async() => {
     isGuest: false,
     isAdmin: true
   });
-  await Order.create({ id: 1, userId: prof.id });
-  await Promise.all(
-    LINEITEMS.map((lineitem)=> LineItem.create(lineitem))
-  );
+  await prof.addToCart({ product: items[1], quantity: 1});
+  await prof.addToCart({ product: items[2], quantity: 2});
+  await prof.addToCart({ product: items[3], quantity: 3});
+
 };
 
 
