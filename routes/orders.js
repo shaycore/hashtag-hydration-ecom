@@ -58,7 +58,7 @@ app.put('/:id', isLoggedIn, async(req, res, next)=> {
     res.send(await order.update(req.body));
   }
   catch(ex){
-    next(ex);
+    next(ex); 
   }
 });
 
