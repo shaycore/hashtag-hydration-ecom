@@ -17,16 +17,14 @@ const Address = conn.define("address", {
       notEmpty: true
     }
   },
-  addressLine1: {
+  address: {
     type: STRING,
     allowNull: false,
     validate: {
       notEmpty: true,
     },
   },
-  addressLine2: {
-    type: STRING,
-  },
+
   city: {
     type: STRING,
     allowNull: false,
