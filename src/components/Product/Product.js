@@ -6,15 +6,26 @@ class _Product extends Component {
     constructor(){
         super();
         this.state = {
+            product: {},
+            quantity: 1
         };
     }
     componentDidMount(){
     }
     componentDidUpdate(prevProps){
     }
+    changeQty = (type) => {
+        if(type==='increment') {
+            this.setState({quantity: this.state.quantity + 1})
+        } else if (type==='decrement') {
+            if (this.state.quantity > 1) {
+                this.setState({quantity: this.state.quantity - 1})
+            } 
+        }
+    }
     render(){
         const { product } = this.props;
-        console.log(product);
+        const { changeQty } = this;
         return (
             <div id='product'>
                 <Link to={'/products/'}>Return to All Products</Link>
@@ -30,6 +41,13 @@ class _Product extends Component {
                     <li>Rating: { product.rating }</li>
 
                 </ul>
+                <button onClick={()=>{ changeQty('decrement') }}>-</button>
+                <button onClick={()=>{ changeQty('increment') }}>+</button>
+
+                 Quantity: {this.state.quantity} 
+                <br />
+                <button>Add to Cart</button>
+                <button>Add to Wishlist</button>
             </div>
         );
     }
