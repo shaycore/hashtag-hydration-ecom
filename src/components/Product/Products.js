@@ -14,9 +14,8 @@ const Products = ({ products }) => {
                         return (
                             <li key={ product.id }>
                                 <Link to={`/products/${product.id}`}>
-                                    { product.name }
+                                    { product.name } - ${ product.price }
                                 </Link>
-                                {/* <button onClick={ ()=> deleteCampus(campus)}>x</button> */}
                             </li>
                         )
                     })

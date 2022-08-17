@@ -10,6 +10,7 @@ const Cart = ({ cart })=> {
         return (
           <li key={ lineItem.id }>
             { lineItem.product.name } { lineItem.quantity }
+            <button>x</button>
           </li>
             )
       })

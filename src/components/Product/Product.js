@@ -30,6 +30,8 @@ class _Product extends Component {
                     <li>Rating: { product.rating }</li>
 
                 </ul>
+                <button>Add to Cart</button>
+                <button>Add to Wishlist</button>
             </div>
         );
     }
