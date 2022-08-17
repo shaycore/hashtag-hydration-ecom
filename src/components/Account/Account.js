@@ -8,7 +8,8 @@ class Account extends Component {
         this.state = {
             firstName: '',
             lastName: '',
-            email: ''
+            email: '',
+            avatar: ''
         }
         this.save = this.save.bind(this);
     }
@@ -16,7 +17,16 @@ class Account extends Component {
         this.setState({
             firstName: this.props.auth.firstName,
             lastName: this.props.auth.lastName,
-            email: this.props.auth.email
+            email: this.props.auth.email,
+            avatar: this.props.auth.avatar
+        })
+        this.el.addEventListener('change', ev => {
+            const file = ev.target.files[0];
+            const reader = new FileReader();
+            reader.addEventListener('load', () => {
+                this.setState({ avatar: reader.result });
+            })
+            reader.readAsDataURL(file);
         })
     }
     componentDidUpdate(prevProps) {
@@ -24,30 +34,34 @@ class Account extends Component {
             this.setState({
                 firstName: this.props.auth.firstName,
                 lastName: this.props.auth.lastName,
-                email: this.props.auth.email
-            })           
+                email: this.props.auth.email,
+                avatar: this.props.auth.avatar
+            })
         }
     }
     save(ev) {
         ev.preventDefault();
+        console.log(this.props.auth)
         const user = {
             id: this.props.auth.id,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
-            isGuest: false,
-            isAdmin: false
+            avatar: this.state.avatar
         }
         console.log(user)
         this.props.update(user);
     }
     render() {
-        const { firstName, lastName, email } = this.state;
+        const { firstName, lastName, email, avatar } = this.state;
         const { save } = this;
         return (
             <div>
                 <h3>Account Details</h3>
                 <form onSubmit={ save }>
+                    <p>Profile Picture</p>
+                    <img src={ avatar } style={{ height: 100, width: 100 }} />
+                    <input type='file' ref={ el => this.el = el }/>
                     <p>First Name</p>
                     <input value={ firstName || '' } onChange={ ev => this.setState({ firstName: ev.target.value })}></input>
                     <p>Last Name</p>
@@ -62,7 +76,6 @@ class Account extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return state;
 };
 

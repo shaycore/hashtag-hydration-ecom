@@ -33,7 +33,7 @@ class App extends React.Component{
               auth.id ? <button onClick={ logout }>Logout { auth.username }</button>: <SignIn />
             }
             {
-              auth.id ? <Link to={`/users/${auth.id}`}>Account</Link>: null
+              auth.id ? <Link to={'/account'}>Account</Link>: null
             }
             {
               auth.id ? <Link to='/cart'>Cart ({cart.lineItems.length})</Link>: null
@@ -47,7 +47,7 @@ class App extends React.Component{
             } 
             <Switch>
               <Route exact path='/' component={ Home } />
-              <Route exact path='/users/:id' component={ Account } />
+              <Route exact path='/account' component={ Account } />
               <Route exact path='/products' component={ Products } />
               <Route exact path='/products/:id' component={ Product } />
               <Route path="" component={NotFound} />
