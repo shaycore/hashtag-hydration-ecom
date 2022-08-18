@@ -11,8 +11,16 @@ class _Product extends Component {
         };
     }
     componentDidMount(){
+        this.setState({
+            product: this.props.product
+        })
     }
     componentDidUpdate(prevProps){
+        if(!prevProps.product.id && this.props.product.id) {
+            this.setState({
+                product: this.props.product
+            })
+        }
     }
     changeQty = (type) => {
         if(type==='increment') {
@@ -24,7 +32,7 @@ class _Product extends Component {
         }
     }
     render(){
-        const { product } = this.props;
+        const { product } = this.state;
         const { changeQty } = this;
         return (
             <div id='product'>
@@ -55,7 +63,7 @@ class _Product extends Component {
 
 const mapState = ({ products }, ownProps) => {
     const id = ownProps.match.params.id;
-    const product = products.find( product => product.id === id*1) || { name: ''};
+    const product = products.find( product => product.id === id*1) || {};
     return {
         product
     };

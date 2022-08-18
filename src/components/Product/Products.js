@@ -28,7 +28,11 @@ const Products = ({ products }) => {
     );
 }
 
-const mapStateToProps = (state) => state;
+const mapStateToProps = (state) => {
+    return {
+        products: state.products
+    }
+};
 
 
 // const mapDispatch = (dispatch, { history, match }) => {
