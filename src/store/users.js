@@ -38,8 +38,16 @@ export const deleteUser = (user) => {
 
 export const updateUser = (user) => {
   return async(dispatch) => {
-      user = (await axios.put(`/api/users/${ user.id }`, user )).data;
+    const token = window.localStorage.getItem('token');
+    if(token){
+      const response = await axios.put(`/api/users/${ user.id }`, user, {
+        headers: {
+          authorization: token
+        }
+      });
+      user = response.data;
       dispatch({ type: 'UPDATE_USER', user })
+    }
   }
 }
 
