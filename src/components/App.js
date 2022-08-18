@@ -36,7 +36,9 @@ class App extends React.Component{
         <div>
           <Route component={ Nav }/>
           <main id='main-container'>
+          <div class="jumbotron text-center">
             <h1>Grace Shopper</h1>
+          </div>
             {
               auth.id ? <button onClick={ logout }>Logout { auth.username }</button>: <SignIn />
             }

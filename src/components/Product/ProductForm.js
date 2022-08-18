@@ -34,7 +34,7 @@ class ProductForm extends Component {
       const { name, type, description, size, color, price, rating } = this.state;
       const { handleSubmit, handleChange } = this;
       return (
-        <div>
+        <div className='table'>
           <form onSubmit={handleSubmit}>
             <input
               name="name"
