@@ -41,7 +41,6 @@ class Account extends Component {
     }
     save(ev) {
         ev.preventDefault();
-        console.log(this.props.auth)
         const user = {
             id: this.props.auth.id,
             firstName: this.state.firstName,
@@ -49,7 +48,6 @@ class Account extends Component {
             email: this.state.email,
             avatar: this.state.avatar
         }
-        console.log(user)
         this.props.update(user);
     }
     render() {
