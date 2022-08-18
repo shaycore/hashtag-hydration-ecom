@@ -1,5 +1,5 @@
 import axios from 'axios';
-//TODO double check routes
+//TODO double check routes before getting this working
 
 const addressReducer = (state = [], action)=> {
   if (action.type === 'SET_ADDRESSES') {
