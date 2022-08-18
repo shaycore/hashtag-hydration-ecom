@@ -15,6 +15,7 @@ import AdminProducts from './Admin/AdminProducts';
 import AdminProduct from './Admin/AdminProduct';
 import Users from './Admin/Users';
 import User from './Admin/User';
+import AddressBook from './Account/AddressBook';
 
 
 class App extends React.Component{
@@ -55,6 +56,7 @@ class App extends React.Component{
             <Switch>
               <Route exact path='/' component={ Home } />
               <Route exact path='/account' component={ Account } />
+              <Route exact path='/account/addressBook' component={ AddressBook } />
               <Route exact path='/products' component={ Products } />
               <Route exact path='/products/:id' component={ Product } />
               <Route exact path='/admin' component={ Admin } />
