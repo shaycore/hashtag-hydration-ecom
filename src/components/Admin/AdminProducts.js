@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ProductForm from './ProductForm';
+// import ProductForm from './ProductForm';
 // import { } from "../store";
 
-const Products = ({ products }) => {
+const AdminProducts = ({ products }) => {
     return (
         <main>
-            <h1>List of Products ({products.length})</h1>
+            <h1>Admin View: List of Products ({products.length})</h1>
             <ul id='products'>
                 {
                     products.map( product => {
                         return (
                             <li key={ product.id }>
-                                <Link to={`/products/${product.id}`}>
+                                <Link to={`/admin/products/${product.id}`}>
                                     { product.name }
                                 </Link>
                             </li>
@@ -22,7 +22,7 @@ const Products = ({ products }) => {
                 }
             </ul>
             <h2>Create New Product</h2>
-            <ProductForm />
+            {/* <ProductForm /> */}
         </main>
     );
 }
@@ -39,4 +39,4 @@ const mapStateToProps = (state) => {
 //     }
 // };
 
-export default connect(mapStateToProps, null)(Products);
+export default connect(mapStateToProps, null)(AdminProducts);

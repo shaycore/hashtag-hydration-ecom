@@ -16,6 +16,9 @@ const Nav = () => {
                 <Link to='/orders'>
                     <li>ORDERS</li>
                 </Link>
+                <Link to='/admin'>
+                    <li>Temporary Admin Link</li>
+                </Link>
         </nav>
     )
 };
