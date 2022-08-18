@@ -41,7 +41,7 @@ class _Product extends Component {
         const { product } = this.state;
         const { handleSubmit, changeQty } = this;
         return (
-            <div id='product'>
+            <div id='product-item'>
                 <Link to={'/products/'}>Return to All Products</Link>
                 <br />
                 <img src={ product.image } alt='Product Image' />
