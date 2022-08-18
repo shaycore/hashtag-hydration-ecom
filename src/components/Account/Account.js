@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateUser } from '../../store/users'
+import { updateUser } from '../../store/users';
+import { Link, Route, HashRouter as Router } from 'react-router-dom';
+
 
 class Account extends Component {
     constructor() {
@@ -60,6 +62,7 @@ class Account extends Component {
                     <p>Profile Picture</p>
                     <img src={ avatar } style={{ height: 100, width: 100 }} />
                     <input type='file' ref={ el => this.el = el }/>
+                    <Link to='/account/addressbook'>Address book</Link>
                     <p>First Name</p>
                     <input value={ firstName || '' } onChange={ ev => this.setState({ firstName: ev.target.value })}></input>
                     <p>Last Name</p>
