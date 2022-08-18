@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addToCart } from '../../store';
 
 class _Product extends Component {
     constructor(){
@@ -9,10 +10,19 @@ class _Product extends Component {
             product: {},
             quantity: 1
         };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentDidMount(){
+        this.setState({
+            product: this.props.product
+        })
     }
     componentDidUpdate(prevProps){
+        if(!prevProps.product.id && this.props.product.id) {
+            this.setState({
+                product: this.props.product
+            })
+        }
     }
     changeQty = (type) => {
         if(type==='increment') {
@@ -23,9 +33,13 @@ class _Product extends Component {
             } 
         }
     }
+    async handleSubmit(ev) {
+        ev.preventDefault();
+        this.props.submit({...this.state});
+    }
     render(){
-        const { product } = this.props;
-        const { changeQty } = this;
+        const { product } = this.state;
+        const { handleSubmit, changeQty } = this;
         return (
             <div id='product'>
                 <Link to={'/products/'}>Return to All Products</Link>
@@ -46,7 +60,7 @@ class _Product extends Component {
 
                  Quantity: {this.state.quantity} 
                 <br />
-                <button>Add to Cart</button>
+                <button type='submit' onClick={ handleSubmit }>Add to Cart</button>
                 <button>Add to Wishlist</button>
             </div>
         );
@@ -55,12 +69,20 @@ class _Product extends Component {
 
 const mapState = ({ products }, ownProps) => {
     const id = ownProps.match.params.id;
-    const product = products.find( product => product.id === id*1) || { name: ''};
+    const product = products.find( product => product.id === id*1) || {};
     return {
         product
     };
 };
 
-const Product = connect(mapState)(_Product);
+const mapDispatch = (dispatch, { history, match }) => {
+    return {
+        submit: (obj) => {
+            dispatch(addToCart(obj.product,obj.quantity));
+        }
+    };
+};
+
+const Product = connect(mapState,mapDispatch)(_Product);
 
 export default Product;
