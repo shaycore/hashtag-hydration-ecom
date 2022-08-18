@@ -10,6 +10,12 @@ import Products from './Product/Products';
 import Product from './Product/Product';
 import NotFound from './Pages/404';
 import Account from './Account/Account';
+import Admin from './Admin/Admin';
+import AdminProducts from './Admin/AdminProducts';
+import AdminProduct from './Admin/AdminProduct';
+import Users from './Admin/Users';
+import User from './Admin/User';
+
 
 class App extends React.Component{
   componentDidMount(){
@@ -51,6 +57,12 @@ class App extends React.Component{
               <Route exact path='/account' component={ Account } />
               <Route exact path='/products' component={ Products } />
               <Route exact path='/products/:id' component={ Product } />
+              <Route exact path='/admin' component={ Admin } />
+              <Route exact path='/admin/products' component={ AdminProducts } />
+              <Route exact path='/admin/products/:id' component={ AdminProduct } />
+              <Route exact path='/admin/users' component={ Users } />
+              <Route exact path='/admin/users/:id' component={ User } />
+
               <Route path="" component={NotFound} />
             </Switch>
           </main>

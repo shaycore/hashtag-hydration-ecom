@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const users = (state = [], action)=> {
   if (action.type === 'SET_USERS') {
-    return action.users;
+    return action.users || state;
   }
   if (action.type === 'CREATE_USERS') {
     return [...state, action.user];
@@ -18,7 +18,7 @@ const users = (state = [], action)=> {
 
 export const fetchUsers = ()=> {
   return async(dispatch) => {
-    const products = (await axios.get('/api/users')).data;
+    const users = (await axios.get('/api/users')).data;
     dispatch({ type: 'SET_USERS', users });
   };
 };  
