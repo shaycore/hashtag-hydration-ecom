@@ -20,6 +20,8 @@ const Nav = () => {
             <Link to='/admin'>
                 <li className='nav-link'>Temporary Admin Link</li>
             </Link>
+            <Link to='/about'> About Us</Link>
+            <Link to='/wishlist'> Wish List</Link>
         
         </div>
     )
