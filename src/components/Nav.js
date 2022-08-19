@@ -21,8 +21,8 @@ const Nav = ({ auth }) => {
                     <li className='nav-link'>SIGN IN</li>
                 </Link>
             }
-            <Link to='/orders'>
-                <li className='nav-link'>ORDERS</li>
+            <Link to='/cart'>
+                <li className='nav-link'>CART</li>
             </Link>
             <Link to='/admin'>
                 <li className='nav-link'>Temporary Admin Link</li>

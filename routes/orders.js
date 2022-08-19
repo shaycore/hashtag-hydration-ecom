@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express.Router();
 const { isLoggedIn } = require('./middleware');
-const { Order } = require('../db');
 
 module.exports = app;
 
@@ -33,40 +32,21 @@ app.get('/cart', isLoggedIn, async(req, res, next)=> {
   }
 });
 
-app.get('/', async(req, res, next)=> {
+app.get('/orders', isLoggedIn, async(req, res, next)=> {
     try {
-      res.send(await Order.findAll());
+      res.send(await req.user.getPreviousOrders());
     }
     catch(ex){
       next(ex);
     }
   });
 
-app.post('/', isLoggedIn, async(req, res, next)=> {
-  try {
-    res.status(201).send(await Order.create(req.body));
-  }
-  catch(ex){
-    next(ex);
-  }
 
-});
-
-app.put('/:id', isLoggedIn, async(req, res, next)=> {
-  try {
-    const order = await Order.findByPk(req.params.id);
-    res.send(await order.update(req.body));
-  }
-  catch(ex){
-    next(ex); 
-  }
-});
-
-app.delete('/:id', isLoggedIn, async(req, res, next)=> {
+app.delete('/cart', isLoggedIn, async(req, res, next)=> {
     try {
-      const order = await Order.findByPk(req.params.id);
-      await order.destroy();
-      res.send.status(204);
+      const cart = await req.user.getCart();
+      const items = cart.lineItems.find( item => item.id === req.body.id)
+      res.send.status(204).send( await items.destroy());
     }
     catch(ex){
       next(ex);
