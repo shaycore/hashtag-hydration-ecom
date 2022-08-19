@@ -1,10 +1,9 @@
 import axios from 'axios';
-import history from "history";
-import users from "./users";
+
 
 const DELETE_FROM_CART = "DELETE_FROM_CART";
 const ADD_TO_CART = "ADD_TO_CART";
-const CHECK_OUT_ORDER = "CHECK_OUT_ORDER";
+const UPDATE_QTY = 'UPDATE_CART';
 
 const _deleteFromCart = (lineitem) => ({
   type: DELETE_FROM_CART,
@@ -14,11 +13,6 @@ const _deleteFromCart = (lineitem) => ({
 const _addToCart = (lineitem) => ({
   type: ADD_TO_CART,
   lineitem,
-});
-
-const _checkOutOrder = (order) => ({
-  type: CHECK_OUT_ORDER,
-  order,
 });
 
 export const fetchCart = ()=> {
@@ -33,20 +27,25 @@ export const fetchCart = ()=> {
   };
 };
 
-export const deleteFromCart = (lineitemId, quantity) => {
-  return async (dispatch) => {
-    try {
-      const token = window.localStorage.getItem("token");
-      if (token) {
-        const { data } = await axios.delete(
-          `/api/orders/cart/${lineitemId}/${quantity}`,
-          { headers: { authorization: token } }
-        );
-        dispatch(_deleteFromCart(data));
-      }
-    } catch (ex) {
-      console.log(ex);
-    }
+export const updateQuantity = (newQuantity) => {
+  return async(dispatch) => {
+    const response = await axios.put('/api/orders/cart', newQuantity, {
+      headers: {
+        authorization: window.localStorage.getItem('token')
+      }, 
+    });
+    dispatch({type: UPDATE_QTY, _lineItem: response.data})
+  };
+};
+
+export const deleteFromCart = (item) => {
+  return async(dispatch) => {
+     await axios.delete('/api/orders/cart', item,  {
+      headers: {
+        authorization: window.localStorage.getItem('token')
+      },
+    });
+    dispatch({type: DELETE_FROM_CART, _lineItem: item})
   };
 };
 
@@ -65,34 +64,6 @@ export const addToCart = (product, quantity) => {
   }
 };
 
-export const createOrder = (id, history) => {
-  return async (dispatch) => {
-    try {
-      const token = window.localStorage.getItem("token");
-      const Month = new Date().getMonth() + 1;
-      const Day = new Date().getDate();
-      const Year = new Date().getFullYear();
-      const newOrder = {
-        time: `${Month}/${Day}/${Year}`,
-        isCart: false,
-      };
-      console.log(newOrder);
-      console.log(token);
-      const { data } = (
-        await axios.put(`/api/orders/${id}`, newOrder, {
-          headers: {
-            authorization: token,
-          },
-        })
-      )
-      console.log(data)
-      dispatch(_checkOutOrder(data));
-      history.push("/orders");
-    } catch (e) {
-      console.log({ e });
-    }
-  };
-};
 
 const cart = (state = { lineItems: [ ] }, action)=> {
   if(action.type === 'SET_CART'){
@@ -111,9 +82,6 @@ const cart = (state = { lineItems: [ ] }, action)=> {
       ...state,
       lineitems: [...state.lineitems, action.lineitem],
     };
-  }
-  if (action.type === CHECK_OUT_ORDER) {
-    return {lineitems: []};
   }
 return state;
 };

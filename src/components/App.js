@@ -71,6 +71,7 @@ class App extends React.Component{
               <Route exact path='/admin/users/:id' component={ User } />
               <Route exact path='/about' component={ AboutUs } />
               <Route exact path='/wishlist' component={ Wishlist } />
+              <Route exact path='/cart' component={ Cart } />
               <Route path="" component={NotFound} />
             </Switch>
               
