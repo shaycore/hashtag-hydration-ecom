@@ -49,13 +49,13 @@ class App extends React.Component{
             {
               auth.id ? <Link to='/cart'>Cart ({cart.lineItems.length})</Link>: null
             }
-            {
+            {/* {
               auth.id ? (
                 <Fragment>
                   <Route path='/cart' component={ Cart } />
                 </Fragment>
               ): null 
-            } 
+            }  */}
             
 
             <Switch>
