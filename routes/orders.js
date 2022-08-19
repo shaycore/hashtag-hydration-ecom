@@ -42,16 +42,6 @@ app.get('/', async(req, res, next)=> {
     }
   });
 
-app.post('/', isLoggedIn, async(req, res, next)=> {
-  try {
-    res.status(201).send(await Order.create(req.body));
-  }
-  catch(ex){
-    next(ex);
-  }
-
-});
-
 app.put('/:id', isLoggedIn, async(req, res, next)=> {
   try {
     const order = await Order.findByPk(req.params.id);
