@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Nav = () => {
+const Nav = ({ auth }) => {
     return (
         <div className='navbar'>
             
@@ -11,9 +12,15 @@ const Nav = () => {
             <Link to='/products'>
                 <li className='nav-link'>PRODUCTS</li>
             </Link>
-            <Link to='/'>
-                <li className='nav-link'>SIGN IN</li>
-            </Link>
+            {
+                auth.id ?
+                <Link to='/account'>
+                    <li className='nav-link'>ACCOUNT</li>
+                </Link> :
+                <Link to='/signin'>
+                    <li className='nav-link'>SIGN IN</li>
+                </Link>
+            }
             <Link to='/orders'>
                 <li className='nav-link'>ORDERS</li>
             </Link>
@@ -27,5 +34,9 @@ const Nav = () => {
     )
 };
 
+const mapStateToProps = (state) => {
+    return state;
+}
 
-export default Nav;
+
+export default connect(mapStateToProps)(Nav);

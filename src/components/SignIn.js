@@ -24,7 +24,9 @@ class SignIn extends Component{
     const { username, password } = this.state;
     return (
       <form onSubmit={ onSubmit }>
+        <p>Username</p>
         <input name='username' onChange={ onChange } value={ username }/>
+        <p>Password</p>
         <input type='password' name='password' value={ password } onChange={ onChange }/>
         <button>Login</button>
       </form>
@@ -32,10 +34,11 @@ class SignIn extends Component{
   }
 }
 
-const mapDispatch = (dispatch)=> {
+const mapDispatch = (dispatch, ownProps)=> {
+  const { history } = ownProps;
   return {
     login: (credentials)=> {
-      dispatch(login(credentials));
+      dispatch(login(credentials, history));
     }
   };
 };
