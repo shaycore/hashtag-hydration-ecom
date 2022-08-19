@@ -9583,3 +9583,11 @@
     }
   }
   
+  /* Styles added by David */
+button {
+  display: block;
+}
+
+input {
+  margin-bottom: 1rem;
+}
