@@ -78,6 +78,7 @@ const mapState = ({ products }, ownProps) => {
 const mapDispatch = (dispatch, { history, match }) => {
     return {
         submit: (obj) => {
+            console.log("I'm sending: " + obj.product.name, obj.quantity);
             dispatch(addToCart(obj.product,obj.quantity));
         }
     };

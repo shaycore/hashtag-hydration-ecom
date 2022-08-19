@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-const SET_CART = 'SET_CART';
+
 const DELETE_FROM_CART = "DELETE_FROM_CART";
 const ADD_TO_CART = "ADD_TO_CART";
+const UPDATE_QTY = 'UPDATE_CART';
 
 const _deleteFromCart = (lineitem) => ({
   type: DELETE_FROM_CART,
@@ -14,7 +15,6 @@ const _addToCart = (lineitem) => ({
   lineitem,
 });
 
-
 export const fetchCart = ()=> {
   return async(dispatch)=> {
     const response = await axios.get('/api/orders/cart', {
@@ -24,6 +24,17 @@ export const fetchCart = ()=> {
     });
     dispatch({ type: 'SET_CART', cart: response.data });
 
+  };
+};
+
+export const updateQuantity = (newQuantity) => {
+  return async(dispatch) => {
+    const response = await axios.put('/api/orders/cart', newQuantity, {
+      headers: {
+        authorization: window.localStorage.getItem('token')
+      }, 
+    });
+    dispatch({type: UPDATE_QTY, _lineItem: response.data})
   };
 };
 
@@ -38,27 +49,39 @@ export const deleteFromCart = (item) => {
   };
 };
 
-export const addToCart = (newQuantity) => {
+export const addToCart = (product, quantity) => {
   return async(dispatch) => {
-    const response = await axios.put('/api/orders/cart', newQuantity, {
-      headers: {
-        authorization: window.localStorage.getItem('token')
-      }, 
-    });
-    dispatch({type: ADD_TO_CART, _lineItem: response.data})
-  };
+    try {
+      const data = (await axios.put('/api/orders/cart',{ product, quantity }, {
+        headers: {
+          authorization: window.localStorage.getItem('token')
+        }
+      })).data;
+      dispatch(_addToCart(data));
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
 };
 
 
 const cart = (state = { lineItems: [ ] }, action)=> {
-  if(action.type === SET_CART){
+  if(action.type === 'SET_CART'){
     return action.cart || state;
   }
   if (action.type === DELETE_FROM_CART) {
-    return state.filter(lineItem => lineItem.id !== action.item.id)
+    return {
+      ...state,
+      lineitems: state.lineitems.filter(
+        (lineitem) => lineitem.id !== action.lineitem.id
+      ),
+    };
   }
   if (action.type === ADD_TO_CART) {
-    return state.map(lineItem => lineItem.id !== action._lineItem.id ? lineItem : action._lineItem)
+    return {
+      ...state,
+      lineitems: [...state.lineitems, action.lineitem],
+    };
   }
 return state;
 };

@@ -41,6 +41,15 @@ app.get('/orders', isLoggedIn, async(req, res, next)=> {
     }
   });
 
+app.put('/:id', isLoggedIn, async(req, res, next)=> {
+  try {
+    const order = await Order.findByPk(req.params.id);
+    res.send(await order.update(req.body));
+  }
+  catch(ex){
+    next(ex); 
+  }
+});
 
 app.delete('/cart', isLoggedIn, async(req, res, next)=> {
     try {
