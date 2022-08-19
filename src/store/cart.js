@@ -51,27 +51,18 @@ export const deleteFromCart = (lineitemId, quantity) => {
 };
 
 export const addToCart = (product, quantity) => {
-  return async (dispatch) => {
+  return async(dispatch) => {
     try {
-      const token = window.localStorage.getItem("token");
-      if (token) {
-        console.log("product", product);
-        const lineitem = {
-          quantity,
-          cost: product.price,
-          productId: product.id,
-        };
-        const { data } = await axios.post("/api/orders/cart", lineitem, {
-          headers: { authorization: token },
-        });
-        dispatch(_addToCart(data));
-      } else {
-        alert('Please Sign Up or Log In!')
-      }
+      const data = (await axios.put('/api/orders/cart',{ product, quantity }, {
+        headers: {
+          authorization: window.localStorage.getItem('token')
+        }
+      })).data;
+      dispatch(_addToCart(data));
     } catch (ex) {
       console.log(ex);
     }
-  };
+  }
 };
 
 export const createOrder = (id, history) => {
