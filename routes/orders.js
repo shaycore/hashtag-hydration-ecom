@@ -23,6 +23,7 @@ app.put('/cart', isLoggedIn, async(req, res, next)=> {
   }
 });
 
+
 app.get('/cart', isLoggedIn, async(req, res, next)=> {
   try {
     res.send(await req.user.getCart());

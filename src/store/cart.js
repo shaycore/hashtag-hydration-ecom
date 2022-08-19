@@ -80,7 +80,7 @@ const cart = (state = { lineItems: [ ] }, action)=> {
   if (action.type === ADD_TO_CART) {
     return {
       ...state,
-      lineitems: [...state.lineitems, action.lineitem],
+      lineitems: [...state.lineItems, action.lineitem],
     };
   }
 return state;
