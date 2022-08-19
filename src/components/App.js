@@ -16,7 +16,8 @@ import AdminProduct from './Admin/AdminProduct';
 import Users from './Admin/Users';
 import User from './Admin/User';
 import AddressBook from './Account/AddressBook';
-
+import AboutUs from './Pages/AboutUs';
+import Wishlist from './Wishlist'
 
 class App extends React.Component{
   componentDidMount(){
@@ -36,7 +37,7 @@ class App extends React.Component{
         <div>
           <Route component={ Nav }/>
           <main id='main-container'>
-          <div class="jumbotron text-center">
+          <div className='jumbotron'>
             <h1>Grace Shopper</h1>
           </div>
             {
@@ -55,6 +56,8 @@ class App extends React.Component{
                 </Fragment>
               ): null 
             } 
+            
+
             <Switch>
               <Route exact path='/' component={ Home } />
               <Route exact path='/account' component={ Account } />
@@ -66,9 +69,13 @@ class App extends React.Component{
               <Route exact path='/admin/products/:id' component={ AdminProduct } />
               <Route exact path='/admin/users' component={ Users } />
               <Route exact path='/admin/users/:id' component={ User } />
-
+              <Route exact path='/about' component={ AboutUs } />
+              <Route exact path='/wishlist' component={ Wishlist } />
               <Route path="" component={NotFound} />
             </Switch>
+              
+           
+
           </main>
         </div>
       </Router>
