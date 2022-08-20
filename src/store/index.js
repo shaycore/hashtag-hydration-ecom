@@ -6,6 +6,7 @@ import users from './users';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
+
 const reducer = combineReducers({
   auth,
   cart,
