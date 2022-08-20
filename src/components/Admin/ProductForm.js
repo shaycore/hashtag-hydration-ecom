@@ -9,6 +9,7 @@ class ProductForm extends Component {
             name: '',
             type: '',
             description: '',
+            brand: '',
             size: '',
             color: '',
             image: '',
@@ -32,6 +33,7 @@ class ProductForm extends Component {
             name: this.state.name,
             type: this.state.type,
             description: this.state.description,
+            brand: this.state.brand,
             size: this.state.size,
             color: this.state.color,
             image: this.state.image,
@@ -40,12 +42,13 @@ class ProductForm extends Component {
         this.props.create(newProduct);
     }
     render() {
-        const { image, name, type, description, size, color, price } = this.state;
+        const { image, name, type, description, brand, size, color, price } = this.state;
         const { save } = this;
         return (
             <form onSubmit={ save }>
                 <img src={ image || null } style={{ height: 100, width: 100 }} /><br />
                 <input type='file' ref={ el => this.el = el }/><br />
+                <input placeholder='Brand' value={ brand } onChange={ ev => this.setState({ brand: ev.target.value })}></input><br />
                 <input placeholder='Name' value={ name } onChange={ ev => this.setState({ name: ev.target.value })}></input><br />
                 <input placeholder='Type' value={ type } onChange={ ev => this.setState({ type: ev.target.value })}></input><br />
                 <textarea placeholder='Description' value={ description } onChange={ ev => this.setState({ description: ev.target.value })}></textarea><br />

@@ -8,7 +8,7 @@ const Address = require('./Address');
 const Review = require('./Review');
 const Wishlist = require('./Wishlist');
 const Coupon = require('./Coupon');
-const { USERS, PRODUCTS, LINEITEMS } = require('./seeder');
+const { USERS, PRODUCTS, LINEITEMS, REVIEWS } = require('./seeder');
 
 User.hasMany(Order);
 Order.hasMany(LineItem);
@@ -49,6 +49,9 @@ const syncAndSeed = async() => {
     isGuest: false,
     isAdmin: true
   });
+  await Promise.all(
+    REVIEWS.map((review)=> Review.create(review))
+  );
   await prof.addToCart({ product: items[1], quantity: 1});
   await prof.addToCart({ product: items[2], quantity: 2});
   await prof.addToCart({ product: items[3], quantity: 3});
@@ -62,5 +65,6 @@ module.exports = {
   Product,
   LineItem,
   Order,
+  Review,
   syncAndSeed
 };

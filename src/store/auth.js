@@ -5,6 +5,9 @@ const auth = (state = {}, action)=> {
   if(action.type === 'SET_AUTH'){
     state = action.auth;
   }
+  if(action.type === 'UPDATE_AUTH'){
+    state = action.user;
+  }
   return state;
 };
 
@@ -45,5 +48,20 @@ export const login = (credentials, history)=> {
     history.push('/')
   };
 };
+
+export const updateUser = (user) => {
+  return async(dispatch) => {
+    const token = window.localStorage.getItem('token');
+    if(token){
+      const response = await axios.put(`/api/users/${ user.id }`, user, {
+        headers: {
+          authorization: token
+        }
+      });
+      user = response.data;
+      dispatch({ type: 'UPDATE_AUTH', user })
+    }
+  }
+}
   
 export default auth;
