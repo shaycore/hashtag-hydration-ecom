@@ -37,10 +37,18 @@ export const createProduct = (product) => {
   };
 };
 
-export const deleteProduct = (product) => {
+export const deleteProduct = (product, history) => {
   return async(dispatch) => {
-      await axios.delete(`/api/products/${ product.id }`);
+    const token = window.localStorage.getItem('token');
+    if(token) {
+      await axios.delete(`/api/products/${ product.id }`, {
+        headers: {
+          authorization: token
+        }
+      });
       dispatch({ type: 'DELETE_PRODUCT', product});
+      history.push('/admin/products')
+    }
   }
 }
 
