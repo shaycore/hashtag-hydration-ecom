@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteProduct } from '../../store';
+import { updateProduct, deleteProduct } from '../../store';
 
 class _AdminProduct extends Component {
     constructor(){
@@ -16,6 +16,7 @@ class _AdminProduct extends Component {
             color: '',
             price: ''
         };
+        this.save = this.save.bind(this);
         this.destroy = this.destroy.bind(this);
     }
     componentDidMount(){
@@ -54,6 +55,18 @@ class _AdminProduct extends Component {
     }
     save(ev) {
         ev.preventDefault();
+        const product = {
+            id: this.props.product.id,
+            image: this.state.image,
+            brand: this.state.brand,
+            name: this.state.name,
+            type: this.state.type,
+            description: this.state.description,
+            size: this.state.size,
+            color: this.state.color,
+            price: this.state.price
+        };
+        this.props.update(product);
     }
     destroy(ev) {
         this.props.destroy(this.props.product)
@@ -98,8 +111,11 @@ const mapState = ({ products }, ownProps) => {
     };
 };
 
-const mapDispatch = (dispatch, { history, match }) => {
+const mapDispatch = (dispatch, { history }) => {
     return {
+        update: (product) => {
+            dispatch(updateProduct(product))
+        },
         destroy: (product) => {
             dispatch(deleteProduct(product, history))
         }
