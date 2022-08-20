@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addToCart, fetchCart } from '../../store/cart';
+import {PaymentElement} from '@stripe/react-stripe-js';
+
+
 
 const Cart = connect(
   state => state,
@@ -13,6 +16,10 @@ const Cart = connect(
   return (
     <div>
       <h2>Shopping Cart</h2>
+      {/* <form>
+        <PaymentElement />
+        <button>Submit</button>
+      </form> */}
       <ul>
         {
           products.map( product => {
