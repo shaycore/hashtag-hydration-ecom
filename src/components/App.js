@@ -18,6 +18,11 @@ import User from './Admin/User';
 import AddressBook from './Account/AddressBook';
 import AboutUs from './Pages/AboutUs';
 import Wishlist from './Wishlist';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+import StripeCheckOutForm from './Pages/StripeCheckOutForm'
+
 
 class App extends React.Component{
   componentDidMount(){
@@ -30,9 +35,19 @@ class App extends React.Component{
       
     }
   }
+
+  
   render(){
     const { auth, logout, cart } = this.props;
+    const options = {
+      // passing the client secret obtained from the server
+      clientSecret: '{{CLIENT_SECRET}}',
+    };
     return (
+      <div>
+        {/* <Elements stripe={stripePromise} options={options}>
+      <StripeCheckoutForm />
+    </Elements> */}
       <Router>
         <div>
           <Route component={ Nav }/>
@@ -78,6 +93,7 @@ class App extends React.Component{
           </main>
         </div>
       </Router>
+      </div>
     );
 
   }
