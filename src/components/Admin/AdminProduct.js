@@ -37,7 +37,8 @@ class _AdminProduct extends Component {
                 <br />
                 <img src={ product.image } alt='Product Image' />
                 <ul>
-                    <li>{ product.name }</li>
+                    <li>Brand: { product.brand }</li>
+                    <li>Name: { product.name }</li>
                     <li>Type: { product.type }</li>
                     <li>Description: { product.description }</li>
                     <li>Price: ${ product.price }</li>
