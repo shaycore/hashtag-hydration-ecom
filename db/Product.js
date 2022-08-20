@@ -16,6 +16,9 @@ const Product = conn.define('product', {
   description: {
     type: TEXT
   },
+  brand: {
+    type: TEXT
+  },
   size: {
     type: STRING,
     allowNull: false,

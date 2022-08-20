@@ -51,6 +51,7 @@ export const deleteFromCart = (item) => {
 
 export const addToCart = (product, quantity) => {
   return async(dispatch) => {
+    console.log("received",product, quantity)
     try {
       const data = (await axios.put('/api/orders/cart',{ product, quantity }, {
         headers: {
