@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { deleteProduct } from '../../store';
 // import {  } from '../../store';
 
 class _AdminProduct extends Component {
@@ -10,7 +11,7 @@ class _AdminProduct extends Component {
             product: {},
             quantity: 1
         };
-        this.deleteProduct = this.deleteProduct.bind(this);
+        this.destroy = this.destroy.bind(this);
     }
     componentDidMount(){
         this.setState({
@@ -24,12 +25,12 @@ class _AdminProduct extends Component {
             })
         }
     }
-    async deleteProduct() {
-        console.log('delete product!');
+    destroy(ev) {
+        this.props.destroy(this.props.product)
     }
     render(){
         const { product } = this.state;
-        const { deleteProduct } = this;
+        const { destroy } = this;
         return (
             <div id='product'>
                 <Link to={'/admin/products/'}>Return to All Products</Link>
@@ -45,7 +46,7 @@ class _AdminProduct extends Component {
                     <li>Rating: { product.rating }</li>
 
                 </ul>
-                <button onClick={ deleteProduct }>Delete Product</button>
+                <button onClick={ destroy }>Delete</button>
             </div>
         );
     }
@@ -63,6 +64,9 @@ const mapDispatch = (dispatch, { history, match }) => {
     return {
         submit: (obj) => {
             dispatch(addToCart(obj.product,obj.quantity));
+        },
+        destroy: (product) => {
+            dispatch(deleteProduct(product, history))
         }
     };
 };
