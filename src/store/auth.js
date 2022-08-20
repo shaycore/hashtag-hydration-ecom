@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { History } from 'history';
 
 const auth = (state = {}, action)=> {
   if(action.type === 'SET_AUTH'){
