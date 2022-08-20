@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import AddressForm from './AddressForm';
 
  class UserAddressBook extends Component {
-  static propTypes = {}
-
+  constructor(){
+    super()
+  }
   render() {
     return (
       <div>
@@ -13,6 +14,6 @@ import AddressForm from './AddressForm';
       </div>
     )
   }
-}
+};
 
 export default connect()(UserAddressBook)
