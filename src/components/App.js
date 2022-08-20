@@ -53,7 +53,7 @@ class App extends React.Component{
           <Route component={ Nav }/>
           <main id='main-container'>
           <div className='jumbotron'>
-            <h1>Grace Shopper</h1>
+            <h1>HashTag Hydration</h1>
           </div>
             {
               auth.id ? <button onClick={ logout }>Logout { auth.username }</button>: null
