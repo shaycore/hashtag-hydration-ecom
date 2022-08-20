@@ -41,10 +41,7 @@ class App extends React.Component{
             <h1>Grace Shopper</h1>
           </div>
             {
-              auth.id ? <button onClick={ logout }>Logout { auth.username }</button>: <SignIn />
-            }
-            {
-              auth.id ? <Link to={'/account'}>Account</Link>: null
+              auth.id ? <button onClick={ logout }>Logout { auth.username }</button>: null
             }
             {
               auth.id ? <Link to='/cart'>Cart ({cart.lineItems.length})</Link>: null
@@ -64,6 +61,7 @@ class App extends React.Component{
               <Route exact path='/account/addressBook' component={ AddressBook } />
               <Route exact path='/products' component={ Products } />
               <Route exact path='/products/:id' component={ Product } />
+              <Route exact path='/signin' component={ SignIn } />
               <Route exact path='/admin' component={ Admin } />
               <Route exact path='/admin/products' component={ AdminProducts } />
               <Route exact path='/admin/products/:id' component={ AdminProduct } />
