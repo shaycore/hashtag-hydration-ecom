@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import ProductForm from './ProductForm';
+import ProductForm from './ProductForm';
 // import { } from "../store";
 
 const AdminProducts = ({ products }) => {
@@ -22,7 +22,7 @@ const AdminProducts = ({ products }) => {
                 }
             </ul>
             <h2>Create New Product</h2>
-            {/* <ProductForm /> */}
+            <ProductForm />
         </main>
     );
 }
