@@ -51,16 +51,16 @@ const USERS = [];
 const PRODUCTS = [];
 const LINEITEMS = [];
 
-PRODUCTS.push(productSeed('Takeya Actives Insulated Water Bottle','Stainless Steel','Takeya','22 oz','Purple',24.75));
+PRODUCTS.push(productSeed('Takeya Actives Insulated Water Bottle','Stainless Steel','Takeya','22 oz','Purple',24.99));
 PRODUCTS.push(productSeed('Takeya Actives Insulated Water Bottle','Stainless Steel','Takeya','40 oz','Lilac',35.99));
-PRODUCTS.push(productSeed('Hydro Flask Standard Mouth','Stainless Steel','Hydro Flask','21 oz','Green',35.00));
-PRODUCTS.push(productSeed('Hydro Flask Standard Mouth','Stainless Steel','Hydro Flask','21 oz','Blue',35.00));
-PRODUCTS.push(productSeed('CamelBak Eddy+','Plastic','CamelBak','25 oz','Blue',16.00));
-PRODUCTS.push(productSeed('Purifyou Premium','Glass','Purifyou','22 oz','Blue',20.00));
-PRODUCTS.push(productSeed('CamelBak Podium','Plastic','CamelBak','21 oz','Clear',11.00));
-PRODUCTS.push(productSeed('Purist Mover','Glass','Purist','18 oz','Gray',48.00));
-PRODUCTS.push(productSeed('Yeti Rambler Bottle','Metal','Yeti','18 oz','Yellow',30.00));
-PRODUCTS.push(productSeed('Yeti Rambler Jr Bottle','Metal','Yeti','12 oz','Pink',25.00));
+PRODUCTS.push(productSeed('Hydro Flask Standard Mouth','Stainless Steel','Hydro Flask','21 oz','Green',35.99));
+PRODUCTS.push(productSeed('Hydro Flask Standard Mouth','Stainless Steel','Hydro Flask','21 oz','Blue',35.99));
+PRODUCTS.push(productSeed('CamelBak Eddy+','Plastic','CamelBak','25 oz','Blue',16.99));
+PRODUCTS.push(productSeed('Purifyou Premium','Glass','Purifyou','22 oz','Blue',20.99));
+PRODUCTS.push(productSeed('CamelBak Podium','Plastic','CamelBak','21 oz','Clear',11.99));
+PRODUCTS.push(productSeed('Purist Mover','Glass','Purist','18 oz','Gray',48.99));
+PRODUCTS.push(productSeed('Yeti Rambler Bottle','Metal','Yeti','18 oz','Yellow',30.99));
+PRODUCTS.push(productSeed('Yeti Rambler Jr Bottle','Metal','Yeti','12 oz','Pink',25.99));
 
 // Array.from({length: 10}).forEach(()=>PRODUCTS.push(randomizeProduct()));
 Array.from({length: 3}).forEach(()=>USERS.push(randomizeUser()));
