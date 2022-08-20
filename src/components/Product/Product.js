@@ -58,11 +58,12 @@ class _Product extends Component {
                 <button onClick={()=>{ changeQty('decrement') }}>-</button>
                 <button onClick={()=>{ changeQty('increment') }}>+</button>
 
-                 Quantity: {this.state.quantity} 
+                Quantity: {this.state.quantity} 
                 <br />
                 <button type='submit' onClick={ handleSubmit }>Add to Cart</button>
                 <button>Add to Wishlist</button>
             </div>
+
         );
     }
 }
