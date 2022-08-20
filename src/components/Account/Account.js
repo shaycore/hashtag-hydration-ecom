@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateUser } from '../../store/users';
+import { updateUser } from '../../store/auth';
 import { Link, Route, HashRouter as Router } from 'react-router-dom';
 
 
