@@ -61,8 +61,8 @@ const PRODUCTS = [];
 const LINEITEMS = [];
 const REVIEWS = [];
 
-PRODUCTS.push(productSeed('Takeya Actives Insulated Water Bottle','Stainless Steel','Takeya','22 oz','Purple',24.75));
-PRODUCTS.push(productSeed('Takeya Actives Insulated Water Bottle','Stainless Steel','Takeya','40 oz','Lilac',35.99));
+PRODUCTS.push(productSeed('Takeya Actives Insulated Water Bottle Small','Stainless Steel','Takeya','22 oz','Purple',24.75));
+PRODUCTS.push(productSeed('Takeya Actives Insulated Water Bottle Large','Stainless Steel','Takeya','40 oz','Lilac',35.99));
 PRODUCTS.push(productSeed('Hydro Flask Standard Mouth','Stainless Steel','Hydro Flask','21 oz','Green',35.00));
 PRODUCTS.push(productSeed('Hydro Flask Standard Mouth','Stainless Steel','Hydro Flask','21 oz','Blue',35.00));
 PRODUCTS.push(productSeed('CamelBak Eddy+','Plastic','CamelBak','25 oz','Blue',16.00));
