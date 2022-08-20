@@ -54,8 +54,15 @@ export const deleteProduct = (product, history) => {
 
 export const updateProduct = (product) => {
   return async(dispatch) => {
-      product = (await axios.put(`/api/products/${ product.id }`, product )).data;
+    const token = window.localStorage.getItem('token');
+    if(token) {
+      product = (await axios.put(`/api/products/${ product.id }`, product, {
+        headers: {
+          authorization: token
+        }
+      })).data;
       dispatch({ type: 'UPDATE_PRODUCT', product })
+    }
   }
 }
 
