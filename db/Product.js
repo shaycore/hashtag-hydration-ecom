@@ -26,7 +26,7 @@ const Product = conn.define('product', {
     allowNull: false
   },
   image: {
-    type: STRING
+    type: TEXT
   },
   price: {
     type: DECIMAL(),

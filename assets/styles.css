@@ -9588,6 +9588,6 @@ button {
   display: block;
 }
 
-input {
+input, textarea {
   margin-bottom: 1rem;
 }

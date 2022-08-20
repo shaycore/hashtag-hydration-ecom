@@ -25,7 +25,15 @@ export const fetchProducts = ()=> {
 
 export const createProduct = (product) => {
   return async(dispatch) => {
-    product = (await axios.post('/api/products', product)).data;
+    const token = window.localStorage.getItem('token');
+    if(token) {
+      product = (await axios.post('/api/products', product, {
+        headers: {
+          authorization: token
+        }
+      })).data;
+      dispatch({ type: 'CREATE_PRODUCT', product })
+    }
   };
 };
 
