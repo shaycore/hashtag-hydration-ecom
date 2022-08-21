@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addToCart, fetchCart } from '../../store/cart';
-import {PaymentElement} from '@stripe/react-stripe-js';
+import { Link } from 'react-router-dom'
 
 let cartTotal = 0
 const Cart = connect(
@@ -14,14 +14,31 @@ const Cart = connect(
   
 )(({ products, cart, addToCart })=> {
   return (
-    <div>
+    <div className='cart-container'>
       <h2>Shopping Cart</h2>
-      {/* <form>
-        <PaymentElement />
-        <button>Submit</button>
-      </form> */}
-       
-      <ul>
+      
+      { cart.lineItems.length === 0 ? (
+        <div className='cart-empty'>
+          <p>Your cart is currently empty.</p>
+          <div className='start-shopping'>
+            <Link to='/products'>
+            <svg xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor" 
+              className="bi bi-arrow-left" 
+              viewBox="0 0 16 16">
+            <path
+              fillRule="evenodd"
+              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+              <span>Start Shopping</span>
+            </Link>
+          </div>
+        </div>
+      ) : (
+      <div>
+        <ul>
         {
           products.map( product => {
             const lineItem = cart.lineItems.find(lineItem => lineItem.productId === product.id) || { quantity: 0 };
@@ -54,9 +71,13 @@ const Cart = connect(
         }   
       </ul>
       <h4>Cart Total: ${cartTotal}</h4>
-    </div>
+      </div>)}
+      </div>
   );
-});
+}
+)
+      
+      
 
 const mapStateToProps = (state)=> {
   return state;
