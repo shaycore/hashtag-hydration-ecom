@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { deleteUser } from '../../store';
 
 class _User extends Component {
     constructor(){
@@ -8,6 +9,7 @@ class _User extends Component {
         this.state = {
             user: {}
         };
+        this.destroy = this.destroy.bind(this);
     }
     componentDidMount(){
         this.setState({
@@ -21,8 +23,12 @@ class _User extends Component {
             })
         }
     }
+    destroy(ev) {
+        this.props.destroy(this.props.user)
+    }
     render(){
         const { user } = this.state;
+        const { destroy } = this;
         return (
             <div id='user'>
                 <Link to={'/admin/users/'}>Return to All Users</Link>
@@ -33,7 +39,9 @@ class _User extends Component {
                 Email: { user.email } <br />
                 Username: { user.username } <br />
                 Created At: { user.createdAt }
+                <button onClick={ destroy }>Delete</button>
             </div>
+            
         );
     }
 }
@@ -46,11 +54,12 @@ const mapState = ({ users }, ownProps) => {
     };
 };
 
-// const mapDispatch = (dispatch, { history, match }) => {
-//     return {
-//     };
-// };
+const mapDispatch = (dispatch, { history }) => {
+    return {
+        destroy: (user) => dispatch(deleteUser(user, history))
+    };
+};
 
-const User = connect(mapState)(_User);
+const User = connect(mapState, mapDispatch)(_User);
 
 export default User;
