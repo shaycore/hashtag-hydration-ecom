@@ -5,6 +5,7 @@ import { Switch, Link, Route, HashRouter as Router } from 'react-router-dom';
 import SignIn from './SignIn';
 import Cart from './Pages/Cart';
 import Nav from './Nav';
+import Footer from './Footer';
 import Home from './Pages/Home';
 import Products from './Product/Products';
 import Product from './Product/Product';
@@ -88,7 +89,8 @@ class App extends React.Component{
               <Route path="" component={NotFound} />
             </Switch>
               
-           
+            <Route component={ Footer }/>
+
 
           </main>
         </div>
