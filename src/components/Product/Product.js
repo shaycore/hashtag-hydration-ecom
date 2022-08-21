@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart } from '../../store';
+import Reviews from './Reviews';
 
 class _Product extends Component {
     constructor(){
@@ -58,10 +59,12 @@ class _Product extends Component {
                 <button onClick={()=>{ changeQty('decrement') }}>-</button>
                 <button onClick={()=>{ changeQty('increment') }}>+</button>
 
-                 Quantity: {this.state.quantity} 
+                Quantity: {this.state.quantity} 
                 <br />
                 <button type='submit' onClick={ handleSubmit }>Add to Cart</button>
                 <button>Add to Wishlist</button>
+                
+                <Reviews product={product}/>
             </div>
         );
     }
