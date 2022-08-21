@@ -25,21 +25,44 @@ export const fetchProducts = ()=> {
 
 export const createProduct = (product) => {
   return async(dispatch) => {
-    product = (await axios.post('/api/products', product)).data;
+    const token = window.localStorage.getItem('token');
+    if(token) {
+      product = (await axios.post('/api/products', product, {
+        headers: {
+          authorization: token
+        }
+      })).data;
+      dispatch({ type: 'CREATE_PRODUCT', product })
+    }
   };
 };
 
-export const deleteProduct = (product) => {
+export const deleteProduct = (product, history) => {
   return async(dispatch) => {
-      await axios.delete(`/api/products/${ product.id }`);
+    const token = window.localStorage.getItem('token');
+    if(token) {
+      await axios.delete(`/api/products/${ product.id }`, {
+        headers: {
+          authorization: token
+        }
+      });
       dispatch({ type: 'DELETE_PRODUCT', product});
+      history.push('/admin/products')
+    }
   }
 }
 
 export const updateProduct = (product) => {
   return async(dispatch) => {
-      product = (await axios.put(`/api/products/${ product.id }`, product )).data;
+    const token = window.localStorage.getItem('token');
+    if(token) {
+      product = (await axios.put(`/api/products/${ product.id }`, product, {
+        headers: {
+          authorization: token
+        }
+      })).data;
       dispatch({ type: 'UPDATE_PRODUCT', product })
+    }
   }
 }
 

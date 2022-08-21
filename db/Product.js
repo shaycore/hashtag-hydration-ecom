@@ -16,6 +16,9 @@ const Product = conn.define('product', {
   description: {
     type: TEXT
   },
+  brand: {
+    type: TEXT
+  },
   size: {
     type: STRING,
     allowNull: false,
@@ -26,7 +29,7 @@ const Product = conn.define('product', {
     allowNull: false
   },
   image: {
-    type: STRING
+    type: TEXT
   },
   price: {
     type: DECIMAL(),

@@ -29,24 +29,17 @@ export const createUsers = (user) => {
   };
 };
 
-export const deleteUser = (user) => {
-  return async(dispatch) => {
-      await axios.delete(`/api/users/${ user.id }`);
-      dispatch({ type: 'DELETE_USER', user});
-  }
-}
-
-export const updateUser = (user) => {
+export const deleteUser = (user, history) => {
   return async(dispatch) => {
     const token = window.localStorage.getItem('token');
-    if(token){
-      const response = await axios.put(`/api/users/${ user.id }`, user, {
+    if(token) {
+      await axios.delete(`/api/users/${ user.id }`, {
         headers: {
           authorization: token
         }
       });
-      user = response.data;
-      dispatch({ type: 'UPDATE_USER', user })
+      dispatch({ type: 'DELETE_USER', user});
+      history.push('/admin/users')
     }
   }
 }

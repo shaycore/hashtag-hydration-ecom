@@ -1,16 +1,7 @@
 const express = require('express');
 const app = express.Router();
 const {models: {User, Order, Address, Product, LineItem }} = require('../db/');
-
-const isAdmin = async(req, res, next) => {
-  try{
-    req.user = await User.isAdmin(req.headers.authorization);
-    next();
-  }
-  catch(err){
-    next(err)
-  }
-};
+const { isAdmin } = require('./middleware');
 
 //Managing Users
 app.get('/users', isAdmin, async(req, res, next) => {
@@ -65,60 +56,60 @@ app.put('/users/:id', isAdmin, async(req, res, next)=> {
 })
 
 //Managing Products
-app.get('/products', isAdmin, async(req, res, next)=> {
-  try{
-    const products = await Product.findAll()
-    res.send(products)
-  }
-  catch(err){
-    next(err)
-  }
-});
+// app.get('/products', isAdmin, async(req, res, next)=> {
+//   try{
+//     const products = await Product.findAll()
+//     res.send(products)
+//   }
+//   catch(err){
+//     next(err)
+//   }
+// });
 
-app.get('/products/:id', isAdmin, async(req, res, next) => {
-  try{
-    const product = await Product.findByPk(req.params.id)
-    res.send(product)
-  }
-  catch(err){
-    next(err)
-  }
-})
-
-
-app.post('/products', isAdmin, async(req, res, next) => {
-  try{
-    const product = await Product.create(req.body);
-    res.send(product)
-  }
-  catch(err){
-    next(err)
-  }
-})
+// app.get('/products/:id', isAdmin, async(req, res, next) => {
+//   try{
+//     const product = await Product.findByPk(req.params.id)
+//     res.send(product)
+//   }
+//   catch(err){
+//     next(err)
+//   }
+// })
 
 
-app.put('/products/:id', isAdmin, async(req, res, next) => {
-  try{
-    const product = await Product.findByPk(req.params.id);
-    await product.update(req.body);
-    res.send(product)
-  }
-  catch(err){
-    next(err)
-  }
-});
+// app.post('/products', isAdmin, async(req, res, next) => {
+//   try{
+//     const product = await Product.create(req.body);
+//     res.send(product)
+//   }
+//   catch(err){
+//     next(err)
+//   }
+// })
 
 
-app.delete('/products/:id', async(req, res, next) => {
-  try{
-      const product = await Product.findByPk(req.params.id)
-      await product.destroy();
-      res.sendStatus(204)
-  }
-  catch(err){
-      next(err)
-  }
-})
+// app.put('/products/:id', isAdmin, async(req, res, next) => {
+//   try{
+//     const product = await Product.findByPk(req.params.id);
+//     await product.update(req.body);
+//     res.send(product)
+//   }
+//   catch(err){
+//     next(err)
+//   }
+// });
+
+
+// app.delete('/products/:id', async(req, res, next) => {
+//   try{
+//       const product = await Product.findByPk(req.params.id)
+//       await product.destroy();
+//       res.sendStatus(204)
+//   }
+//   catch(err){
+//       next(err)
+//   }
+// })
 
 //Managing Orders
 app.get('/orders', isAdmin, async(req, res, next) => {

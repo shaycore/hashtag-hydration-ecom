@@ -1,70 +1,94 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteFromCart, fetchCart, updateQuantity } from '../../store/cart';
-import { Link } from 'react-router-dom';
+import { addToCart, fetchCart } from '../../store/cart';
+import { Link } from 'react-router-dom'
 
-class Cart extends Component {
-  constructor(props) {
-    super(props);
-    this.onChange = this.onChange.bind(this);
+let cartTotal = 0
+const Cart = connect(
+  state => state,
+  dispatch => {
+    return {
+      addToCart: (product, diff = 1)=> dispatch(addToCart(product, diff))
+    };
   }
-
-  componentDidUpdate(prevProps) {
-    if (!prevProps.auth.id && this.props.auth.id) {
-      this.props.fetchCart();
-    }
-  }
-
-  onChange(ev) {
-    const change = { [ev.target.name]: ev.target.value };
-    this.setState(change);
-    this.props.updateQuantity(change);
-  }
-
-  render() {
-    const { cart } = this.props;
-    const { onChange } = this;
-
-    return (
-      <main>
-        <h1>Shopping Cart</h1>
+  
+)(({ products, cart, addToCart })=> {
+  return (
+    <div className='cart-container'>
+      <h2>Shopping Cart</h2>
+      
+      { cart.lineItems.length === 0 ? (
+        <div className='cart-empty'>
+          <p>Your cart is currently empty.</p>
+          <div className='start-shopping'>
+            <Link to='/products'>
+            <svg xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor" 
+              className="bi bi-arrow-left" 
+              viewBox="0 0 16 16">
+            <path
+              fillRule="evenodd"
+              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+              <span>Start Shopping</span>
+            </Link>
+          </div>
+        </div>
+      ) : (
+      <div>
         <ul>
-          {cart.lineItems.map((lineItem) => {
-            return (
-              <li key={lineItem.id}>
-                {lineItem.product.name} {lineItem.quantity}
-                <input
-                  type="number"
-                  name={lineItem.product.name}
-                  value={lineItem.quantity}
-                  onChange={onChange}
-                />
-                <button onClick={() => this.props.deleteFromCart()}>X</button>
-              </li>
-            );
-          })}
-        </ul>
-        <Link className="links" to="/checkout">
-            Checkout
-        </Link>
-      </main>
-    );
-  }
-}
+        {
+          products.map( product => {
+            const lineItem = cart.lineItems.find(lineItem => lineItem.productId === product.id) || { quantity: 0 };
+            console.log(product.price)
+            console.log(lineItem.quantity)
+           
 
-const mapStateToProps = ({ cart, auth }) => {
-  return {
-    cart,
-    auth,
-  };
+              if (lineItem.quantity>0){
+
+                cartTotal += product.price * lineItem.quantity
+                cartTotal = Math.round((cartTotal + Number.EPSILON) * 100) / 100;
+
+                return (
+                  <li key={ product.id }>
+                  {product.name}
+                  <br></br>
+                  Quantity: {lineItem.quantity}
+                  <br></br>
+                  ${product.price}
+                  <br></br>
+                    <button onClick={ ()=> addToCart(product)}>Add Quantity</button>
+                    <button disabled={ lineItem.quantity === 0} onClick={ ()=> addToCart(product, -1)}>Delete Quantity</button>
+                  <hr></hr>
+                  </li>         
+                )
+          
+              }
+            }
+          )
+        }   
+      </ul>
+      <h4>Cart Total: ${cartTotal}</h4>
+      </div>)}
+      </div>
+  );
+}
+)
+      
+      
+
+const mapStateToProps = (state)=> {
+  return state;
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     exchangeToken: () => dispatch(exchangeToken()),
     fetchCart: () => dispatch(fetchCart()),
-    updateQuantity: (obj) => dispatch(updateQuantity(obj)),
-    deleteFromCart: (item) => dispatch(deleteFromCart(item)),
+    fetchProducts: ()=> dispatch(fetchProducts()),
+    dispatchAction: (action)=> dispatch(action)
   };
 };
 

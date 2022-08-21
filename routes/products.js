@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express.Router();
-const { isLoggedIn } = require('./middleware');
+const { isLoggedIn, isAdmin } = require('./middleware');
 const { Product } = require('../db');
 
 module.exports = app;
@@ -14,7 +14,7 @@ app.get('/', async(req, res, next)=> {
     }
   });
 
-app.post('/', isLoggedIn, async(req, res, next)=> {
+app.post('/', isAdmin, async(req, res, next)=> {
   try {
     res.status(201).send(await Product.create(req.body));
   }
@@ -24,7 +24,7 @@ app.post('/', isLoggedIn, async(req, res, next)=> {
 
 });
 
-app.put('/:id', isLoggedIn, async(req, res, next)=> {
+app.put('/:id', isAdmin, async(req, res, next)=> {
   try {
     const product = await Product.findByPk(req.params.id);
     res.send(await product.update(req.body));
@@ -34,11 +34,11 @@ app.put('/:id', isLoggedIn, async(req, res, next)=> {
   }
 });
 
-app.delete('/:id', isLoggedIn, async(req, res, next)=> {
+app.delete('/:id', isAdmin, async(req, res, next)=> {
     try {
       const product = await Product.findByPk(req.params.id);
       await product.destroy();
-      res.send.status(204);
+      res.sendStatus(204);
     }
     catch(ex){
       next(ex);

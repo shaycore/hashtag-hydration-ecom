@@ -5,6 +5,7 @@ import { Switch, Link, Route, HashRouter as Router } from 'react-router-dom';
 import SignIn from './SignIn';
 import Cart from './Pages/Cart';
 import Nav from './Nav';
+import Footer from './Footer';
 import Home from './Pages/Home';
 import Products from './Product/Products';
 import Product from './Product/Product';
@@ -18,6 +19,11 @@ import User from './Admin/User';
 import AddressBook from './Account/AddressBook';
 import AboutUs from './Pages/AboutUs';
 import Wishlist from './Wishlist';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+import StripeCheckOutForm from './Pages/StripeCheckOutForm'
+
 
 class App extends React.Component{
   componentDidMount(){
@@ -30,21 +36,28 @@ class App extends React.Component{
       
     }
   }
+
+  
   render(){
     const { auth, logout, cart } = this.props;
+    const options = {
+      // passing the client secret obtained from the server
+      clientSecret: '{{CLIENT_SECRET}}',
+    };
     return (
+      <div>
+        {/* <Elements stripe={stripePromise} options={options}>
+      <StripeCheckoutForm />
+    </Elements> */}
       <Router>
         <div>
           <Route component={ Nav }/>
           <main id='main-container'>
           <div className='jumbotron'>
-            <h1>Grace Shopper</h1>
+            <h1>HashTag Hydration</h1>
           </div>
             {
-              auth.id ? <button onClick={ logout }>Logout { auth.username }</button>: <SignIn />
-            }
-            {
-              auth.id ? <Link to={'/account'}>Account</Link>: null
+              auth.id ? <button onClick={ logout }>Logout { auth.username }</button>: null
             }
             {
               auth.id ? <Link to='/cart'>Cart ({cart.lineItems.length})</Link>: null
@@ -64,6 +77,7 @@ class App extends React.Component{
               <Route exact path='/account/addressBook' component={ AddressBook } />
               <Route exact path='/products' component={ Products } />
               <Route exact path='/products/:id' component={ Product } />
+              <Route exact path='/signin' component={ SignIn } />
               <Route exact path='/admin' component={ Admin } />
               <Route exact path='/admin/products' component={ AdminProducts } />
               <Route exact path='/admin/products/:id' component={ AdminProduct } />
@@ -75,11 +89,13 @@ class App extends React.Component{
               <Route path="" component={NotFound} />
             </Switch>
               
-           
+            <Route component={ Footer }/>
+
 
           </main>
         </div>
       </Router>
+      </div>
     );
 
   }

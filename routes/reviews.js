@@ -1,18 +1,18 @@
 const express = require('express');
 const app = express.Router();
-const { isLoggedIn } = require('./middleware');
+const { isLoggedIn, isAdmin } = require('./middleware');
 const { Review } = require('../db');
 
 module.exports = app;
 
 app.get('/', async(req, res, next)=> {
-    try {
-      res.send(await Review.findAll());
-    }
-    catch(ex){
-      next(ex);
-    }
-  });
+  try {
+    res.send(await Review.findAll());
+  }
+  catch(ex){
+    next(ex);
+  }
+});
 
 app.post('/', isLoggedIn, async(req, res, next)=> {
   try {
