@@ -7,6 +7,7 @@ const Order = require('./Order');
 const Address = require('./Address');
 const Review = require('./Review');
 const Wishlist = require('./Wishlist');
+const WishlistProduct = require('./WishlistProduct');
 const Coupon = require('./Coupon');
 const { USERS, PRODUCTS, LINEITEMS, REVIEWS } = require('./seeder');
 
@@ -21,7 +22,8 @@ Review.belongsTo(Product);
 Product.hasMany(Review);
 Coupon.belongsTo(Order);
 Wishlist.belongsTo(User);
-Wishlist.hasMany(Product);
+Wishlist.hasMany(WishlistProduct);
+WishlistProduct.belongsTo(Product);
 Order.belongsTo(Address);
 Address.belongsTo(User);
 
@@ -56,6 +58,8 @@ const syncAndSeed = async() => {
   await prof.addToCart({ product: items[2], quantity: 2});
   await prof.addToCart({ product: items[3], quantity: 3});
 
+  await prof.addToWishlist({ product: items[4] });
+  await prof.addToWishlist({ product: items[5] });
 };
 
 
