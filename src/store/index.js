@@ -4,6 +4,8 @@ import cart from './cart';
 import products from './products';
 import users from './users';
 import reviews from './reviews';
+import wishlists from './wishlists';
+import wishlistProducts from './wishlistProducts';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
@@ -13,7 +15,9 @@ const reducer = combineReducers({
   cart,
   products,
   users,
-  reviews
+  reviews,
+  wishlists,
+  wishlistProducts
 });
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
@@ -25,4 +29,6 @@ export * from './cart';
 export * from './products';
 export * from './users';
 export * from './reviews';
+export * from './wishlists';
+export * from './wishlistProducts';
 

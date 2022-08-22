@@ -1,0 +1,17 @@
+import axios from 'axios';
+
+const wishlistProducts = (state = [], action)=> {
+  if (action.type === 'SET_WISHLISTPRODUCTS') {
+    return action.wishlistProducts;
+  }
+  return state;
+};
+
+export const fetchWishlistProducts = ()=> {
+  return async(dispatch) => {
+    const wishlistProducts = (await axios.get('/api/wishlistProducts')).data;
+    dispatch({ type: 'SET_WISHLISTPRODUCTS', wishlistProducts });
+  };
+};  
+
+export default wishlistProducts;

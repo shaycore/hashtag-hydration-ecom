@@ -17,6 +17,7 @@ app.use('/api/products', require('../routes/products'));
 app.use('/api/reviews', require('../routes/reviews'));
 app.use('/api/addresses', require('../routes/addresses'));
 app.use('/api/wishlists', require('../routes/wishlists'));
+app.use('/api/wishlistProducts', require('../routes/wishlistProducts'));
 
 app.use((err, req, res, next)=> {
   console.log(err);

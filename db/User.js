@@ -167,6 +167,27 @@ User.isAdmin = async (token) => {
   }
 };
 
+// User.prototype.getWishlist = async function(){
+//   let wishlist = await conn.models.wishlist.findOne({
+//     where: {
+//       userId: this.id
+//     },
+//     include: [
+//       {
+//         model: conn.models.wishlistProduct,
+//         include: [ conn.models.product ]
+//       }
+//     ]
+//   });
+//   if(!wishlist){
+//     wishlist = await conn.models.wishlist.create({ userId: this.id });
+//     wishlist = await conn.models.order.findByPk(wishlist.id, {
+//       include: [ conn.models.wishlistProduct ]
+//     });
+//   }
+//   return wishlist;
+// }
+
 
 module.exports = User;
 

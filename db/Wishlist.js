@@ -1,10 +1,11 @@
 const conn = require('./conn');
 const { Sequelize } = conn;
-const { STRING } = Sequelize;
+const { INTEGER } = Sequelize;
 
 const Wishlist = conn.define('wishlist', {
-    name: {
-        type: STRING
+    userId: {
+        type: INTEGER,
+        allowNull: false
     }
 });
 

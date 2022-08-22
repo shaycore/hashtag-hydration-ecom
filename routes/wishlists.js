@@ -8,6 +8,7 @@ module.exports = app;
 app.get('/', async(req, res, next)=> {
     try {
       res.send(await Wishlist.findAll());
+      // res.send(await req.user.getWishlist())
     }
     catch(ex){
       next(ex);
