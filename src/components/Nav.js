@@ -27,8 +27,8 @@ const Nav = ({ auth }) => {
             <Link to='/admin'>
                 <li className='nav-link'>Temporary Admin Link</li>
             </Link>
-            <Link to='/about'> About Us</Link>
-            <Link to='/wishlist'> Wish List</Link>
+            <Link to='/about'> ABOUT US</Link>
+            <Link to='/wishlist'> WISHLIST</Link>
         
         </div>
     )
