@@ -20,6 +20,19 @@ export const addToCart = (product, diff)=> {
   };
 };
 
+export const clearCart = (state, action)=> {
+  state.cart.lineItems = []
+  return async(dispatch)=> {
+    const response = await axios.get('/api/orders/cart', {
+      headers: {
+        authorization: window.localStorage.getItem('token')
+      }
+    });
+    dispatch({ type: 'SET_CART', cart: response.data });
+
+  };
+};
+
 export const fetchCart = ()=> {
   return async(dispatch)=> {
     const response = await axios.get('/api/orders/cart', {
