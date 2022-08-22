@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addToCart, fetchCart } from '../../store/cart';
+import { addToCart, fetchCart, clearCart } from '../../store/cart';
 import { Link } from 'react-router-dom'
 
-let cartTotal = 0
+// let cartTotal = 0
 const Cart = connect(
   state => state,
   dispatch => {
     return {
-      addToCart: (product, diff = 1)=> dispatch(addToCart(product, diff))
+      addToCart: (product, diff = 1)=> dispatch(addToCart(product, diff)),
+      clearCart:() => dispatch(clearCart())
     };
   }
   
-)(({ products, cart, addToCart })=> {
+)(({ products, cart, addToCart, clearCart })=> {
   return (
     <div className='cart-container'>
       <h2>Shopping Cart</h2>
@@ -74,7 +75,7 @@ const Cart = connect(
       </ul>
       </div>)}
       <div className='cart-summary'>
-        <button className='clear-cart'>Clear Cart</button>
+        <button className='clear-cart' onClick={ () =>clearCart()}>Clear Cart</button>
         <div className='cart-checkout'>
           <div className='subtotal'>
             <span>Subtotal </span>
