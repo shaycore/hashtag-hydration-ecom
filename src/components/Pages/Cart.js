@@ -48,7 +48,7 @@ const Cart = connect(
               if (lineItem.quantity > 0){
 
 
-                cartTotal = Number.parseFloat(product.price * lineItem.quantity).toFixed(2)
+                cartTotal += product.price * lineItem.quantity
                 
                 console.log(cartTotal)
                 return (
