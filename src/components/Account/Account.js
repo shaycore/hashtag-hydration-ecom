@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateUser } from '../../store/auth';
+import { updateUser, logout } from '../../store/auth';
 import { Link, Route, HashRouter as Router } from 'react-router-dom';
 
 
@@ -55,6 +55,7 @@ class Account extends Component {
     render() {
         const { firstName, lastName, email, avatar } = this.state;
         const { save } = this;
+        const { logout } = this.props;
         return (
             <div>
                 <h3>Account Details</h3>
@@ -71,6 +72,7 @@ class Account extends Component {
                     <input value={ email || ''} onChange={ ev => this.setState({ email: ev.target.value })}></input>
                     <button>Save Changes</button>
                 </form>
+                <button onClick={ logout }>Logout</button>
             </div>
         )
     }
@@ -80,9 +82,10 @@ const mapStateToProps = (state) => {
     return state;
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, { history }) => {
     return {
-        update: (user) => dispatch(updateUser(user))
+        update: (user) => dispatch(updateUser(user)),
+        logout: ()=> dispatch(logout(history))
     }
 }
 

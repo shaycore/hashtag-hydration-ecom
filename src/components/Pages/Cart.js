@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addToCart, fetchCart } from '../../store/cart';
+import { addToCart, fetchCart, clearCart } from '../../store/cart';
 import { Link } from 'react-router-dom'
+import StripeContainer from '../StripeContainer';
 
-let cartTotal = 0
 const Cart = connect(
   state => state,
   dispatch => {
     return {
-      addToCart: (product, diff = 1)=> dispatch(addToCart(product, diff))
+      addToCart: (product, diff = 1)=> dispatch(addToCart(product, diff)),
+      clearCart:() => dispatch(clearCart()),
     };
   }
   
-)(({ products, cart, addToCart })=> {
+)
+(({ products, cart, addToCart, clearCart })=> {
+
+  let cartTotal = 0;
+
+  cart.lineItems.forEach(lineItem => {
+    let quantity = lineItem.quantity;
+    let price = lineItem.product.price;
+    if(quantity && price) {
+      let lineItemCost =  price*quantity;
+      cartTotal = lineItemCost + cartTotal;
+    }
+  });
+
   return (
     <div className='cart-container'>
       <h2>Shopping Cart</h2>
@@ -38,31 +52,31 @@ const Cart = connect(
         </div>
       ) : (
       <div>
-        <ul>
+        
+        <ul style={{ listStyleType: "none" }}>
         {
           products.map( product => {
             const lineItem = cart.lineItems.find(lineItem => lineItem.productId === product.id) || { quantity: 0 };
-            console.log(product.price)
-            console.log(lineItem.quantity)
-           
 
-              if (lineItem.quantity>0){
-
-                cartTotal += product.price * lineItem.quantity
-                cartTotal = Math.round((cartTotal + Number.EPSILON) * 100) / 100;
-
+              if (lineItem.quantity > 0){
                 return (
-                  <li key={ product.id }>
-                  {product.name}
-                  <br></br>
+                  <li className='cart-product' key={ product.id }>
+                  <img src={product.image} 
+                    height={200}
+                    width={200}
+                  />
+                  <h3>{product.name}</h3>
+                  {/* <p>{product.description}</p> */}
                   Quantity: {lineItem.quantity}
                   <br></br>
                   ${product.price}
-                  <br></br>
                     <button onClick={ ()=> addToCart(product)}>Add Quantity</button>
                     <button disabled={ lineItem.quantity === 0} onClick={ ()=> addToCart(product, -1)}>Delete Quantity</button>
+                  <div className='cart-product-total-price'>
+                    Product Total: ${Math.round((Number(product.price) * lineItem.quantity+ Number.EPSILON) * 100) / 100}
+                  </div>
                   <hr></hr>
-                  </li>         
+                  </li>
                 )
           
               }
@@ -70,11 +84,45 @@ const Cart = connect(
           )
         }   
       </ul>
-      <h4>Cart Total: ${cartTotal}</h4>
-      </div>)}
+      </div>
+      )}
+      <div className='cart-summary'>
+        <button className='clear-cart' onClick={ () =>clearCart()}>Clear Cart</button>
+        <div className='cart-checkout'>
+          <div className='subtotal'>
+            <span>Subtotal </span>
+            <span className='amount'>
+              ${Math.round(cartTotal * 100) / 100}
+            </span>
+          </div>
+          <p>Shipping: Your order qualifies for free shipping!</p>
+          <p>Taxes: $ {(Math.round((cartTotal * 100) * 0.04) / 100)} Applied at checkout</p>
+          <button className="checkout">
+              <Link to="/checkout">Checkout</Link>
+          </button>
+          <StripeContainer />
+          <div className='cart-empty'>
+          <div className='continue-shopping'>
+            <Link to='/products'>
+            <svg xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor" 
+              className="bi bi-arrow-left" 
+              viewBox="0 0 16 16">
+            <path
+              fillRule="evenodd"
+              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+              <span>Continue Shopping</span>
+            </Link>
+          </div>
+        </div>
+        </div>
+      </div>
       </div>
   );
-}
+  }
 )
       
       

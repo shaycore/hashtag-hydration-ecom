@@ -120,6 +120,43 @@ User.prototype.getPreviousOrders = async function () {
   return order;
 }
 
+User.prototype.getWishlist = async function(){
+  let wishlist = await conn.models.wishlist.findOne({
+    where: {
+      userId: this.id
+    },
+    include: [
+      {
+        model: conn.models.wishlistProduct,
+        include: [ conn.models.product ]
+      }
+    ]
+  });
+  if(!wishlist){
+    wishlist = await conn.models.wishlist.create({ userId: this.id });
+    wishlist = await conn.models.wishlist.findByPk(wishlist.id, {
+      include: [ conn.models.wishlistProduct ]
+    });
+  }
+  return wishlist;
+}
+
+User.prototype.addToWishlist = async function({ product }){
+  const wishlist = await this.getWishlist();
+  let wishlistProduct = await conn.models.wishlistProduct.findOne({
+    where: {
+      productId: product.id,
+      wishlistId: wishlist.id
+    }
+  });
+  if(!wishlistProduct){
+    await conn.models.wishlistProduct.create({ productId: product.id, wishlistId: wishlist.id });
+  } else {
+    await wishlistProduct.destroy();
+  }
+  return this.getWishlist();
+}
+
 User.authenticate = async function(credentials){
   const user = await this.findOne({
     where: {

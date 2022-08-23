@@ -2,12 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const Nav = ({ auth }) => {
+const Nav = ({ auth, cart }) => {
     return (
         <div className='navbar'>
             
             <Link to='/'>
                 <li className='nav-link'>HOME</li>
+            </Link>
+            <Link to='/about'> 
+                ABOUT US
             </Link>
             <Link to='/products'>
                 <li className='nav-link'>PRODUCTS</li>
@@ -15,21 +18,28 @@ const Nav = ({ auth }) => {
             {
                 auth.id ?
                 <Link to='/account'>
-                    <li className='nav-link'>ACCOUNT</li>
+                    <li className='nav-link'>MY ACCOUNT</li>
                 </Link> :
                 <Link to='/signin'>
                     <li className='nav-link'>SIGN IN</li>
                 </Link>
             }
-            <Link to='/cart'>
-                <li className='nav-link'>CART</li>
-            </Link>
-            <Link to='/admin'>
-                <li className='nav-link'>Temporary Admin Link</li>
-            </Link>
-            <Link to='/about'> About Us</Link>
-            <Link to='/wishlist'> Wish List</Link>
-        
+            {
+                auth.isAdmin ? 
+                <Link to='/admin'>
+                    <li className='nav-link'>ADMIN</li>
+                </Link> : 
+                <Link to='/wishlist'> 
+                    <li className='nav-link'>WISHLIST</li>
+                </Link>
+            }
+            {
+                auth.isAdmin ? 
+                null : 
+                <Link to='/cart'>
+                    <li className='nav-link'>CART ({ cart.lineItems.reduce((acc, lineitem) => acc + lineitem.quantity, 0 ) })</li>
+                </Link>
+            }
         </div>
     )
 };
