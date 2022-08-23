@@ -48,7 +48,6 @@ app.get('/', isAdmin, async(req, res, next)=> {
 app.post('/order-payment', async (req, res) => {
   const { Product } = req.body;
   console.log(Product);
-  // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
     amount: calculateOrderAmount(Product.price),
     currency: 'usd',
@@ -62,4 +61,12 @@ app.post('/order-payment', async (req, res) => {
   res.send({
     clientSecret: paymentIntent.client_secret,
   });
+});
+
+app.post('/', isLoggedIn, async (req, res, next) => {
+  try {
+    res.send(await req.user.createOrderFromCart());
+  } catch (ex) {
+    next(ex);
+  }
 });

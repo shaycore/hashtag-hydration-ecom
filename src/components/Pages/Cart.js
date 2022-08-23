@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addToCart, fetchCart, clearCart } from '../../store/cart';
 import { Link } from 'react-router-dom'
+import StripeContainer from '../StripeContainer';
 
 const Cart = connect(
   state => state,
@@ -94,10 +95,12 @@ const Cart = connect(
               ${Math.round(cartTotal * 100) / 100}
             </span>
           </div>
-          <p>Taxes and Shipping calculated at checkout</p>
+          <p>Shipping: Your order qualifies for free shipping!</p>
+          <p>Taxes: $ {(Math.round((cartTotal * 100) * 0.04) / 100)} Applied at checkout</p>
           <button className="checkout">
               <Link to="/checkout">Checkout</Link>
           </button>
+          <StripeContainer />
           <div className='cart-empty'>
           <div className='continue-shopping'>
             <Link to='/products'>
