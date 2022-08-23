@@ -29,7 +29,7 @@ const Checkout = ({ products, cart})=> {
             <thead>
               <tr>
                 <th width='75%'>Products In Cart</th>
-                <th>Price per Item </th>
+                <th>Price</th>
                 <th>Quantity</th>
                 <th>Total</th>
               </tr>
@@ -42,7 +42,7 @@ const Checkout = ({ products, cart})=> {
                 return (
                   <tr className='cart-product' key={ product.id }>
                     <td>{product.name}</td>
-                    <td width='20px'>$ {product.price}</td>
+                    <td width='20px'>${product.price}</td>
                     <td>{lineItem.quantity}</td>
                     <td>${Math.round((Number(product.price) * lineItem.quantity+ Number.EPSILON) * 100) / 100}</td>
                   </tr>
