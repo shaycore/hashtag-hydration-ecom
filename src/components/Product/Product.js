@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToCart } from '../../store';
+import { addToCart, addToWishlist } from '../../store';
 import Reviews from './Reviews';
 
 class _Product extends Component {
@@ -12,6 +12,7 @@ class _Product extends Component {
             quantity: 1
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.addToWishlist = this.addToWishlist.bind(this);
     }
     componentDidMount(){
         this.setState({
@@ -38,9 +39,13 @@ class _Product extends Component {
         ev.preventDefault();
         this.props.submit({...this.state});
     }
+    addToWishlist() {
+        const { product } = this.state;
+        this.props.addToWishlist(product);
+    }
     render(){
         const { product } = this.state;
-        const { handleSubmit, changeQty } = this;
+        const { handleSubmit, changeQty, addToWishlist } = this;
         return (
             <div id='product-item'>
                 <Link to={'/products/'}>Return to All Products</Link>
@@ -62,7 +67,7 @@ class _Product extends Component {
                 Quantity: {this.state.quantity} 
                 <br />
                 <button type='submit' onClick={ handleSubmit }>Add to Cart</button>
-                <button>Add to Wishlist</button>
+                <button onClick={ addToWishlist }>Add to Wishlist</button>
                 
                 <Reviews product={product}/>
             </div>
@@ -83,6 +88,9 @@ const mapDispatch = (dispatch, { history, match }) => {
         submit: (obj) => {
             console.log("I'm sending: " + obj.product.name, obj.quantity);
             dispatch(addToCart(obj.product,obj.quantity));
+        },
+        addToWishlist: (product) => {
+            dispatch(addToWishlist(product))
         }
     };
 };

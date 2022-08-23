@@ -151,6 +151,8 @@ User.prototype.addToWishlist = async function({ product }){
   });
   if(!wishlistProduct){
     await conn.models.wishlistProduct.create({ productId: product.id, wishlistId: wishlist.id });
+  } else {
+    await wishlistProduct.destroy();
   }
   return this.getWishlist();
 }
