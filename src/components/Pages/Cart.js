@@ -91,11 +91,13 @@ const Cart = connect(
           <div className='subtotal'>
             <span>Subtotal </span>
             <span className='amount'>
-              ${cartTotal}
+              ${Math.round(cartTotal * 100) / 100}
             </span>
           </div>
           <p>Taxes and Shipping calculated at checkout</p>
-          <button>Checkout</button>
+          <button className="checkout">
+              <Link to="/checkout">Checkout</Link>
+          </button>
           <div className='cart-empty'>
           <div className='continue-shopping'>
             <Link to='/products'>
