@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import axios from 'axios'
 import { connect } from 'react-redux'
@@ -8,7 +8,7 @@ const CARD_OPTIONS = {
 	style: {
 		base: {
 			iconColor: "#c4f0ff",
-			color: "#fff",
+			color: "#c4f0ff",
 			fontWeight: 500,
 			fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
 			fontSize: "16px",
@@ -90,7 +90,7 @@ const PaymentForm = ({ cart }) => {
   
   const mapStateToProps = ({ cart }) => {
     return {
-      cart
+      cart,
     };
   };
   

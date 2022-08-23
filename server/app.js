@@ -3,6 +3,7 @@ const app = express();
 const { User } = require('../db');
 const path = require('path');
 
+
 app.use(express.json());
 app.use('/dist', express.static('dist'));
 app.use('/assets', express.static('assets'));
