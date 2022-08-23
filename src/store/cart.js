@@ -40,7 +40,6 @@ export const fetchCart = ()=> {
       }
     });
     dispatch({ type: 'SET_CART', cart: response.data });
-
   };
 };
 
