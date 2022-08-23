@@ -43,6 +43,9 @@ useEffect(() => {
 
 return (
         <div>
+            <div className='jumbotron'>
+              <h1>HashTag Hydration</h1>
+            </div>
             <div className='carousel-container'>
                 { data.map((item, index) => {
                 return <h1 className='carousel-item'

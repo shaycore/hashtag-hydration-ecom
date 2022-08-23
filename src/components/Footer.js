@@ -28,15 +28,15 @@ const Footer = ({ auth }) => {
                             <h5 className="font-weight-bold text-dark mb-4">Quick Links</h5>
                             <div className="d-flex flex-column justify-content-start">
                                 <a className="text-dark mb-2" href="/">Home Page</a>
-                                <a className="text-dark mb-2" href="/">Products</a>
-                                <a className="text-dark mb-2" href="/">Account</a>
-                                <a className="text-dark mb-2" href="/">Wishlist</a>
+                                <a className="text-dark mb-2" href="/products">Products</a>
+                                <a className="text-dark mb-2" href="/account">Account</a>
+                                <a className="text-dark mb-2" href="/wishlist">Wishlist</a>
                             </div>
                         </div>
                         <div className="col-md-4 mb-5">
                             <h5 className="font-weight-bold text-dark mb-4">Brand</h5>
                             <div className="d-flex flex-column justify-content-start">
-                                <a className="text-dark mb-2" href="/">About Us</a>
+                                <a className="text-dark mb-2" href="/about">About Us</a>
                                 <a className="text-dark mb-2" href="/">Meet the Team!</a>
                                 <a className="text-dark mb-2" href="/">FAQs</a>
                                 <a className="text-dark mb-2" href="/">Shipping Policy</a>
