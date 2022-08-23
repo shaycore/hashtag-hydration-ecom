@@ -56,7 +56,6 @@ const Cart = connect(
         {
           products.map( product => {
             const lineItem = cart.lineItems.find(lineItem => lineItem.productId === product.id) || { quantity: 0 };
-              cartTotal += Math.round((Number(product.price) * lineItem.quantity+ Number.EPSILON) * 100) / 100
 
               if (lineItem.quantity > 0){
                 return (
