@@ -14,6 +14,7 @@ import Account from './Account/Account';
 import Admin from './Admin/Admin';
 import AdminProducts from './Admin/AdminProducts';
 import AdminProduct from './Admin/AdminProduct';
+import AdminOrders from './Admin/AdminOrders';
 import Users from './Admin/Users';
 import User from './Admin/User';
 import AddressBook from './Account/AddressBook';
@@ -81,6 +82,7 @@ class App extends React.Component{
               <Route exact path='/admin' component={ Admin } />
               <Route exact path='/admin/products' component={ AdminProducts } />
               <Route exact path='/admin/products/:id' component={ AdminProduct } />
+              <Route exact path='/admin/orders' component={ AdminOrders } />
               <Route exact path='/admin/users' component={ Users } />
               <Route exact path='/admin/users/:id' component={ User } />
               <Route exact path='/about' component={ AboutUs } />

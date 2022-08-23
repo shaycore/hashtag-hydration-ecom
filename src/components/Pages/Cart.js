@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { addToCart, fetchCart, clearCart } from '../../store/cart';
 import { Link } from 'react-router-dom'
 
-// let cartTotal = 0
+let cartTotal = 0
+
 const Cart = connect(
   state => state,
   dispatch => {
     return {
       addToCart: (product, diff = 1)=> dispatch(addToCart(product, diff)),
-      clearCart:() => dispatch(clearCart())
+      clearCart:() => dispatch(clearCart()),
     };
   }
   
@@ -39,15 +40,17 @@ const Cart = connect(
         </div>
       ) : (
       <div>
+        
         <ul style={{ listStyleType: "none" }}>
         {
           products.map( product => {
             const lineItem = cart.lineItems.find(lineItem => lineItem.productId === product.id) || { quantity: 0 };
-              if (lineItem.quantity>0){
+              if (lineItem.quantity > 0){
 
-                // cartTotal += product.price * lineItem.quantity
-                // cartTotal = Math.round((cartTotal + Number.EPSILON) * 100) / 100;
 
+                cartTotal += product.price * lineItem.quantity
+                
+                console.log(cartTotal)
                 return (
                   <li className='cart-product' key={ product.id }>
                   <img src={product.image} 
@@ -71,6 +74,7 @@ const Cart = connect(
               }
             }
           )
+          
         }   
       </ul>
       </div>)}
@@ -79,7 +83,7 @@ const Cart = connect(
         <div className='cart-checkout'>
           <div className='subtotal'>
             <span>Subtotal </span>
-            <span className='amount'>${0}</span>
+            <span className='amount'>${cartTotal}</span>
           </div>
           <p>Taxes and Shipping calculated at checkout</p>
           <button>Checkout</button>
