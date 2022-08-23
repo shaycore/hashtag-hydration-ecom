@@ -43,9 +43,6 @@ class App extends React.Component{
         <div>
           <Route component={ Nav }/>
           <main id='main-container'>
-          <div className='jumbotron'>
-            <h1>HashTag Hydration</h1>
-          </div>
             <Switch>
               <Route exact path='/' component={ Home } />
               <Route exact path='/account' component={ Account } />
