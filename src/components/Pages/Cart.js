@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { addToCart, fetchCart, clearCart } from '../../store/cart';
 import { Link } from 'react-router-dom'
 
-let cartTotal = 0
-
 const Cart = connect(
   state => state,
   dispatch => {
@@ -14,7 +12,20 @@ const Cart = connect(
     };
   }
   
-)(({ products, cart, addToCart, clearCart })=> {
+)
+(({ products, cart, addToCart, clearCart })=> {
+
+  let cartTotal = 0;
+
+  cart.lineItems.forEach(lineItem => {
+    let quantity = lineItem.quantity;
+    let price = lineItem.product.price;
+    if(quantity && price) {
+      let lineItemCost =  price*quantity;
+      cartTotal = lineItemCost + cartTotal;
+    }
+  });
+
   return (
     <div className='cart-container'>
       <h2>Shopping Cart</h2>
@@ -45,12 +56,8 @@ const Cart = connect(
         {
           products.map( product => {
             const lineItem = cart.lineItems.find(lineItem => lineItem.productId === product.id) || { quantity: 0 };
+
               if (lineItem.quantity > 0){
-
-
-                cartTotal += product.price * lineItem.quantity
-                
-                console.log(cartTotal)
                 return (
                   <li className='cart-product' key={ product.id }>
                   <img src={product.image} 
@@ -58,7 +65,7 @@ const Cart = connect(
                     width={200}
                   />
                   <h3>{product.name}</h3>
-                  <p>{product.description}</p>
+                  {/* <p>{product.description}</p> */}
                   Quantity: {lineItem.quantity}
                   <br></br>
                   ${product.price}
@@ -74,16 +81,18 @@ const Cart = connect(
               }
             }
           )
-          
         }   
       </ul>
-      </div>)}
+      </div>
+      )}
       <div className='cart-summary'>
         <button className='clear-cart' onClick={ () =>clearCart()}>Clear Cart</button>
         <div className='cart-checkout'>
           <div className='subtotal'>
             <span>Subtotal </span>
-            <span className='amount'>${cartTotal}</span>
+            <span className='amount'>
+              ${cartTotal}
+            </span>
           </div>
           <p>Taxes and Shipping calculated at checkout</p>
           <button>Checkout</button>
@@ -108,7 +117,7 @@ const Cart = connect(
       </div>
       </div>
   );
-}
+  }
 )
       
       
