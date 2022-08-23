@@ -23,7 +23,7 @@ class AdminOrders extends React.Component{
                         const user = users.find(user => user.id === order.userId) || 'Unavailable';
                         return (
                             <li key={ order.id }>
-                                Order #{ order.id } <br />
+                                <Link to={`/admin/orders/${order.id}`}>Order #{ order.id }</Link> <br />
                                 Placed by: <Link to={`/admin/users/${user.id}`}>{ user.fullName }</Link>
                             </li>
                         )

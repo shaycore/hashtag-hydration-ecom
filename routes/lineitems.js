@@ -44,3 +44,14 @@ app.delete('/:id', isLoggedIn, async(req, res, next)=> {
       next(ex);
     }
   });
+
+  app.get('/order/:id', async(req, res, next)=> {
+    try {
+      res.send(await LineItem.findAll({
+        where: { orderId: req.params.id }
+      }));
+    }
+    catch(ex){
+      next(ex);
+    }
+  });
