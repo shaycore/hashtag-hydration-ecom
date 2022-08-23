@@ -14,7 +14,7 @@ app.get('/', isLoggedIn, async(req, res, next)=> {
     }
   });
 
-app.post('/', isLoggedIn, async(req, res, next)=> {
+app.put('/', isLoggedIn, async(req, res, next)=> {
     try {
       res.send(await req.user.addToWishlist(req.body));
     }
@@ -23,7 +23,6 @@ app.post('/', isLoggedIn, async(req, res, next)=> {
     }
 });
 
-// });
 
 // app.put('/:id', isLoggedIn, async(req, res, next)=> {
 //   try {
