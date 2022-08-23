@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { fetchCart, exchangeToken, logout, fetchProducts, fetchWishlist } from '../store';
+import { fetchCart, exchangeToken, fetchProducts, fetchWishlist } from '../store';
 import { Switch, Link, Route, HashRouter as Router } from 'react-router-dom';
 import SignIn from './SignIn';
 import Cart from './Pages/Cart';
@@ -40,7 +40,6 @@ class App extends React.Component{
 
   
   render(){
-    const { auth, logout, cart } = this.props;
     const options = {
       // passing the client secret obtained from the server
       clientSecret: '{{CLIENT_SECRET}}',
@@ -57,12 +56,6 @@ class App extends React.Component{
           <div className='jumbotron'>
             <h1>HashTag Hydration</h1>
           </div>
-            {
-              auth.id ? <button onClick={ logout }>Logout { auth.username }</button>: null
-            }
-            {
-              auth.id ? <Link to='/cart'>Cart ({cart.lineItems.length})</Link>: null
-            }
             {/* {
               auth.id ? (
                 <Fragment>
@@ -105,7 +98,6 @@ class App extends React.Component{
 const mapDispatch = (dispatch)=> {
   return {
     exchangeToken: ()=> dispatch(exchangeToken()),
-    logout: ()=> dispatch(logout()),
     fetchCart: ()=> dispatch(fetchCart()),
     fetchProducts: ()=>dispatch(fetchProducts()),
     fetchWishlist: () => dispatch(fetchWishlist())
