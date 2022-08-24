@@ -27,18 +27,6 @@ WishlistProduct.belongsTo(Product);
 Order.belongsTo(Address);
 Address.belongsTo(User);
 
-const readFile = (path) => {
-  return new Promise((resolve, reject) => {
-    require('fs').readFile(path, 'base64', (err, response) => {
-      if(err){
-        reject(err);
-      } else {
-        resolve(response);
-      }
-    })
-  });
-}
-
 const syncAndSeed = async() => {
   await conn.sync({ force: true });
   const people = await Promise.all(
@@ -55,7 +43,7 @@ const syncAndSeed = async() => {
     email: 'professor@fullstackacademy.com',
     isGuest: false,
     isAdmin: false,
-    avatar: await readFile('prof.png')
+    avatar: 'https://ca.slack-edge.com/T024FPYBQ-U07DRD24A-f46366808257-512'
   });
   const admin = await User.create({ 
     username: 'admin', 

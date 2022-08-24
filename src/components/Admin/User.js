@@ -38,8 +38,8 @@ class _User extends Component {
                 Last: { user.lastName } <br />
                 Email: { user.email } <br />
                 Username: { user.username } <br />
-                Created At: { user.createdAt }
-                <button onClick={ destroy }>Delete</button>
+                Created At: { user.createdAt } <br />
+                <button onClick={ destroy } className="btn btn-primary px-3">Delete</button>
             </div>
             
         );

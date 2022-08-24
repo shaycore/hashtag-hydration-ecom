@@ -55,7 +55,7 @@ class ProductForm extends Component {
                 <input placeholder='Size' value={ size } onChange={ ev => this.setState({ size: ev.target.value })}></input><br />
                 <input placeholder='Color' value={ color } onChange={ ev => this.setState({ color: ev.target.value })}></input><br />
                 <input placeholder='Price' value={ price } onChange={ ev => this.setState({ price: ev.target.value })}></input><br />
-                <button disabled={ !name || !type || !description || !size || !color || !price }>Create</button>
+                <button disabled={ !name || !type || !description || !size || !color || !price } className="btn btn-primary px-3">Create</button>
             </form>
         )
     }

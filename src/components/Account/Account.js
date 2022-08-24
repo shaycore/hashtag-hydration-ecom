@@ -20,7 +20,7 @@ class Account extends Component {
             firstName: this.props.auth.firstName,
             lastName: this.props.auth.lastName,
             email: this.props.auth.email,
-            avatar: `data:image/png;base64,${this.props.auth.avatar}`
+            avatar: this.props.auth.avatar
         })
         this.el.addEventListener('change', ev => {
             const file = ev.target.files[0];
@@ -37,7 +37,7 @@ class Account extends Component {
                 firstName: this.props.auth.firstName,
                 lastName: this.props.auth.lastName,
                 email: this.props.auth.email,
-                avatar: `data:image/png;base64,${this.props.auth.avatar}`
+                avatar: this.props.auth.avatar
             })
         }
     }
@@ -69,10 +69,10 @@ class Account extends Component {
                     <p>Last Name</p>
                     <input value={ lastName || ''} onChange={ ev => this.setState({ lastName: ev.target.value })}></input>
                     <p>Email Address</p>
-                    <input value={ email || ''} onChange={ ev => this.setState({ email: ev.target.value })}></input>
-                    <button>Save Changes</button>
+                    <input value={ email || ''} onChange={ ev => this.setState({ email: ev.target.value })}></input><br />
+                    <button className="btn btn-primary px-3">Save Changes</button>
                 </form>
-                <button onClick={ logout }>Logout</button>
+                <button className="btn btn-primary px-3" onClick={ logout }>Logout</button>
             </div>
         )
     }
