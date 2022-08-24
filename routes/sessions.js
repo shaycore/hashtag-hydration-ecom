@@ -1,3 +1,4 @@
+const { default: axios } = require('axios');
 const express = require('express');
 const app = express.Router();
 const { User } = require('../db');
@@ -18,6 +19,63 @@ app.post('/', async(req, res, next)=> {
   }
 });
 
-app.get('/', isLoggedIn, async(req, res, next)=> {
+app.get('/', isLoggedIn, async(req, res, next) => {
   res.send(req.user);
+});
+
+app.get('/github', (req, res, next) => {
+  res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}`);
+});
+
+app.get('/github/callback', async(req, res, next) => {
+  try {
+    let response = await axios.post('https://github.com/login/oauth/access_token', {
+      client_id: process.env.CLIENT_ID,
+      client_secret: process.env.CLIENT_SECRET,
+      code: req.query.code
+    }, {
+      headers: {
+        accept: 'application/json'
+      }
+    });
+    const { error, access_token } = response.data;
+    if(error){
+      const ex = new Error(error);
+      ex.status = 401;
+      next(ex);
+    }
+    else {
+      response = await axios.get('https://api.github.com/user', {
+        headers: {
+          Authorization: `token ${ access_token }`
+        }
+      });
+      const { login, id } = response.data;
+      const where = {
+        username: login,
+        githubId: id
+      };
+      let user = await User.findOne({ where });
+      if(!user){
+        user = await User.create({ ...where, password: 'password' });
+      }
+      const token = require('jsonwebtoken').sign({ id: user.id }, process.env.JWT);
+      res.send(`
+        <html>
+          <head>
+            <script>
+              window.localStorage.setItem('token', '${ token }');
+              window.location = '/';
+            </script>
+          </head>
+          <body>
+          ...Signing In
+          </body>
+        </html>
+      `);
+    }
+  }
+  catch(ex){
+    next(ex);
+  }
 });

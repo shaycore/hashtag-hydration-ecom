@@ -23,13 +23,16 @@ class SignIn extends Component{
     const { onChange, onSubmit } = this;
     const { username, password } = this.state;
     return (
-      <form onSubmit={ onSubmit }>
-        <p>Username</p>
-        <input name='username' onChange={ onChange } value={ username }/>
-        <p>Password</p>
-        <input type='password' name='password' value={ password } onChange={ onChange }/>
-        <button>Login</button>
-      </form>
+      <div>
+        <form onSubmit={ onSubmit }>
+          <p>Username</p>
+          <input name='username' onChange={ onChange } value={ username }/><br />
+          <p>Password</p>
+          <input type='password' name='password' value={ password } onChange={ onChange }/><br />
+          <button>Login</button>
+        </form>
+        <a href='/api/sessions/github'><button>Login with Github</button></a>
+      </div>
     );
   }
 }
