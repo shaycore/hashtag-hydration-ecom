@@ -47,30 +47,88 @@ class _Product extends Component {
         const { product } = this.state;
         const { handleSubmit, changeQty, addToWishlist } = this;
         return (
-            <div id='product-item'>
-                <Link to={'/products/'}>Return to All Products</Link>
-                <br />
-                <img src={ product.image } alt='Product Image' />
-                <ul>
-                    <li>{ product.name }</li>
-                    <li>Type: { product.type }</li>
-                    <li>Description: { product.description }</li>
-                    <li>Price: ${ product.price }</li>
-                    <li>Size: { product.size }</li>
-                    <li>Color: { product.color }</li>
-                    <li>Rating: { product.rating }</li>
-
-                </ul>
-                <button onClick={()=>{ changeQty('decrement') }}>-</button>
-                <button onClick={()=>{ changeQty('increment') }}>+</button>
-
-                Quantity: {this.state.quantity} 
-                <br />
-                <button type='submit' onClick={ handleSubmit }>Add to Cart</button>
-                <button onClick={ addToWishlist }>Add to Wishlist</button>
-                
-                <Reviews product={product}/>
+            <div>
+                <div className="container-fluid bg-secondary mb-5">
+                    <Link to={'/products/'}>Return to All Products</Link>
+                </div>
+                <div className="container-fluid py-5" id='product-item'>
+                    <div className="row px-xl-5">
+                        <div className="col-lg-5 pb-5">
+                            <img className="w-100 h-100" src={ product.image } alt='Product Image' />
+                        </div>
+                        <div className="col-lg-7 pb-5">
+                            <h3 className="font-weight-semi-bold">{ product.name }</h3>
+                            <h3 className="font-weight-semi-bold mb-4">${ product.price }</h3>
+                            <p className="mb-4">
+                                { product.description }
+                            </p>
+                            <div className="d-flex mb-3 text-dark font-weight-medium">
+                                Size: { product.size }
+                            </div>
+                            <div className="d-flex mb-4 text-dark font-weight-medium">
+                                Color: { product.color }
+                            </div>
+                            <div className="d-flex align-items-center mb-4 pt-2">
+                                <div className="input-group quantity mr-3" style={{width: '130px'}}>
+                                    <div className="input-group-btn">
+                                        <button className="btn btn-primary btn-minus" onClick={()=>{ changeQty('decrement') }}>-</button>
+                                    </div>
+                                    <input className="form-control bg-secondary text-center" readOnly value={this.state.quantity} />
+                                    <div className="input-group-btn">
+                                        <button className="btn btn-primary btn-plus" onClick={()=>{ changeQty('increment') }}>+</button>
+                                    </div>
+                                </div>
+                                <button className="btn btn-primary px-3" type='submit' onClick={ handleSubmit }>
+                                    Add to Cart
+                                </button>
+                            </div>
+                            <div className="d-flex pt-2">
+                                <button className="btn btn-primary px-3" style={{color: 'cornSilk'}} onClick={ addToWishlist }>Add to Wishlist</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="container-fluid pt-5">
+                        <div className="row px-xl-5 pb-3">
+                            <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                                <div className="d-flex align-items-center border mb-4" style={{padding: '30px'}}>
+                                    <h1 className="bi-asterisk text-primary m-0 mr-3"></h1>
+                                    <h5 className="font-weight-semi-bold m-0">
+                                        BPA Free
+                                    </h5>
+                                </div>
+                            </div>
+                            <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                                <div className="d-flex align-items-center border mb-4" style={{padding: '30px'}}>
+                                    <h1 className="bi-stars text-primary m-0 mr-3"></h1>
+                                    <h5 className="font-weight-semi-bold m-0">
+                                        Stain Resistant
+                                    </h5>
+                                </div>
+                            </div>
+                            <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                                <div className="d-flex align-items-center border mb-4" style={{padding: '30px'}}>
+                                    <h1 className="bi-droplet text-primary m-0 mr-3"></h1>
+                                    <h5 className="font-weight-semi-bold m-0">
+                                        Waterproof
+                                    </h5>
+                                </div>
+                            </div>
+                            <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                                <div className="d-flex align-items-center border mb-4" style={{padding: '30px'}}>
+                                    <h1 className="bi-award text-primary m-0 mr-3"></h1>
+                                    <h5 className="font-weight-semi-bold m-0">
+                                        5 Year Warranty
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row px-xl-5">
+                        <Reviews product={product}/>
+                    </div>
+                </div>
             </div>
+
         );
     }
 }
