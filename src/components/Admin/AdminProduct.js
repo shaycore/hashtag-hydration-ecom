@@ -95,9 +95,9 @@ class _AdminProduct extends Component {
                     <input placeholder='Color' value={ color || '' } onChange={ ev => this.setState({ color: ev.target.value })}></input><br />
                     <p>Price</p>
                     <input placeholder='Price' value={ price || '' } onChange={ ev => this.setState({ price: ev.target.value })}></input><br />
-                    <button>Save Changes</button>
+                    <button className="btn btn-primary px-3">Save Changes</button>
                 </form>
-                <button onClick={ destroy }>Delete</button>
+                <button onClick={ destroy } className="btn btn-primary px-3">Delete</button>
             </div>
         );
     }

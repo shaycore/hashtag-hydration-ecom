@@ -51,7 +51,7 @@ class WishList extends React.Component {
                                             width={200}
                                         />
                                         <h3>{product.name}</h3>
-                                        <p>{product.description}</p>
+                                        {/* <p>{product.description}</p> */}
                                         <br></br>
                                         ${product.price}
                                         <button onClick={ () => onClick(product) }>Move To Cart</button>

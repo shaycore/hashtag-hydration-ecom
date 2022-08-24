@@ -7,7 +7,9 @@ import ProductForm from './ProductForm';
 const AdminProducts = ({ products }) => {
     return (
         <main>
-            <h1>Admin View: List of Products ({products.length})</h1>
+            <Link to={'/admin/'}>Return to Admin Main</Link>
+            <br />
+            <h2>List of Products ({products.length})</h2>
             <ul id='products'>
                 {
                     products.map( product => {
@@ -21,7 +23,7 @@ const AdminProducts = ({ products }) => {
                     })
                 }
             </ul>
-            <h2>Create New Product</h2>
+            <h4>Create New Product</h4>
             <ProductForm />
         </main>
     );

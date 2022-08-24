@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 const Admin = ({}) => {
     return (
         <main>
-            <h1>This is the Admin</h1>
-            <Link to='/admin/products'>View Products</Link>
-            <br />
-            <Link to='/admin/orders'>View Orders</Link>
-            <br />
-            <Link to='/admin/users'>View Users</Link>
-
+            <h2>Admin Main</h2>
+            <ul>
+                <Link to='/admin/products'>View Products</Link>
+                <br />
+                <Link to='/admin/orders'>View Orders</Link>
+                <br />
+                <Link to='/admin/users'>View Users</Link>
+            </ul>
         </main>
     );
 }

@@ -21,7 +21,7 @@ const Nav = ({ auth, cart }) => {
                     <li className='nav-link'>MY ACCOUNT</li>
                 </Link> :
                 <Link to='/signin'>
-                    <li className='nav-link'>SIGN IN</li>
+                    <li className='nav-link'>LOGIN</li>
                 </Link>
             }
             {

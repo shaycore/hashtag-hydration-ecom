@@ -15,6 +15,8 @@ class Users extends React.Component{
         const { users } = this.props;
         return (
         <div>
+            <Link to={'/admin/'}>Return to Admin Main</Link>
+            <br />
             <h1>List of Users ({users.length})</h1>
             <ul id='users'>
                 {
