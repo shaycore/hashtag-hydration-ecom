@@ -18,8 +18,15 @@ const users = (state = [], action)=> {
 
 export const fetchUsers = ()=> {
   return async(dispatch) => {
-    const users = (await axios.get('/api/users')).data;
-    dispatch({ type: 'SET_USERS', users });
+    const token = window.localStorage.getItem('token');
+    if(token) {
+      let users = (await axios.get('/api/users', {
+          headers: {
+              authorization: token
+          }
+      })).data;
+      dispatch({ type: 'SET_USERS', users });    
+    };
   };
 };  
 
