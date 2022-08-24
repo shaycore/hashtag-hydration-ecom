@@ -42,14 +42,16 @@ const syncAndSeed = async() => {
     lastName: 'prof',
     email: 'professor@fullstackacademy.com',
     isGuest: false,
-    isAdmin: false
+    isAdmin: false,
+    avatar: 'https://ca.slack-edge.com/T024FPYBQ-U07DRD24A-f46366808257-512'
   });
   const admin = await User.create({ 
     username: 'admin', 
     password: 'password',
     email: 'admin@fullstackacademy.com',
     isGuest: false,
-    isAdmin: true
+    isAdmin: true,
+    avatar: 'http://cdn.onlinewebfonts.com/svg/img_325788.png'
   });
   await Promise.all(
     REVIEWS.map((review)=> Review.create(review))
