@@ -57,6 +57,7 @@ app.get('/', isAdmin, async(req, res, next)=> {
   }
 });
 
+//need to swap to Jonathan's route for stripe
 app.post('/order-payment', cors(), async (req, res) => {
   let { amount, id } = req.body
 	try {
