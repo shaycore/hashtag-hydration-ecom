@@ -27,6 +27,18 @@ WishlistProduct.belongsTo(Product);
 Order.belongsTo(Address);
 Address.belongsTo(User);
 
+const readFile = (path) => {
+  return new Promise((resolve, reject) => {
+    require('fs').readFile(path, 'base64', (err, response) => {
+      if(err){
+        reject(err);
+      } else {
+        resolve(response);
+      }
+    })
+  });
+}
+
 const syncAndSeed = async() => {
   await conn.sync({ force: true });
   const people = await Promise.all(
@@ -42,14 +54,16 @@ const syncAndSeed = async() => {
     lastName: 'prof',
     email: 'professor@fullstackacademy.com',
     isGuest: false,
-    isAdmin: false
+    isAdmin: false,
+    avatar: await readFile('prof.png')
   });
   const admin = await User.create({ 
     username: 'admin', 
     password: 'password',
     email: 'admin@fullstackacademy.com',
     isGuest: false,
-    isAdmin: true
+    isAdmin: true,
+    avatar: 'http://cdn.onlinewebfonts.com/svg/img_325788.png'
   });
   await Promise.all(
     REVIEWS.map((review)=> Review.create(review))

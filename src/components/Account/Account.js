@@ -20,7 +20,7 @@ class Account extends Component {
             firstName: this.props.auth.firstName,
             lastName: this.props.auth.lastName,
             email: this.props.auth.email,
-            avatar: this.props.auth.avatar
+            avatar: `data:image/png;base64,${this.props.auth.avatar}`
         })
         this.el.addEventListener('change', ev => {
             const file = ev.target.files[0];
@@ -37,7 +37,7 @@ class Account extends Component {
                 firstName: this.props.auth.firstName,
                 lastName: this.props.auth.lastName,
                 email: this.props.auth.email,
-                avatar: this.props.auth.avatar
+                avatar: `data:image/png;base64,${this.props.auth.avatar}`
             })
         }
     }
@@ -61,7 +61,7 @@ class Account extends Component {
                 <h3>Account Details</h3>
                 <form onSubmit={ save }>
                     <p>Profile Picture</p>
-                    <img src={ avatar } style={{ height: 100, width: 100 }} />
+                    <img src={ avatar } style={{ height: 150, width: 150 }} /><br />
                     <input type='file' ref={ el => this.el = el }/>
                     <Link to='/account/addressbook'>Address book</Link>
                     <p>First Name</p>
