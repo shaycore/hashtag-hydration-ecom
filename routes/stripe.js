@@ -56,20 +56,13 @@ app.get("/checkout-session", isLoggedIn, async (req, res, next) => {
      * If the payment is successful, you can get the cart.id from the session.client_reference_id
      * You can se the isCart to false.
      */
-<<<<<<< HEAD
-  const cart =  User.getCart;
-  if (session.payment_status === "paid") {
-    cart.update({ isCart: false });
-  }
-=======
     const cart =  User.getCart;
-     if (session.payment_status === "paid") {
-       cart.update({ isCart: false });
-     }
->>>>>>> 580366451a569bb4576b8c376e76d35812a99374
-
+    if (session.payment_status === "paid") {
+      cart.update({ isCart: false });
+    }
     res.send(session);
-  } catch (err) {
+  } 
+  catch (err) {
     next(err);
   }
 });
