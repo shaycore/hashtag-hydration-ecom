@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addToCart, fetchCart, clearCart } from '../../store/cart';
 import { Link } from 'react-router-dom'
-import StripeContainer from '../StripeContainer';
 
 const Cart = connect(
   state => state,
@@ -100,7 +99,7 @@ const Cart = connect(
           <button className="checkout">
               <Link to="/checkout">Checkout</Link>
           </button>
-          <StripeContainer />
+          {/* <StripeContainer /> */}
           <div className='cart-empty'>
           <div className='continue-shopping'>
             <Link to='/products'>

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom'
 import {fetchCart } from '../../store/cart';
+import StripeCart from '../StripeCart';
 
 
 const Checkout = ({ products, cart})=> {
@@ -118,7 +119,7 @@ const Checkout = ({ products, cart})=> {
               </div>
             </div>
             <div className='cart-checkout button'>
-              <button>Place Order</button>
+              <StripeCart />
             </div>
           </div>
         </div>

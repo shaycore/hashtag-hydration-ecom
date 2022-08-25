@@ -12,6 +12,7 @@ app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 
 app.use('/api/orders', require('../routes/orders'));
 app.use('/api/sessions', require('../routes/sessions'));
+app.use('/api/stripe', require('../routes/stripe'));
 app.use('/api/lineitems', require('../routes/lineitems'));
 app.use('/api/users', require('../routes/users'));
 app.use('/api/products', require('../routes/products'));

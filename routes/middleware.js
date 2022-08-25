@@ -2,7 +2,8 @@ const { User } = require('../db');
 
 const isLoggedIn = async(req, res, next)=> {
   try {
-    req.user = await User.findByToken(req.headers.authorization);
+    const token = req.headers?.authorization || req.body?.headers?.authorization
+    req.user = await User.findByToken(token);
     next();
   }
   catch(ex){
@@ -12,7 +13,8 @@ const isLoggedIn = async(req, res, next)=> {
 
 const isAdmin = async(req, res, next) => {
   try{
-    req.user = await User.isAdmin(req.headers.authorization);
+    const token = req.headers?.authorization || req.body?.headers?.authorization
+    req.user = await User.isAdmin(token);
     next();
   }
   catch(err){
