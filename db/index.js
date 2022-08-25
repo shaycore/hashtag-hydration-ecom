@@ -68,6 +68,11 @@ const syncAndSeed = async() => {
   await people[1].addToCart({ product: items[5], quantity: 1});
   await people[1].addToCart({ product: items[6], quantity: 1});
   await people[1].createOrderFromCart();
+  //Seed Order Data for Prof Test User
+  await prof.addToCart({ product: items[2], quantity: 1});
+  await prof.addToCart({ product: items[4], quantity: 2});
+  await prof.addToCart({ product: items[7], quantity: 1});
+  await prof.createOrderFromCart();
   //Seed Cart data for Prof Test User
   await prof.addToCart({ product: items[1], quantity: 1});
   await prof.addToCart({ product: items[2], quantity: 2});
