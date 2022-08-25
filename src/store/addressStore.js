@@ -1,7 +1,6 @@
 import axios from 'axios';
-//TODO double check routes before getting this working
 
-const addressReducer = (state = [], action)=> {
+const addressStore = (state = [], action)=> {
   if (action.type === 'SET_ADDRESSES') {
     return action.addresses;
   }
@@ -17,8 +16,6 @@ const addressReducer = (state = [], action)=> {
   return state;
 };
 
-//Does it make sense to write some logic below to grab all the addresses (for admin) 
-//or just address with a specific userId if that userID is passed in?
 export const fetchAddresses = ()=> {
   return async(dispatch) => {
     const addresses = (await axios.get('/api/addresses')).data;
@@ -28,23 +25,45 @@ export const fetchAddresses = ()=> {
 
 export const createAddress = (address) => {
   return async(dispatch) => {
-    address = (await axios.post('/api/addresses', address)).data;
-    dispatch({ type: 'CREATE_ADDRESS', address});
+    const token = window.localStorage.getItem('token');
+    if(token) {
+      address = (await axios.post('/api/addresses', address, {
+        headers: {
+          authorization: token
+        }
+      })).data;
+      dispatch({ type: 'CREATE_ADDRESS', address })
+    }
   };
 };
 
 export const deleteAddress = (address) => {
   return async(dispatch) => {
-      await axios.delete(`/api/addresses/${ address.id }`);
+    const token = window.localStorage.getItem('token');
+    if(token) {
+      await axios.delete(`/api/addresses/${ address.id }`, {
+        headers: {
+          authorization: token
+        }
+      });
       dispatch({ type: 'DELETE_ADDRESS', address});
+      history.push('/api/addresses')
+    }
   }
 }
 
 export const updateAddress = (address) => {
   return async(dispatch) => {
-      address = (await axios.put(`/api/addresses/${ address.id }`, address )).data;
+    const token = window.localStorage.getItem('token');
+    if(token) {
+      address = (await axios.put(`/api/addresses/${ address.id }`, address, {
+        headers: {
+          authorization: token
+        }
+      })).data;
       dispatch({ type: 'UPDATE_ADDRESS', address })
+    }
   }
 }
 
-export default addressReducer;
+export default addressStore;

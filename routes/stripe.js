@@ -49,7 +49,6 @@ app.post("/", isLoggedIn, async (req, res, next) => {
 app.get("/checkout-session", isLoggedIn, async (req, res, next) => {
   try {
     const { sessionId } = req.query;
-    console.log(req.query);
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     /**
@@ -57,12 +56,12 @@ app.get("/checkout-session", isLoggedIn, async (req, res, next) => {
      * You can se the isCart to false.
      */
     const cart =  User.getCart;
-     if (session.payment_status === "paid") {
-       cart.update({ isCart: false });
-     }
-
+    if (session.payment_status === "paid") {
+      cart.update({ isCart: false });
+    }
     res.send(session);
-  } catch (err) {
+  } 
+  catch (err) {
     next(err);
   }
 });
