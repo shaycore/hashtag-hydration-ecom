@@ -65,9 +65,7 @@ const Footer = ({ auth }) => {
                     <a className="text-dark font-weight-semi-bold" href="/">© Hashtag Hydration. </a>
                     All Rights Reserved. Designed by Team 1.
                 </div>
-                <div className="col-md-6 px-xl-0 text-center text-md-right">
-                    Payment Image Here (or social media links)
-                </div>
+                
             </div>
         </div>
     )
