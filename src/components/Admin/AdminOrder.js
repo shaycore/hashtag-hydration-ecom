@@ -9,7 +9,6 @@ class AdminOrder extends React.Component{
         super();
         this.state= {
         };
-        this.getProdList = this.getProdList.bind(this);
     }
 
     componentDidMount(){
@@ -18,14 +17,10 @@ class AdminOrder extends React.Component{
     }
     componentDidUpdate(prevProps){
     }
-    getProdList(id) {
-        const lines = this.props.fetchLineItems(id);
-    }
     render(){
-        const { getProdList } = this;
-        const { order, user, id } = this.props;
+        const { order, user, products, id } = this.props;
         var newDate = new Date(order.createdAt);
-        console.log(order);
+
         return (
         <div>
             <Link to={'/admin/orders/'}>Return to All Orders</Link>
@@ -34,6 +29,17 @@ class AdminOrder extends React.Component{
                 Order #{ order.id } <br />
                 Created at: { newDate.toString() } <br />
                 Placed by: <Link to={`/admin/users/${user.id}`}>{ user.fullName }</Link>
+                { !order.lineItems ? 
+                    null : 
+                    order.lineItems.map( lineitem => {
+                        const product = products.find( product => product.id === lineitem.productId);
+                        return (
+                            <li key={ lineitem.id }>
+                                <Link to={`/admin/products/${product.id}`}>{ product.name }</Link> - qty: { lineitem.quantity } 
+                            </li>
+                        )
+                    })
+                }
             </ul>
 
         </div>
@@ -42,18 +48,17 @@ class AdminOrder extends React.Component{
     }
 }
 
-const mapStateToProps = ({ orders, users, lineitems },ownProps) => {
+const mapStateToProps = ({ orders, users, products },ownProps) => {
     const id = ownProps.match.params.id;
     const order = orders.find( order => order.id === id*1) || {};
     const user = users.find( user => user.id === order.userId ) || {};
-    return { id, order, user };
+    return { id, order, user, products };
 };
 
 const mapDispatch = (dispatch)=> {
     return {
         fetchOrders: ()=> dispatch(fetchOrders()),
-        fetchUsers: ()=> dispatch(fetchUsers()),
-        fetchLineItems: (id) => dispatch(fetchLineItems(id))
+        fetchUsers: ()=> dispatch(fetchUsers())
     };
 };
 
