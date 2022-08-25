@@ -1,6 +1,6 @@
 const conn = require('./conn');
 const { Sequelize } = conn;
-const { STRING, BOOLEAN, VIRTUAL, TEXT } = Sequelize;
+const { STRING, BOOLEAN, VIRTUAL, TEXT, INTEGER } = Sequelize;
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -43,6 +43,9 @@ const User = conn.define('user', {
   },
   avatar: {
     type: TEXT
+  },
+  githubId: {
+    type: INTEGER
   } 
 });
 
