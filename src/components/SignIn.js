@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { login } from '../store';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class SignIn extends Component{
   constructor(){
@@ -28,10 +29,14 @@ class SignIn extends Component{
           <p>Username</p>
           <input name='username' onChange={ onChange } value={ username }/>
           <p>Password</p>
-          <input type='password' name='password' value={ password } onChange={ onChange }/><br />
+          <input type='password' name='password' value={ password } onChange={ onChange }/>
+          <br />
           <button className="btn btn-primary px-3">Login</button>
+          <br/>
         </form>
+        <p>----------------or----------------</p>
         <a href='/api/sessions/github'><button className="btn btn-primary px-3">Continue with Github</button></a>
+        <p>Not on HashTag Hydration yet? <Link to='/signup'>Sign up</Link></p>
       </div>
     );
   }
