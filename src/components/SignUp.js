@@ -19,7 +19,7 @@ class SignUp extends Component{
   onChange(ev){
     this.setState({ [ev.target.name]: ev.target.value });
   }
-  async onSubmit(ev){
+  onSubmit(ev){
     ev.preventDefault();
     const newUser = {
         ...this.state,
@@ -28,13 +28,7 @@ class SignUp extends Component{
         avatar: '',
 
     };
-    await this.props.createUser(newUser);
-
-    const credentials = {
-        username: this.state.username,
-        password: this.state.password
-    };
-    await this.props.login(credentials);
+    this.props.signUp(newUser);
   }
   render(){
     const { onChange, onSubmit } = this;
@@ -54,7 +48,7 @@ class SignUp extends Component{
             <input name='email' onChange={ onChange } value={ email }/><br />
             <button className="btn btn-primary px-3">Sign Up</button>
         </form>
-        <p>--------or--------</p>
+        <p>----------------or----------------</p>
         <a href='/api/sessions/github'><button className="btn btn-primary px-3">Continue with Github</button></a>
         <p>Already on HashTag Hydration? <Link to='/signin'>Login</Link></p>
       </div>
@@ -65,11 +59,13 @@ class SignUp extends Component{
 const mapDispatch = (dispatch, ownProps)=> {
   const { history } = ownProps;
   return {
-    createUser: (user) => {
-        dispatch(createUser(user));
-    },
-    login: (credentials)=> {
-      dispatch(login(credentials, history));
+    signUp: async(newUser) => {
+      const credentials = {
+        username: newUser.username,
+        password: newUser.password
+      }
+      await dispatch(createUser(newUser)),
+      await dispatch(login(credentials, history));
     }
   };
 };

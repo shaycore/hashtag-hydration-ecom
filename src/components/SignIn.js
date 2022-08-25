@@ -34,7 +34,7 @@ class SignIn extends Component{
           <button className="btn btn-primary px-3">Login</button>
           <br/>
         </form>
-        <p>--------or--------</p>
+        <p>----------------or----------------</p>
         <a href='/api/sessions/github'><button className="btn btn-primary px-3">Continue with Github</button></a>
         <p>Not on HashTag Hydration yet? <Link to='/signup'>Sign up</Link></p>
       </div>
