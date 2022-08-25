@@ -27,8 +27,8 @@ class SignIn extends Component{
         <p>Username</p>
         <input name='username' onChange={ onChange } value={ username }/>
         <p>Password</p>
-        <input type='password' name='password' value={ password } onChange={ onChange }/>
-        <button>Login</button>
+        <input type='password' name='password' value={ password } onChange={ onChange }/><br />
+        <button className="btn btn-primary px-3">Login</button>
       </form>
     );
   }

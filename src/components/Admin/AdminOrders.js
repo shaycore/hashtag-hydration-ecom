@@ -16,6 +16,8 @@ class AdminOrders extends React.Component{
         const { orders, users } = this.props;
         return (
         <div>
+            <Link to={'/admin/'}>Return to Admin Main</Link>
+            <br />
             <h1>List of Orders ({orders.length})</h1>
             <ul id='orders'>
                 {
