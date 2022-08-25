@@ -95,50 +95,71 @@ return (
             
             <h1 className='lead'>Hydration Shop</h1>
 
-        <div className="container-fluid offer pt-5">
-            <div className="row px-xl-5">
-                <div className="col-md-6 pb-4">
-                    <div className="position-relative bg-secondary text-center text-md-right text-white mb-2 py-5 px-5">
-                        <img src="https://cdn.shopify.com/s/files/1/1892/2457/files/22_210813_CS_TAKEYA_2022_700x.jpg?v=1652125368" alt=""/>
-                        <div className="position-relative">
-                            <h5 className="text-uppercase text-primary mb-3">What's in a Pro's Bag?</h5>
-                            <h1 className="mb-4 font-weight-semi-bold">Game Day</h1>
-                            <a href="" className="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+            <div className="container-fluid offer pt-5">
+                <div className="row px-xl-5">
+                    <div className="col-md-6 pb-4">
+                        <div className="position-relative bg-secondary text-center text-md-right text-white mb-2 py-5 px-5">
+                            <img src="https://cdn.shopify.com/s/files/1/1892/2457/files/22_210813_CS_TAKEYA_2022_700x.jpg?v=1652125368" alt=""/>
+                            <div className="position-relative">
+                                <h5 className="text-uppercase text-primary mb-3">What's in a Pro's Bag?</h5>
+                                <h1 className="mb-4 font-weight-semi-bold">Game Day</h1>
+                                <a href="" className="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="col-md-6 pb-4">
-                    <div className="position-relative bg-secondary text-center text-md-left text-white mb-2 py-5 px-5">
-                        <img src="https://cdn.shopify.com/s/files/1/1892/2457/files/Photo_May_08_4_31_09_PM_800x.jpg?v=1661182175" alt=""/>
-                        <div className="position-relative" >
-                            <h5 className="text-uppercase text-primary mb-3">Fitness Tips</h5>
-                            <h1 className="mb-4 font-weight-semi-bold">Bottle Care 101</h1>
-                            <a href="" className="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                    <div className="col-md-6 pb-4">
+                        <div className="position-relative bg-secondary text-center text-md-left text-white mb-2 py-5 px-5">
+                            <img src="https://cdn.shopify.com/s/files/1/1892/2457/files/Photo_May_08_4_31_09_PM_800x.jpg?v=1661182175" alt=""/>
+                            <div className="position-relative" >
+                                <h5 className="text-uppercase text-primary mb-3">Fitness Tips</h5>
+                                <h1 className="mb-4 font-weight-semi-bold">Bottle Care 101</h1>
+                                <a href="" className="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div className="col-md-6 pb-4">
+                        <div className="position-relative bg-secondary text-center text-md-left text-white mb-2 py-5 px-5">
+                            <img src="https://cdn.shopify.com/s/files/1/1892/2457/files/41_210813_CS_TAKEYA_11970_1_1_700x.jpg?v=1660746572" alt=""/>
+                            <div className="position-relative" >
+                                <h5 className="text-uppercase text-primary mb-3">Campus</h5>
+                                <h1 className="mb-4 font-weight-semi-bold">Must Haves</h1>
+                                <a href="" className="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-6 pb-4">
+                        <div className="position-relative bg-secondary text-center text-md-left text-white mb-2 py-5 px-5">
+                            <img src="https://cdn.shopify.com/s/files/1/1892/2457/files/19_210812_CS_TAKEYA_14218_700x.jpg?v=1652125334" alt=""/>
+                            <div className="position-relative" >
+                                <h5 className="text-uppercase text-primary mb-3">Lids and Capacities</h5>
+                                <h1 className="mb-4 font-weight-semi-bold">The Perfect Bottle</h1>
+                                <a href="" className="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
 
-    <div className="container-fluid bg-secondary my-5">
-        <div className="row justify-content-md-center py-5 px-xl-5">
-            <div className="col-md-6 col-12 py-5">
-                <div className="text-center mb-2 pb-2">
-                    <h2 className="section-title px-5 mb-3"><span class="bg-secondary px-2">Stay Updated</span></h2>
-                    <p>We are not the hero in this story. You are. We’re inspired by your movement, by the flow of your active lifestyle. We’re in it with you for those long early morning runs, intense workouts, and precious moments with your family on the playground.</p>
-                </div>
-                <form action="">
-                    <div className="input-group">
-                        <input type="text" class="form-control border-white p-4" placeholder="Email Goes Here"/>
-                        <div className="input-group-append">
-                            <button className="btn btn-primary px-4">Subscribe</button>
-                        </div>
+        <div className="container-fluid bg-secondary my-5">
+            <div className="row justify-content-md-center py-5 px-xl-5">
+                <div className="col-md-6 col-12 py-5">
+                    <div className="text-center mb-2 pb-2">
+                        <h2 className="section-title px-5 mb-3"><span class="bg-secondary px-2">Stay Updated</span></h2>
+                        <p>We are not the hero in this story. You are. We’re inspired by your movement, by the flow of your active lifestyle. We’re in it with you for those long early morning runs, intense workouts, and precious moments with your family on the playground.</p>
                     </div>
-                </form>
+                    <form action="">
+                        <div className="input-group">
+                            <input type="text" class="form-control border-white p-4" placeholder="Email Goes Here"/>
+                            <div className="input-group-append">
+                                <button className="btn btn-primary px-4">Subscribe</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-            </div>
-        </div>
-      </div>
+    </div>
+    </div>
     </div>
   )
 }
