@@ -11,7 +11,8 @@ const Footer = ({ auth }) => {
                     <p>Your oasis away from home.</p>
                     <p className="mb-2">
                         <i className='fa fa-map-marker-alt text-primary mr-3'>Location</i>
-                        112 New York, New York, USA
+                        112 Water Street, Suite #H20
+                        New York, NY, USA
                     </p>
                     <p className="mb-2">
                         <i className='fa fa-envelope text-primary mr-3'>Email</i>
