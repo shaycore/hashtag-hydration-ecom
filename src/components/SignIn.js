@@ -26,12 +26,12 @@ class SignIn extends Component{
       <div>
         <form onSubmit={ onSubmit }>
           <p>Username</p>
-          <input name='username' onChange={ onChange } value={ username }/><br />
+          <input name='username' onChange={ onChange } value={ username }/>
           <p>Password</p>
           <input type='password' name='password' value={ password } onChange={ onChange }/><br />
-          <button>Login</button>
+          <button className="btn btn-primary px-3">Login</button>
         </form>
-        <a href='/api/sessions/github'><button>Login with Github</button></a>
+        <a href='/api/sessions/github'><button className="btn btn-primary px-3">Continue with Github</button></a>
       </div>
     );
   }

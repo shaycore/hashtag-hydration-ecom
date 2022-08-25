@@ -28,6 +28,8 @@ class AdminOrder extends React.Component{
 
         return (
         <div>
+            <Link to={'/admin/orders/'}>Return to All Orders</Link>
+            <br />
             <ul id='order'>
                 Order #{ order.id } <br />
                 Created at: { newDate.toString() } <br />

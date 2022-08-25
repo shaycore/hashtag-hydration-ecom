@@ -33,13 +33,13 @@ class _User extends Component {
             <div id='user'>
                 <Link to={'/admin/users/'}>Return to All Users</Link>
                 <br />
-                <img src={ user.avatar } alt='User Image' /><br />
+                <img src={ user.avatar } alt='User Image' style={{ height: 150, width: 150 }}/><br />
                 First: { user.firstName } <br />
                 Last: { user.lastName } <br />
                 Email: { user.email } <br />
                 Username: { user.username } <br />
-                Created At: { user.createdAt }
-                <button onClick={ destroy }>Delete</button>
+                Created At: { user.createdAt } <br />
+                <button onClick={ destroy } className="btn btn-primary px-3">Delete</button>
             </div>
             
         );

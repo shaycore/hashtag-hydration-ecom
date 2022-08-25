@@ -61,7 +61,7 @@ class Account extends Component {
                 <h3>Account Details</h3>
                 <form onSubmit={ save }>
                     <p>Profile Picture</p>
-                    <img src={ avatar } style={{ height: 100, width: 100 }} />
+                    <img src={ avatar } style={{ height: 150, width: 150 }} /><br />
                     <input type='file' ref={ el => this.el = el }/>
                     <Link to='/account/addressbook'>Address book</Link>
                     <p>First Name</p>
@@ -69,10 +69,10 @@ class Account extends Component {
                     <p>Last Name</p>
                     <input value={ lastName || ''} onChange={ ev => this.setState({ lastName: ev.target.value })}></input>
                     <p>Email Address</p>
-                    <input value={ email || ''} onChange={ ev => this.setState({ email: ev.target.value })}></input>
-                    <button>Save Changes</button>
+                    <input value={ email || ''} onChange={ ev => this.setState({ email: ev.target.value })}></input><br />
+                    <button className="btn btn-primary px-3">Save Changes</button>
                 </form>
-                <button onClick={ logout }>Logout</button>
+                <button className="btn btn-primary px-3" onClick={ logout }>Logout</button>
             </div>
         )
     }

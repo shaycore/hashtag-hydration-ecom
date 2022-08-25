@@ -50,10 +50,13 @@ app.get('/github/callback', async(req, res, next) => {
           Authorization: `token ${ access_token }`
         }
       });
-      const { login, id } = response.data;
+      const { login, email, id, name } = response.data;
       const where = {
         username: login,
-        githubId: id
+        email: email,
+        githubId: id,
+        firstName: name.split(' ')[0],
+        lastName: name.split(' ')[1]
       };
       let user = await User.findOne({ where });
       if(!user){
