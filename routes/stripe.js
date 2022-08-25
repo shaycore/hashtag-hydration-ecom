@@ -49,7 +49,6 @@ app.post("/", isLoggedIn, async (req, res, next) => {
 app.get("/checkout-session", isLoggedIn, async (req, res, next) => {
   try {
     const { sessionId } = req.query;
-    console.log(req.query);
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     /**

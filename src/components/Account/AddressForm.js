@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { createAddress } from '../../store/addressReducer';
+import { createAddress } from '../../store/addressStore'
 
 class AddressForm extends Component {
   constructor() {
@@ -59,9 +59,9 @@ class AddressForm extends Component {
   onChange(ev){
     this.setState({ [ev.target.name]: ev.target.value });
   }
-  onSubmit(ev){
+  async onSubmit(ev){
     ev.preventDefault();
-    this.props.login(this.state);
+    await this.props.createAddress({ ...this.state });
   }
   render() {
     const { onChange, onSubmit } = this;
@@ -70,12 +70,49 @@ class AddressForm extends Component {
       <div>
         <h2>Please enter your address in the fields below:</h2>
         <form onSubmit={ onSubmit }>
-            <input placeholder='First Name' name='firstName' required value={ firstName } onChange={ ev => this.setState({ firstName: ev.target.value })}/>
-            <input placeholder='Last Name' name='lastName' required value={ lastName } onChange={ ev => this.setState({ lastName: ev.target.value })}/>
-            <input placeholder='Address' name='address' required value={ address } onChange={ ev => this.setState({ address: ev.target.value })}/>
-            <input placeholder='City' name='city' required value={ city } onChange={ ev => this.setState({ city: ev.target.value })}/>
-            <input placeholder='State' name='state' required value={ state } onChange={ ev => this.setState({ state: ev.target.value })}/>
-            <input placeholder='Postal Code' name='zipCode' required value={ zipCode } onChange={ ev => this.setState({ zipCode: ev.target.value })}/>
+            <input 
+              required
+              placeholder='First Name' 
+              name='firstName'  
+              value={ firstName } 
+              onChange={ onChange }
+              //onChange={ ev => this.setState({ firstName: ev.target.value })}/>
+            />
+            <input 
+              required
+              placeholder='Last Name' 
+              name='lastName'  
+              value={ lastName } 
+              onChange={ onChange }
+            />
+            <input 
+              required
+              placeholder='Address' 
+              name='address'  
+              value={ address } 
+              onChange={ onChange }
+            />
+            <input 
+              required
+              placeholder='City' 
+              name='city'  
+              value={ city } 
+              onChange={ onChange }
+            />
+            <input 
+              required
+              placeholder='State' 
+              name='state'  
+              value={ state } 
+              onChange={ onChange }
+            />
+            <input 
+              required
+              placeholder='Postal Code' 
+              name='zipCode'  
+              value={ zipCode } 
+              onChange={ onChange }
+            />
             <button>Save</button>
         </form>
       </div>
@@ -83,10 +120,14 @@ class AddressForm extends Component {
   }
 }
 
+const mapStateToProps = (state) => state;
+
 const mapDispatch = (dispatch)=> {
     return {
-        
+        createAddress: (address) => {
+          dispatch(createAddress(address))
+        }
     };
 };
 
-export default connect(null, mapDispatch)(AddressForm)
+export default connect(mapStateToProps, mapDispatch)(AddressForm)
