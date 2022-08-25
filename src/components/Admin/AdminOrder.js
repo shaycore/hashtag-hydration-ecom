@@ -25,7 +25,7 @@ class AdminOrder extends React.Component{
         const { getProdList } = this;
         const { order, user, id } = this.props;
         var newDate = new Date(order.createdAt);
-
+        console.log(order);
         return (
         <div>
             <ul id='order'>
