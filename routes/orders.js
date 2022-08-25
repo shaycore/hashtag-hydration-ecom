@@ -46,7 +46,7 @@ app.get('/cart', isLoggedIn, async(req, res, next)=> {
   }
 });
 
-app.get('/', isAdmin, async(req, res, next)=> {
+app.get('/', isLoggedIn, async(req, res, next)=> {
   try {
     res.send(await Order.findAll({
       where: { isCart: false },
@@ -57,6 +57,7 @@ app.get('/', isAdmin, async(req, res, next)=> {
     next(ex);
   }
 });
+
 
 //need to swap to Jonathan's route for stripe
 // app.post('/order-payment', cors(), async (req, res) => {
