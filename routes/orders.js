@@ -50,6 +50,7 @@ app.get('/', isAdmin, async(req, res, next)=> {
   try {
     res.send(await Order.findAll({
       where: { isCart: false },
+      include: LineItem
     }));
   }
   catch(ex){
