@@ -8,7 +8,8 @@ const bcrypt = require('bcrypt');
 
 const User = conn.define('user', {
   username: {
-    type: STRING
+    type: STRING,
+    unique: true
   },
   password: {
     type: STRING
@@ -22,6 +23,7 @@ const User = conn.define('user', {
   email: {
     type: STRING,
     allowNull: false,
+    unique: true,
     validate: {
       isEmail: true,
       notEmpty: true

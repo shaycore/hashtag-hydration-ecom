@@ -4,7 +4,7 @@ const users = (state = [], action)=> {
   if (action.type === 'SET_USERS') {
     return action.users || state;
   }
-  if (action.type === 'CREATE_USERS') {
+  if (action.type === 'CREATE_USER') {
     return [...state, action.user];
   }
   if (action.type === 'DELETE_USER') {
@@ -30,9 +30,10 @@ export const fetchUsers = ()=> {
   };
 };  
 
-export const createUsers = (user) => {
+export const createUser = (user) => {
   return async(dispatch) => {
     user = (await axios.post('/api/users', user)).data;
+    dispatch({ type: 'CREATE_USER', user });  
   };
 };
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteUser } from '../../store';
+import { fetchUsers, deleteUser } from '../../store';
 
 class _User extends Component {
     constructor(){
@@ -12,6 +12,7 @@ class _User extends Component {
         this.destroy = this.destroy.bind(this);
     }
     componentDidMount(){
+        this.props.fetchUsers();
         this.setState({
             user: this.props.user
         })
@@ -30,18 +31,18 @@ class _User extends Component {
         const { user } = this.state;
         const { destroy } = this;
         return (
-            <div id='user'>
+            <div>
                 <Link to={'/admin/users/'}>Return to All Users</Link>
-                <br />
-                <img src={ user.avatar } alt='User Image' style={{ height: 150, width: 150 }}/><br />
-                First: { user.firstName } <br />
-                Last: { user.lastName } <br />
-                Email: { user.email } <br />
-                Username: { user.username } <br />
-                Created At: { user.createdAt } <br />
-                <button onClick={ destroy } className="btn btn-primary px-3">Delete</button>
+                <ul id='user'>
+                    { user.avatar && <img src={ user.avatar } alt='User Image' style={{ height: 150, width: 150 }} /> }<br />
+                    First Name: { user.firstName } <br />
+                    Last Name: { user.lastName } <br />
+                    Email: { user.email } <br />
+                    Username: { user.username } <br />
+                    Created At: { user.createdAt } <br />
+                    <button onClick={ destroy } className="btn btn-primary px-3">Delete</button>
+                </ul>
             </div>
-            
         );
     }
 }
@@ -56,6 +57,7 @@ const mapState = ({ users }, ownProps) => {
 
 const mapDispatch = (dispatch, { history }) => {
     return {
+        fetchUsers: ()=> dispatch(fetchUsers()),
         destroy: (user) => dispatch(deleteUser(user, history))
     };
 };

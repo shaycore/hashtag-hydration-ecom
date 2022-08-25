@@ -25,6 +25,7 @@ import AboutUs from './Pages/AboutUs';
 import Wishlist from './Wishlist';
 import Checkout from './Pages/Checkout';
 import StripeSuccess from './StripeSuccess';
+import SignUp from './SignUp';
 
 
 class App extends React.Component{
@@ -56,6 +57,7 @@ class App extends React.Component{
               <Route exact path='/products' component={ Products } />
               <Route exact path='/products/:id' component={ Product } />
               <Route exact path='/signin' component={ SignIn } />
+              <Route exact path='/signup' component={ SignUp } />
               <Route exact path='/admin' component={ Admin } />
               <Route exact path='/admin/products' component={ AdminProducts } />
               <Route exact path='/admin/products/:id' component={ AdminProduct } />
