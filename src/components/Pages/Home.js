@@ -44,7 +44,7 @@ useEffect(() => {
 return (
         <div>
             <div className='jumbotron'>
-              <h1>HashTag Hydration</h1>
+                <h1>HashTag Hydration</h1>
             </div>
             <div className='carousel-container'>
                 { data.map((item, index) => {
@@ -160,6 +160,9 @@ return (
     </div>
     </div>
     </div>
+    <h1>Colder. Hotter. Longer. Happier.</h1>
+    <img src="https://cdn.shopify.com/s/files/1/1892/2457/t/210/assets/bg__surfers_1600x.jpg?v=18983954206508048981660084240"></img>
+
     </div>
   )
 }
