@@ -62,7 +62,7 @@ class Account extends Component {
                 <Link to={'/account/orderhistory'}>View Past Orders</Link>
                 <form onSubmit={ save }>
                     <p>Profile Picture</p>
-                    <img src={ avatar } style={{ height: 150, width: 150 }} /><br />
+                    { avatar && <img src={ avatar } style={{ height: 150, width: 150 }} /> }<br />
                     <input type='file' ref={ el => this.el = el }/>
                     <Link to='/account/addressbook'>Address book</Link>
                     <p>First Name</p>
