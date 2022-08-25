@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchOrders, fetchUsers, fetchLineItems } from "../../store";
 import axios from 'axios';
 
-class AdminOrder extends React.Component{
+class Order extends React.Component{
     constructor() {
         super();
         this.state= {
@@ -23,12 +23,11 @@ class AdminOrder extends React.Component{
 
         return (
         <div>
-            <Link to={'/admin/orders/'}>Return to All Orders</Link>
+            <Link to={'/account/orderhistory/'}>Return to Your Order History</Link>
             <br />
             <ul id='order'>
                 Order #{ order.id } <br />
                 Created at: { newDate.toString() } <br />
-                Placed by: <Link to={`/admin/users/${user.id}`}>{ user.fullName }</Link>
                 { !order.lineItems ? 
                     null : 
                     order.lineItems.map( lineitem => {
@@ -63,5 +62,5 @@ const mapDispatch = (dispatch)=> {
 };
 
 
-export default connect(mapStateToProps, mapDispatch)(AdminOrder);
+export default connect(mapStateToProps, mapDispatch)(Order);
   

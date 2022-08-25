@@ -11,6 +11,8 @@ import Products from './Product/Products';
 import Product from './Product/Product';
 import NotFound from './Pages/404';
 import Account from './Account/Account';
+import OrderHistory from './Account/OrderHistory';
+import Order from './Account/Order';
 import Admin from './Admin/Admin';
 import AdminProducts from './Admin/AdminProducts';
 import AdminProduct from './Admin/AdminProduct';
@@ -47,6 +49,8 @@ class App extends React.Component{
             <Switch>
               <Route exact path='/' component={ Home } />
               <Route exact path='/account' component={ Account } />
+              <Route exact path='/account/orderhistory' component={ OrderHistory } />
+              <Route exact path='/account/orderhistory/:id' component={ Order } />
               <Route exact path='/account/addressBook' component={ AddressBook } />
               <Route exact path='/products' component={ Products } />
               <Route exact path='/products/:id' component={ Product } />
