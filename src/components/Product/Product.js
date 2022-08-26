@@ -40,7 +40,7 @@ class _Product extends Component {
     }
     async handleSubmit(ev) {
         ev.preventDefault();
-        toast('Product added to cart!', {
+        toast('✅ Product added to cart!', {
             position: "top-left",
             autoClose: 5000,
             hideProgressBar: true,
