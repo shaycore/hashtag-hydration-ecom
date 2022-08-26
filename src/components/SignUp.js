@@ -34,24 +34,55 @@ class SignUp extends Component{
     const { onChange, onSubmit } = this;
     const { username, password, firstName, lastName, email } = this.state;
     return (
-      <div>
-        <form onSubmit={ onSubmit }>
-            <p>Username</p>
-            <input name='username' onChange={ onChange } value={ username }/>
-            <p>Password</p>
-            <input type='password' name='password' onChange={ onChange } value={ password }/>
-            <p>First Name</p>
-            <input name='firstName' onChange={ onChange } value={ firstName }/>
-            <p>Last Name</p>
-            <input name='lastName' onChange={ onChange } value={ lastName }/>
-            <p>Email</p>
-            <input name='email' onChange={ onChange } value={ email }/><br />
-            <button className="btn btn-primary px-3">Sign Up</button>
-        </form>
-        <p>----------------or----------------</p>
-        <a href='/api/sessions/github'><button className="btn btn-primary px-3">Continue with Github</button></a>
-        <p>Already on HashTag Hydration? <Link to='/signin'>Login</Link></p>
+      <div className='container-fluid pt-5'>
+      <div className='text-center mb-4'>
+        <h2 className='section-title px-5'>
+          <span className='px-2'>Sign Up</span>
+        </h2>
       </div>
+      <div className='row px-xl-5 text-center '>
+        <div className='col-lg mb-5'>
+          <div className='contact-form'>
+            <form onSubmit={ onSubmit }>
+              <p style={{ marginBottom: '0.5rem' }}>Username</p>
+              <div className='control-group'>
+                <input className='form-control' style={{ maxWidth: '300px', width: '30%', dislay: 'block', margin: '0 auto' }} name='username' onChange={ onChange } value={ username }/>
+                <p className='help-block text-danger'></p>
+              </div>
+              <p style={{ marginBottom: '0.5rem' }}>Password</p>
+              <div className='control-group'>
+                <input className='form-control' style={{ maxWidth: '300px', width: '30%', dislay: 'block', margin: '0 auto' }} type='password' name='password' value={ password } onChange={ onChange }/>
+                <p className='help-block text-danger'></p>
+              </div>
+              <p style={{ marginBottom: '0.5rem' }}>First Name</p>
+              <div className='control-group'>
+                <input className='form-control' style={{ maxWidth: '300px', width: '30%', dislay: 'block', margin: '0 auto' }} name='firstName' onChange={ onChange } value={ firstName }/>
+                <p className='help-block text-danger'></p>
+              </div>
+              <p style={{ marginBottom: '0.5rem' }}>Last Name</p>
+              <div className='control-group'>
+                <input className='form-control' style={{ maxWidth: '300px', width: '30%', dislay: 'block', margin: '0 auto' }} name='lastName' onChange={ onChange } value={ lastName }/>
+                <p className='help-block text-danger'></p>
+              </div>
+              <p style={{ marginBottom: '0.5rem' }}>Email</p>
+              <div className='control-group mb-4'>
+                <input className='form-control' style={{ maxWidth: '300px', width: '30%', dislay: 'block', margin: '0 auto' }} name='email' onChange={ onChange } value={ email }/>
+                <p className='help-block text-danger'></p>
+              </div>
+              <button className="btn btn-primary py-2 px-4">Sign Up</button>
+              <br/>
+            </form>
+          </div>
+          <div className='text-center'>
+            <p className='section-title px-5'>
+              <span className='px-2'>or</span>
+            </p>
+          </div>
+          <a href='/api/sessions/github'><button className="btn btn-primary py-2 px-4 mb-4">Continue with Github</button></a>
+          <p>Already on HashTag Hydration? <Link to='/signin'>Login</Link></p>
+        </div>
+      </div>
+    </div>
     );
   }
 }
