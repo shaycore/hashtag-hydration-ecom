@@ -76,7 +76,20 @@ class _AdminProduct extends Component {
         const { save, destroy } = this;
         return (
             <div id='product'>
-                <Link to={'/admin/products/'}>Return to All Products</Link>
+                
+                <div className="container-fluid bg-secondary mb-5">
+                    <div className="d-flex flex-column align-items-center justify-content-center" style={{minHeight: '300px'}}  >
+                        <h1 className="font-weight-semi-bold text-uppercase mb-3">
+                            Admin Product ID #{this.props.product.id}
+                        </h1>
+                        <div className="d-inline-flex">
+                            <p className="m-0">
+                                <Link to={'/admin/products/'}>Return to Admin Products List</Link>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 <form onSubmit={ save }>
                     <div className="row px-xl-5">
                         <div className="col-lg-5 pb-5">
@@ -108,7 +121,7 @@ class _AdminProduct extends Component {
                             <div className="d-flex mb-3 text-dark font-weight-medium">
                                 <input className="form-control" placeholder='Color' value={ color || '' } onChange={ ev => this.setState({ color: ev.target.value })}></input><br />
                             </div>
-                            Size: <br />
+                            Price: <br />
                             <div className="d-flex mb-3 text-dark font-weight-medium">
                                 <input className="form-control" placeholder='Price' value={ price || '' } onChange={ ev => this.setState({ price: ev.target.value })}></input><br />
                             </div>
