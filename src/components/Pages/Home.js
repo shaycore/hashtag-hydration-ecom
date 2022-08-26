@@ -143,7 +143,7 @@ return (
             <div className="row justify-content-md-center py-5 px-xl-5">
                 <div className="col-md-6 col-12 py-5">
                     <div className="text-center mb-2 pb-2">
-                        <h2 className="section-title px-5 mb-3"><span class="bg-secondary px-2">Stay Updated</span></h2>
+                        <h2 className="section-title px-5 mb-3"><span className="bg-secondary px-2">Stay Updated</span></h2>
                         <p>We are not the hero in this story. You are. We’re inspired by your movement, by the flow of your active lifestyle. We’re in it with you for those long early morning runs, intense workouts, and precious moments with your family on the playground.</p>
                     </div>
                     <form action="">

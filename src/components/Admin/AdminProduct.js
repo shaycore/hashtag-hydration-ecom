@@ -77,27 +77,48 @@ class _AdminProduct extends Component {
         return (
             <div id='product'>
                 <Link to={'/admin/products/'}>Return to All Products</Link>
-                <br />
                 <form onSubmit={ save }>
-                    <img src={ image || '' } alt='Product Image' /><br />
-                    <input type='file' ref={ el => this.el = el }/><br />
-                    <p>Brand</p>
-                    <input placeholder='Brand' value={ brand || '' } onChange={ ev => this.setState({ brand: ev.target.value })}></input><br />
-                    <p>Name</p>
-                    <input placeholder='Name' value={ name || '' } onChange={ ev => this.setState({ name: ev.target.value })}></input><br />
-                    <p>Type</p>
-                    <input placeholder='Type' value={ type || '' } onChange={ ev => this.setState({ type: ev.target.value })}></input><br />
-                    <p>Description</p>
-                    <textarea placeholder='Description' value={ description || '' } onChange={ ev => this.setState({ description: ev.target.value })}></textarea><br />
-                    <p>Size</p>
-                    <input placeholder='Size' value={ size || '' } onChange={ ev => this.setState({ size: ev.target.value })}></input><br />
-                    <p>Color</p>
-                    <input placeholder='Color' value={ color || '' } onChange={ ev => this.setState({ color: ev.target.value })}></input><br />
-                    <p>Price</p>
-                    <input placeholder='Price' value={ price || '' } onChange={ ev => this.setState({ price: ev.target.value })}></input><br />
-                    <button className="btn btn-primary px-3">Save Changes</button>
+                    <div className="row px-xl-5">
+                        <div className="col-lg-5 pb-5">
+                            <img className="w-100 h-100" src={ image || '' } alt='Product Image' /><br />
+                            Upload Image: <input type='file' ref={ el => this.el = el }/><br />
+                        </div>
+                        <div className="col-lg-7 pb-5">
+                            Brand: <br />
+                            <div className="d-flex mb-3 text-dark font-weight-medium">
+                                <input className="form-control" placeholder='Brand' value={ brand || '' } onChange={ ev => this.setState({ brand: ev.target.value })}></input><br />
+                            </div>
+                            Name: <br />
+                            <div className="d-flex mb-3 text-dark font-weight-medium">
+                                <input className="form-control" placeholder='Name' value={ name || '' } onChange={ ev => this.setState({ name: ev.target.value })}></input><br />
+                            </div>
+                            Type: <br />
+                            <div className="d-flex mb-3 text-dark font-weight-medium">
+                                <input className="form-control" placeholder='Type' value={ type || '' } onChange={ ev => this.setState({ type: ev.target.value })}></input><br />
+                            </div>
+                            Description: <br />
+                            <div className="d-flex mb-3 text-dark font-weight-medium">
+                                <textarea className="form-control" placeholder='Description' value={ description || '' } onChange={ ev => this.setState({ description: ev.target.value })}></textarea><br />
+                            </div>
+                            Size: <br />
+                            <div className="d-flex mb-3 text-dark font-weight-medium">
+                                <input className="form-control" placeholder='Size' value={ size || '' } onChange={ ev => this.setState({ size: ev.target.value })}></input><br />
+                            </div>
+                            Color: <br />
+                            <div className="d-flex mb-3 text-dark font-weight-medium">
+                                <input className="form-control" placeholder='Color' value={ color || '' } onChange={ ev => this.setState({ color: ev.target.value })}></input><br />
+                            </div>
+                            Size: <br />
+                            <div className="d-flex mb-3 text-dark font-weight-medium">
+                                <input className="form-control" placeholder='Price' value={ price || '' } onChange={ ev => this.setState({ price: ev.target.value })}></input><br />
+                            </div>
+                            <div style={{display:"flex", gap:"10px"}}>
+                                <button className="btn btn-primary px-3">Save Changes</button>
+                                <button onClick={ destroy } className="btn btn-primary px-3">Delete Product</button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
-                <button onClick={ destroy } className="btn btn-primary px-3">Delete</button>
             </div>
         );
     }
