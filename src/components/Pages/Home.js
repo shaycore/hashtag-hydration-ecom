@@ -43,6 +43,20 @@ useEffect(() => {
 
 return (
         <div>
+            <div>
+             <div className="container-fluid">
+        <div className="row bg-secondary py-2 px-xl-5">
+            <div className="col-lg-6 d-none d-lg-block">
+                <div className="d-inline-flex align-items-center">
+                    <a className="text-dark" href="">FAQs</a>
+                    <span className="text-muted px-2">|</span>
+                    <a className="text-dark" href="">Help</a>
+                    <span className="text-muted px-2">|</span>
+                    <a className="text-dark" href="">Support</a>
+                </div>
+            </div>
+        </div>
+        </div>
             <div className='jumbotron'>
                 <h1>HashTag Hydration</h1>
             </div>
@@ -139,30 +153,31 @@ return (
                     </div>
                     
 
-        <div className="container-fluid bg-secondary my-5">
-            <div className="row justify-content-md-center py-5 px-xl-5">
-                <div className="col-md-6 col-12 py-5">
-                    <div className="text-center mb-2 pb-2">
-                        <h2 className="section-title px-5 mb-3"><span className="bg-secondary px-2">Stay Updated</span></h2>
-                        <p>We are not the hero in this story. You are. We’re inspired by your movement, by the flow of your active lifestyle. We’re in it with you for those long early morning runs, intense workouts, and precious moments with your family on the playground.</p>
-                    </div>
-                    <form action="">
-                        <div className="input-group">
-                            <input type="text" className="form-control border-white p-4" placeholder="Email Goes Here"/>
-                            <div className="input-group-append">
-                                <button className="btn btn-primary px-4">Subscribe</button>
-                            </div>
+            <div className="container-fluid bg-secondary my-5">
+                <div className="row justify-content-md-center py-5 px-xl-5">
+                    <div className="col-md-6 col-12 py-5">
+                        <div className="text-center mb-2 pb-2">
+                            <h2 className="section-title px-5 mb-3"><span className="bg-secondary px-2">Stay Updated</span></h2>
+                            <p>We are not the hero in this story. You are. We’re inspired by your movement, by the flow of your active lifestyle. We’re in it with you for those long early morning runs, intense workouts, and precious moments with your family on the playground.</p>
                         </div>
-                    </form>
+                        <form action="">
+                            <div className="input-group">
+                                <input type="text" className="form-control border-white p-4" placeholder="Email Goes Here"/>
+                                <div className="input-group-append">
+                                    <button className="btn btn-primary px-4">Subscribe</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+        </div>
     </div>
     <h1>Colder. Hotter. Longer. Happier.</h1>
     <img src="https://cdn.shopify.com/s/files/1/1892/2457/t/210/assets/bg__surfers_1600x.jpg?v=18983954206508048981660084240"></img>
 
+    </div>
     </div>
   )
 }
