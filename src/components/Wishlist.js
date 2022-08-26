@@ -18,7 +18,15 @@ class WishList extends React.Component {
         const { onClick } = this;
         return (
             <div className='cart-container'>
-                <h2>WISHLIST</h2>
+                <div className="container-fluid bg-secondary mb-5">
+                    <div className="d-flex flex-column align-items-center justify-content-center" >
+                        <h1 className="font-weight-semi-bold text-uppercase mb-3">Wish List</h1>
+                            <div className="d-inline-flex">
+                                <p className="m-0 px-2">-</p>
+                                <p className="m-0">Wish List</p>
+                            </div>
+                        </div>
+                    </div>   
                 {
                     !wishlistProducts.length ? (
                         <div className='cart-empty'>

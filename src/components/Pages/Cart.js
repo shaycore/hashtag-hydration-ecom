@@ -28,8 +28,15 @@ const Cart = connect(
 
   return (
     <div className='cart-container'>
-      <h2>Shopping Cart</h2>
-      
+      <div className="container-fluid bg-secondary mb-5">
+          <div className="d-flex flex-column align-items-center justify-content-center" >
+              <h1 className="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
+              <div className="d-inline-flex">
+                  <p className="m-0 px-2">-</p>
+                  <p className="m-0">Shopping Cart</p>
+              </div>
+          </div>
+      </div>      
       { cart.lineItems.length === 0 ? (
         <div className='cart-empty'>
           <p>Your cart is currently empty.</p>
@@ -96,10 +103,9 @@ const Cart = connect(
           </div>
           <p>Shipping: Your order qualifies for free shipping!</p>
           <p>Taxes: $ {(Math.round((cartTotal * 100) * 0.04) / 100)} Applied at checkout</p>
-          <button className="checkout">
+          <button className="btn btn-block btn-primary my-3 py-3">
               <Link to="/checkout">Checkout</Link>
           </button>
-          {/* <StripeContainer /> */}
           <div className='cart-empty'>
           <div className='continue-shopping'>
             <Link to='/products'>
