@@ -28,6 +28,7 @@
     "jsonwebtoken": "^8.5.1",
     "next": "^12.2.5",
     "pg": "^8.7.3",
+    "react-toastify": "^9.0.8",
     "redux-logger": "^3.0.6",
     "sequelize": "^6.21.3",
     "stripe": "^10.3.0"

@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart, addToWishlist } from '../../store';
 import Reviews from './Reviews';
+import { ToastContainer, toast } from 'react-toastify';
+
+
 
 class _Product extends Component {
     constructor(){
@@ -37,7 +40,17 @@ class _Product extends Component {
     }
     async handleSubmit(ev) {
         ev.preventDefault();
+        toast('Product added to cart!', {
+            position: "top-left",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
         this.props.submit({...this.state});
+        
     }
     addToWishlist() {
         const { product } = this.state;
@@ -82,6 +95,16 @@ class _Product extends Component {
                                     <i className="bi-cart"> </i>
                                     Add to Cart
                                 </button>
+                                <ToastContainer
+                                    position="top-left"
+                                    autoClose={5000}
+                                    hideProgressBar={true}
+                                    closeOnClick
+                                    rtl={false}
+                                    pauseOnFocusLoss
+                                    draggable
+                                    pauseOnHover
+                                />
                             </div>
                             <div className="d-flex pt-2">
                                 <button className="btn btn-primary px-3 bi-suit-heart-fill" style={{color: 'cornSilk'}} onClick={ addToWishlist }>
