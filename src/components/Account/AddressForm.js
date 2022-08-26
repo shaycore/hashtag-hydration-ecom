@@ -6,12 +6,12 @@ class AddressForm extends Component {
   constructor() {
     super()
     this.state = {
-      firstName: "",
-      lastName: "",
-      address: "",
-      city: "",
-      state: "",
-      zipCode: "",
+      firstName: '',
+      lastName: '',
+      address: '',
+      city: '',
+      state: '',
+      zipCode: '',
     }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -38,24 +38,24 @@ class AddressForm extends Component {
   //     });
   //   }
   // }
-  //async save(ev){
-  //   ev.preventDefault();
-  //   const updatedaddress = { 
-  //     firstName: this.props.address.firstName,
-  //     lastName: this.props.address.lastName,
-  //     address: this.props.address.address,
-  //     city: this.props.address.city,
-  //     state: this.props.address.state,
-  //     zipCode: this.props.address.zipCode,
-  //   };
-  //   console.log(updatedaddress)
-  //   try {
-  //     await this.props.update(updatedAddress);
-  //   }
-  //   catch(err){
-  //     this.setState({ error: err.response.data });
-  //   }
-  // }
+  async save(ev){
+    ev.preventDefault();
+    const updatedaddress = { 
+      firstName: this.props.address.firstName,
+      lastName: this.props.address.lastName,
+      address: this.props.address.address,
+      city: this.props.address.city,
+      state: this.props.address.state,
+      zipCode: this.props.address.zipCode,
+    };
+    console.log(updatedaddress)
+    try {
+      await this.props.update(updatedaddress);
+    }
+    catch(err){
+      this.setState({ error: err.response.data });
+    }
+  }
   onChange(ev){
     this.setState({ [ev.target.name]: ev.target.value });
   }

@@ -90,5 +90,6 @@ module.exports = {
   LineItem,
   Order,
   Review,
+  Address,
   syncAndSeed
 };

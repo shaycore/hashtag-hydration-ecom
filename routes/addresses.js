@@ -14,17 +14,11 @@ app.get('/', isLoggedIn, async(req, res, next)=> {
 
 app.post('/', isLoggedIn, async(req, res, next)=> {
   try {
-    res.status(201).send(await Address.create(req.body)
-      // {
-      //   firstName: req.body.firstName,
-      //   lastName: req.body.lastName,
-      //   address: req.body.address,
-      //   city: req.body.city,
-      //   state: req.body.state,
-      //   zipCode: req.body.zipCode,
-      // }
-    )
-    // res.status(201).send(response);
+    console.log(req.body);
+    console.log(Address);
+    
+    const response = await Address.create(req.body)
+    res.status(201).send(response);
   }
   catch(ex){
     next(ex);
