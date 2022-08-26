@@ -1,5 +1,5 @@
 # Shopping experience web application
-Hashtag Hydration is a shopping web app. User can add items to cart or wishlist, moving items from the wishlist when they want to add to cart. Your cart will be saved when you logout. You can modify quantities of items, explore our water bottles and finally checkout to place an order. As an Admin account you can manage inventories, users, and orders. The user can then checkout using our integrated Stripe checkout.
+Hashtag Hydration is a shopping web app. Users can add items to cart or wishlist, moving items from the wishlist when they want to add to cart. Your cart will be saved when you logout. You can modify quantities of items, browse available products and checkout to place an order using integrated Stripe. As an Admin account you can manage inventories, users, and orders. 
 
 ## Technologies used for HashTag Hydration:
 1. JavaScript
@@ -22,11 +22,17 @@ Hashtag Hydration is a shopping web app. User can add items to cart or wishlist,
 To run this App locally:
 
 - Git clone this repo.
-- Open up the app and run 'npm install'
-- Seed database 'npm run seed'
-- Start app dev env 'npm run dev:start'
-- Open browser 'localhost:3000'
-- Other commands:
+- Open up the app: 'npm install'
+- Seed the database: 'npm run seed'
+
+## Development
+To start the app in development mode:
+
+- 'npm run dev:start'
+- The app will be available at 'localhost:3000'
+
+## Other commands:
+
 - Sync and seed your database by running npm run seed. Running npm run start:dev will make great things happen!
 - start:dev will both start your server and build your client side files using webpack
 
