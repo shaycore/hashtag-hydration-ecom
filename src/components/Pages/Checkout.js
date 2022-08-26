@@ -53,7 +53,7 @@ const Checkout = ({ products, cart})=> {
               }})}
               <tr>
                 <td className='subtotal fw-bold' colSpan='2'>Grand Total</td>
-                <td className='subtotal' colSpan='4'>${(Math.round((cartTotal * 0.04+ (cartTotal))))}</td>
+                <td className='subtotal' colSpan='4'>${Math.round(cartTotal * 100) / 100}</td>
               </tr>
             </tbody>
           </table>
