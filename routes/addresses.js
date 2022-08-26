@@ -14,9 +14,6 @@ app.get('/', isLoggedIn, async(req, res, next)=> {
 
 app.post('/', isLoggedIn, async(req, res, next)=> {
   try {
-    console.log(req.body);
-    console.log(Address);
-    
     const response = await Address.create(req.body)
     res.status(201).send(response);
   }

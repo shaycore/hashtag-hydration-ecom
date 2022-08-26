@@ -5,8 +5,7 @@ class StripeSuccess extends Component {
   render() {
     return (
       <div>
-        <hr />
-        <div>Success! Thanks for your order!</div>
+        <div>Success! Thanks for your order, you'll be hydrated soon!</div>
       </div>
     )
   }
