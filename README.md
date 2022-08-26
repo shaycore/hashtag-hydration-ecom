@@ -25,7 +25,7 @@ Git clone this repo.
 Open up the app and run 'npm install'
 Seed database 'npm run seed'
 Start app dev env 'npm run dev:start'
-Open browser 'localhost:300'
+Open browser 'localhost:3000'
 Other commands
 Sync and seed your database by running npm run seed. Running npm run start:dev will make great things happen!
 
