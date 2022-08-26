@@ -11,7 +11,7 @@ class AddressForm extends Component {
       address: '',
       city: '',
       state: '',
-      zipCode: '',
+      zipCode: ''
     }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -65,7 +65,7 @@ class AddressForm extends Component {
   }
   render() {
     const { onChange, onSubmit } = this;
-    const { firstName, lastName, address, city, state, zipCode } = this.state;
+    const { firstName, lastName, address, city, state, zipCode, email } = this.state;
     return (
       <div>
         <h2>Please enter your address in the fields below:</h2>
@@ -76,7 +76,7 @@ class AddressForm extends Component {
               name='firstName'  
               value={ firstName } 
               onChange={ onChange }
-              //onChange={ ev => this.setState({ firstName: ev.target.value })}/>
+              className='form-control'
             />
             <input 
               required
@@ -84,13 +84,23 @@ class AddressForm extends Component {
               name='lastName'  
               value={ lastName } 
               onChange={ onChange }
+              className='form-control'
             />
+            {/* <input 
+              required
+              placeholder='Email' 
+              name='email'  
+              value={ email } 
+              onChange={ onChange }
+              className='form-control'
+            /> */}
             <input 
               required
               placeholder='Address' 
               name='address'  
               value={ address } 
               onChange={ onChange }
+              className='form-control'
             />
             <input 
               required
@@ -98,6 +108,7 @@ class AddressForm extends Component {
               name='city'  
               value={ city } 
               onChange={ onChange }
+              className='form-control'
             />
             <input 
               required
@@ -105,6 +116,7 @@ class AddressForm extends Component {
               name='state'  
               value={ state } 
               onChange={ onChange }
+              className='form-control'
             />
             <input 
               required
@@ -112,6 +124,7 @@ class AddressForm extends Component {
               name='zipCode'  
               value={ zipCode } 
               onChange={ onChange }
+              className='form-control'
             />
             <button>Save</button>
         </form>

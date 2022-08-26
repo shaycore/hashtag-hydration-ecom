@@ -9,7 +9,7 @@ import wishlist from './wishlist';
 import lineitems from './lineitems';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-
+import addressStore from './addressStore';
 
 const reducer = combineReducers({
   auth,
@@ -19,7 +19,8 @@ const reducer = combineReducers({
   orders,
   reviews,
   wishlist,
-  lineitems
+  lineitems,
+  addressStore  
 });
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
@@ -34,3 +35,4 @@ export * from './orders';
 export * from './reviews';
 export * from './wishlist';
 export * from './lineitems';
+export * from './addressStore';
