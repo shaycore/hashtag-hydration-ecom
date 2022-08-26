@@ -25,7 +25,6 @@ import AboutUs from './Pages/AboutUs';
 import Wishlist from './Wishlist';
 import Checkout from './Pages/Checkout';
 import StripeSuccess from './StripeSuccess';
-import StripeFail from './StripeFail';
 import SignUp from './SignUp';
 
 
