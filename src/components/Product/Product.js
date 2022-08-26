@@ -79,11 +79,14 @@ class _Product extends Component {
                                     </div>
                                 </div>
                                 <button className="btn btn-primary px-3" type='submit' onClick={ handleSubmit }>
+                                    <i className="bi-cart"> </i>
                                     Add to Cart
                                 </button>
                             </div>
                             <div className="d-flex pt-2">
-                                <button className="btn btn-primary px-3" style={{color: 'cornSilk'}} onClick={ addToWishlist }>Add to Wishlist</button>
+                                <button className="btn btn-primary px-3 bi-suit-heart-fill" style={{color: 'cornSilk'}} onClick={ addToWishlist }>
+                                <i> Wishlist</i>
+                                </button>
                             </div>
                         </div>
                     </div>

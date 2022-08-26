@@ -48,6 +48,8 @@ const syncAndSeed = async() => {
   const admin = await User.create({ 
     username: 'admin', 
     password: 'password',
+    firstName: 'Grace',
+    lastName: 'Shopper',
     email: 'admin@fullstackacademy.com',
     isGuest: false,
     isAdmin: true,
