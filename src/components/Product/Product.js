@@ -95,7 +95,9 @@ class _Product extends Component {
                                     <i className="bi-cart"> </i>
                                     Add to Cart
                                 </button>
-                                <ToastContainer
+                            </div>
+                            <p>
+                                    <ToastContainer
                                     position="top-left"
                                     autoClose={5000}
                                     hideProgressBar={true}
@@ -105,7 +107,7 @@ class _Product extends Component {
                                     draggable
                                     pauseOnHover
                                 />
-                            </div>
+                            </p>
                             <div className="d-flex pt-2">
                                 <button className="btn btn-primary px-3 bi-suit-heart-fill" style={{color: 'cornSilk'}} onClick={ addToWishlist }>
                                 <i> Wishlist</i>
