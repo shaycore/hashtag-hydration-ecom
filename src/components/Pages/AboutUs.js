@@ -65,7 +65,20 @@ export const About = (props) => {
             </div>
           </div>
         </div>
-        <img src="https://www.hydroflask.com/media/wysiwyg/hf-2-our-story-dog-above-lake-d.jpg" style={{maxWidth: '100%'}}></img>
+        <br />
+        <br />
+        <div className="text-center mb-4 px-5">
+          <h4>o·a·sis: <i>noun</i></h4>
+          <h6>a fertile spot in a desert, where water is found.</h6>
+          <small>
+            <i>
+              a pleasant or peaceful area or period in the midst of a difficult, troubled, or hectic place or situation
+            </i>
+          </small>
+        </div>
+        <br />
+        <br />
+        <img src="https://i.postimg.cc/8kbfvKDL/Screen-Shot-2022-08-25-at-8-55-52-PM.png" style={{width: '100%'}}></img>
 
     </div>
   );
