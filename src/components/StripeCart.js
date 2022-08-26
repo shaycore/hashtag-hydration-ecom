@@ -16,7 +16,7 @@ const Cart = ({ cart }) => {
   return (
     <>
       <button onClick={() => { stripeSession() }}>
-        Checkout
+        Submit
       </button>
     </>
   );

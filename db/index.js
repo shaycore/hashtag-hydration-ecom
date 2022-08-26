@@ -55,6 +55,35 @@ const syncAndSeed = async() => {
     isAdmin: true,
     avatar: 'http://cdn.onlinewebfonts.com/svg/img_325788.png'
   });
+  
+  //Seed 2 address for prof user
+  const profShipAddress = await Address.create({ 
+    firstName: 'Harry', 
+    lastName: 'Waters',
+    address: '1767 Ocean Ave',
+    city: 'Brooklyn',
+    state: 'NY',
+    zipCode: 11230,
+    country: 'USA',
+  });
+  const profBillingAddress = await Address.create({ 
+    firstName: 'Eric', 
+    lastName: 'Katz',
+    address: '123 Water Steet',
+    city: 'New York',
+    state: 'NY',
+    zipCode: 10005,
+    country: 'USA',
+  });
+  profShipAddress.userId = prof.id;
+  profBillingAddress.userId = prof.id;
+  
+  await Promise.all([
+    profShipAddress.save(),
+    profBillingAddress.save()
+  ]);
+
+
   await Promise.all(
     REVIEWS.map((review)=> Review.create(review))
   );
@@ -82,6 +111,8 @@ const syncAndSeed = async() => {
   //Seed Wishlist
   await prof.addToWishlist({ product: items[4] });
   await prof.addToWishlist({ product: items[5] });
+  //Seed 2 addresses for Pro Test
+
 };
 
 

@@ -19,6 +19,7 @@ const addressStore = (state = [], action)=> {
 export const fetchAddresses = ()=> {
   return async(dispatch) => {
     const addresses = (await axios.get('/api/addresses')).data;
+    console.log(addresses);
     dispatch({ type: 'SET_ADDRESSES', addresses });
   };
 };  
