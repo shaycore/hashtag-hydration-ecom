@@ -1,7 +1,7 @@
-# H1 Shopping experience web application
+# Shopping experience web application
 Hashtag Hydration is a shopping web app. User can add items to cart or wishlist, moving items from the wishlist when they want to add to cart. Your cart will be saved when you logout. You can modify quantities of items, explore our water bottles and finally checkout to place an order. As an Admin account you can manage inventories, users, and orders. The user can then checkout using our integrated Stripe checkout.
 
-## H2 Technologies used for HashTag Hydration:
+##Technologies used for HashTag Hydration:
 1. JavaScript
 2. React
 3. Redux
@@ -18,7 +18,7 @@ Hashtag Hydration is a shopping web app. User can add items to cart or wishlist,
 14. Mocha
 15. Chai
 
-## H2 Setup:
+##Setup:
 To run this App locally:
 
 Git clone this repo.
