@@ -148,7 +148,7 @@ return (
                     </div>
                     <form action="">
                         <div className="input-group">
-                            <input type="text" class="form-control border-white p-4" placeholder="Email Goes Here"/>
+                            <input type="text" className="form-control border-white p-4" placeholder="Email Goes Here"/>
                             <div className="input-group-append">
                                 <button className="btn btn-primary px-4">Subscribe</button>
                             </div>
