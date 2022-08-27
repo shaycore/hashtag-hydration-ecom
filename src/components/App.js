@@ -26,6 +26,7 @@ import Wishlist from './Wishlist';
 import Checkout from './Pages/Checkout';
 import StripeSuccess from './StripeSuccess';
 import SignUp from './SignUp';
+import AddressForm from './Account/AddressForm';
 
 
 
@@ -55,6 +56,7 @@ class App extends React.Component{
               <Route exact path='/account/orderhistory' component={ OrderHistory } />
               <Route exact path='/account/orderhistory/:id' component={ Order } />
               <Route exact path='/account/addressBook' component={ AddressBook } />
+              <Route exact path='/account/addressBook/new' component={ AddressForm } />
               <Route exact path='/products' component={ Products } />
               <Route exact path='/products/:id' component={ Product } />
               <Route exact path='/signin' component={ SignIn } />

@@ -64,7 +64,7 @@ const syncAndSeed = async() => {
     city: 'Brooklyn',
     state: 'NY',
     zipCode: 11230,
-    country: 'USA',
+    country: 'United States',
   });
   const profBillingAddress = await Address.create({ 
     firstName: 'Eric', 
@@ -73,7 +73,7 @@ const syncAndSeed = async() => {
     city: 'New York',
     state: 'NY',
     zipCode: 10005,
-    country: 'USA',
+    country: 'United States',
   });
   profShipAddress.userId = prof.id;
   profBillingAddress.userId = prof.id;

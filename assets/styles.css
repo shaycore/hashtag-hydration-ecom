@@ -144,7 +144,7 @@
     top: -.5em;
   }
   
-  a {
+  a, #deleteButton {
     color: #D19C97;
     text-decoration: none;
     background-color: transparent;

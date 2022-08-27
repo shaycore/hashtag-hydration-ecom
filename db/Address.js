@@ -47,9 +47,9 @@ const Address = conn.define("address", {
     },
   },
   country: {
-    type: ENUM(countries),
+    type: STRING,
     allowNull: false,
-    defaultValue: "USA",
+    defaultValue: "United States",
     validate: {
       notEmpty: true,
     },
