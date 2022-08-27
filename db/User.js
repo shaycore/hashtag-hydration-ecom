@@ -22,7 +22,6 @@ const User = conn.define('user', {
   },
   email: {
     type: STRING,
-    allowNull: false,
     unique: true,
     validate: {
       isEmail: true,
