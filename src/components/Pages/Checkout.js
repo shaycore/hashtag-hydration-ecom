@@ -23,7 +23,15 @@ const Checkout = ({ products, cart})=> {
     <div>
 
       <div className='cart-container'>
-      <h2>Checkout</h2>
+      <div className="container-fluid bg-secondary mb-5">
+          <div className="d-flex flex-column align-items-center justify-content-center" >
+              <h1 className="font-weight-semi-bold text-uppercase mb-3">Check Out</h1>
+              <div className="d-inline-flex">
+                  <p className="m-0 px-2">-</p>
+                  <p className="m-0">Check Out</p>
+              </div>
+          </div>
+      </div> 
         <div className='card-header'>
           <h4>Checkout Order</h4>
         </div>
@@ -53,7 +61,7 @@ const Checkout = ({ products, cart})=> {
               }})}
               <tr>
                 <td className='subtotal fw-bold' colSpan='2'>Grand Total</td>
-                <td className='subtotal' colSpan='4'>${(Math.round((cartTotal * 0.04+ (cartTotal))))}</td>
+                <td className='subtotal' colSpan='4'>${Math.round(cartTotal * 100) / 100}</td>
               </tr>
             </tbody>
           </table>

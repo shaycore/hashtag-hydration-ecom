@@ -58,7 +58,17 @@ class Account extends Component {
         const { logout } = this.props;
         return (
             <div>
-                <h3>Account Details</h3>
+                <div className='cart-container'>
+                    <div className="container-fluid bg-secondary mb-5">
+                    <div className="d-flex flex-column align-items-center justify-content-center" >
+                        <h1 className="font-weight-semi-bold text-uppercase mb-3">Account Info</h1>
+                    <div className="d-inline-flex">
+                        <p className="m-0 px-2">-</p>
+                        <p className="m-0">Account Info</p>
+                    </div>
+                </div>
+            </div> 
+    
                 <Link to={'/account/orderhistory'}>View Past Orders</Link>
                 <form onSubmit={ save }>
                     <p>Profile Picture</p>
@@ -75,6 +85,7 @@ class Account extends Component {
                 </form>
                 <button className="btn btn-primary px-3" onClick={ logout }>Logout</button>
             </div>
+        </div>
         )
     }
 }

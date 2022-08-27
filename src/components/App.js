@@ -28,6 +28,7 @@ import StripeSuccess from './StripeSuccess';
 import SignUp from './SignUp';
 
 
+
 class App extends React.Component{
   componentDidMount(){
     this.props.exchangeToken();
