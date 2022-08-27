@@ -59,14 +59,11 @@ return (
         </div>
         </div>
         <div className="container-fluid">
-        <div className="container-fluid bg-secondary mb-5">
-
-          <div className="d-flex flex-column align-items-center justify-content-center" style={{minHeight: '300px'}}  >
-              <h1 className="font-weight-semi-bold text-uppercase mb-3">
-                  HashTag Hydration
-              </h1>
-          </div>
-          </div>
+            <div className="container-fluid bg-secondary mb-5">
+                <div className="d-flex flex-column align-items-center justify-content-center" style={{minHeight: '500px'}}  >
+                    <img src="https://i.postimg.cc/1RbWv29N/Logo-without-background-or-margins-Black.png" alt="Hashtag Hydration" style={{maxWidth:"80%"}}/>
+                </div>
+            </div>
           </div>
             <div className='carousel-container'>
                 { data.map((item, index) => {
@@ -74,7 +71,6 @@ return (
                     style={{transform: `translate(-${currentIndex * 100}%)`}}
                     key={index}>{item}</h1>})
                 }
-
             </div>
             <div className="container-fluid pt-5">
                         <div className="row px-xl-5 pb-3">
@@ -115,8 +111,7 @@ return (
                             </div>
                           </div>
             
-            <h1 className='lead'>Hydration Shop</h1>
-
+            {/* <h1 className='lead'>Hydration Shop</h1> */}
             <div className="container-fluid offer pt-5">
                 <div className="row px-xl-5">
                     <div className="col-md-6 pb-4">
@@ -182,7 +177,7 @@ return (
         </div>
         </div>
     </div>
-    <h1>Colder. Hotter. Longer. Happier.</h1>
+    <h1><i>Colder. Hotter. Longer. Happier.</i></h1>
     <img src="https://cdn.shopify.com/s/files/1/1892/2457/t/210/assets/bg__surfers_1600x.jpg?v=18983954206508048981660084240"></img>
 
     </div>
