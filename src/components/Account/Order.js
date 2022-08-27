@@ -22,26 +22,61 @@ class Order extends React.Component{
         var newDate = new Date(order.createdAt);
 
         return (
-        <div>
-            <Link to={'/account/orderhistory/'}>Return to Your Order History</Link>
-            <br />
-            <ul id='order'>
-                Order #{ order.id } <br />
-                Created at: { newDate.toString() } <br />
-                { !order.lineItems ? 
-                    null : 
-                    order.lineItems.map( lineitem => {
-                        const product = products.find( product => product.id === lineitem.productId);
-                        return (
-                            <li key={ lineitem.id }>
-                                <Link to={`/admin/products/${product.id}`}>{ product.name }</Link> - qty: { lineitem.quantity } 
-                            </li>
-                        )
-                    })
-                }
-            </ul>
 
-        </div>
+            <div>
+                <div className="container-fluid bg-secondary mb-5">
+                    <div className="d-flex flex-column align-items-center justify-content-center" style={{minHeight: '300px'}}  >
+                        <h1 className="font-weight-semi-bold text-uppercase mb-3">
+                            Order #{ order.id }
+                        </h1>
+                        <div className="d-inline-flex">
+                            <p className="m-0">
+                                <Link to={'/account/orderhistory/'}>Return to Your Order History</Link>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="container-fluid pt-5">
+                    <div className="row px-xl-5 justify-content-center">
+                        <div className="col-lg-8 table-responsive mb-5">
+                            <table className="table table-bordered text-center mb-0">
+                                <thead className="bg-secondary text-dark">
+                                    <tr>
+                                        <th>Product ID</th>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="align-middle">
+                                    { !order.lineItems ? 
+                                        null : 
+                                        order.lineItems.map( lineitem => {
+                                            const product = products.find( product => product.id === lineitem.productId);
+                                            return (
+                                                <tr key={ lineitem.id }>
+                                                    <td className="align-middle">
+                                                        #{ product.id }
+                                                    </td>
+                                                    <td className="align-middle">
+                                                        { product.name }
+                                                    </td>
+                                                    <td className="align-middle">
+                                                        { lineitem.quantity }
+                                                    </td>
+                                                    <td className="align-middle">
+                                                        ${ Number((product.price)*(lineitem.quantity)).toFixed(2) }
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
 
     }
