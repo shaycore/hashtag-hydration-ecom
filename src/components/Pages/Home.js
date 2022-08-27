@@ -178,7 +178,7 @@ return (
         </div>
     </div>
     <h1><i>Colder. Hotter. Longer. Happier.</i></h1>
-    <img src="https://cdn.shopify.com/s/files/1/1892/2457/t/210/assets/bg__surfers_1600x.jpg?v=18983954206508048981660084240"></img>
+    <img src="https://cdn.shopify.com/s/files/1/1892/2457/t/210/assets/bg__surfers_1600x.jpg?v=18983954206508048981660084240" style={{maxWidth:"100%"}}></img>
 
     </div>
     </div>
