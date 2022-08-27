@@ -122,7 +122,7 @@ const Checkout = ({ products, cart})=> {
           <div className='row'>
             <div className='col'>
               <div className='form'>
-                <label>Full Address</label>
+                <label>Street Address</label>
                 <textarea rows='3' className='form-control'></textarea>
               </div>
             </div>

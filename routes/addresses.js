@@ -3,7 +3,7 @@ const app = express.Router();
 const { isLoggedIn } = require('./middleware');
 const { Address } = require('../db');
 
-app.get('/', isLoggedIn, async(req, res, next)=> {
+app.get('/', async(req, res, next)=> {
   try {
     res.send(await Address.findAll());
   }
@@ -36,7 +36,7 @@ app.delete('/:id', isLoggedIn, async(req, res, next)=> {
   try {
     const address = await Address.findByPk(req.params.id);
     await address.destroy();
-    res.send.status(204);
+    res.sendStatus(204);
   }
   catch(ex){
     next(ex);

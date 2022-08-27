@@ -71,32 +71,31 @@ class Account extends Component {
                 <div className="text-center mb-4">
                 <div className='form-group'>
                 <form onSubmit={ save }>
-                    <h2 class="section-title px-5"><span class="px-2">Update and View Profile</span></h2>
+                    <h2 className="section-title px-5"><span className="px-2">Update and View Profile</span></h2>
                     <div>
                         <p>Profile Picture</p>
                     </div>
                     <div>
                     { avatar && <img src={ avatar } style={{ height: 300, width: 300 }} /> }<br />
-                    <input type='file' ref={ el => this.el = el }/>
+                    <input style={{ width: 300, dislay: 'block', margin: '0 auto' }} className="form-control" type='file' ref={ el => this.el = el }/>
                     </div>
-                    <p>First Name</p>
-                    <input value={ firstName || '' } onChange={ ev => this.setState({ firstName: ev.target.value })}></input>
-                    <p>Last Name</p>
-                    <input value={ lastName || ''} onChange={ ev => this.setState({ lastName: ev.target.value })}></input>
-                    <p>Email Address</p>
-                    <input value={ email || ''} onChange={ ev => this.setState({ email: ev.target.value })}></input><br />
-                    <br></br>
+                    <p className='mt-3 mb-0'>First Name</p>
+                    <input style={{ width: '70%', dislay: 'block', margin: '0 auto' }} className="form-control" value={ firstName || '' } onChange={ ev => this.setState({ firstName: ev.target.value })}></input>
+                    <p className='mt-3 mb-0'>Last Name</p>
+                    <input style={{ width: '70%', dislay: 'block', margin: '0 auto' }} className="form-control" value={ lastName || ''} onChange={ ev => this.setState({ lastName: ev.target.value })}></input>
+                    <p className='mt-3 mb-0'>Email Address</p>
+                    <input style={{ width: '70%', dislay: 'block', margin: '0 auto' }} className="form-control" value={ email || ''} onChange={ ev => this.setState({ email: ev.target.value })}></input><br />
                         <button className="btn btn-primary px-3">Save Changes</button>
                 </form>
                 </div>
                 <div className='font-weight-semi-bold mb-3'>
-                <h2 class="section-title px-5"><span class="px-2">Address History</span></h2>
+                <h2 className="section-title px-5 mt-3"><span className="px-2">Address Book</span></h2>
                 <div>
-                    <Link to='/account/addressbook'>Update Address</Link>
+                    <Link to='/account/addressbook'>Saved Addresses</Link>
                 </div>
                 </div>
                 <div className='font-weight-semi-bold mb-3'>
-                <h2 class="section-title px-5"><span class="px-2">Review Past Orders</span></h2>
+                <h2 className="section-title px-5"><span className="px-2">Review Past Orders</span></h2>
                 <div>
                     <Link to={'/account/orderhistory'}>Order History</Link>
                 </div>
