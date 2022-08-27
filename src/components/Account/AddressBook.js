@@ -45,7 +45,7 @@ class AddressBook extends React.Component{
                                 { address.city }, { address.state } { address.zipCode }<br />
                                 { address.country }
                               </p>
-                              <Link to='/account/addressbook/edit' style={{ textDecoration: 'none'}} id='editLink'>Edit</Link>
+                              <Link to={`/account/addressbook/${address.id}`} style={{ textDecoration: 'none'}} id='editLink'>Edit</Link>
                               <button onClick={ () => deleteAddress(address) } id='deleteButton' style={{ border: 'none' }}>Delete</button>
                             </li>
                         )

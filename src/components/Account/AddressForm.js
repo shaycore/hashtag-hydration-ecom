@@ -47,7 +47,7 @@ class AddressForm extends Component {
                         <input className="form-control" value={ lastName } onChange={ ev => this.setState({ lastName: ev.target.value })}></input><br />
                     </div>
                     <div className="control-group">
-                        <p style={{ marginBottom: 0 }}>Address</p>
+                        <p style={{ marginBottom: 0 }}>Street Address</p>
                         <input className="form-control" value={ address } onChange={ ev => this.setState({ address: ev.target.value })}></input><br />
                     </div>
                     <div className="control-group">

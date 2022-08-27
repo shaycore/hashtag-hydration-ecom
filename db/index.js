@@ -69,7 +69,7 @@ const syncAndSeed = async() => {
   const profBillingAddress = await Address.create({ 
     firstName: 'Eric', 
     lastName: 'Katz',
-    address: '123 Water Steet',
+    address: '123 Water Street',
     city: 'New York',
     state: 'NY',
     zipCode: 10005,

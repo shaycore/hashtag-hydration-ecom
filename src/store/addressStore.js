@@ -52,7 +52,7 @@ export const deleteAddress = (address) => {
   }
 }
 
-export const updateAddress = (address) => {
+export const updateAddress = (address, history) => {
   return async(dispatch) => {
     const token = window.localStorage.getItem('token');
     if(token) {
@@ -61,7 +61,8 @@ export const updateAddress = (address) => {
           authorization: token
         }
       })).data;
-      dispatch({ type: 'UPDATE_ADDRESS', address })
+      dispatch({ type: 'UPDATE_ADDRESS', address });
+      history.push('/account/addressbook');
     }
   }
 }
