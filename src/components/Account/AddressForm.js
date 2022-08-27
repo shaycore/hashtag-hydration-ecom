@@ -68,7 +68,7 @@ class AddressForm extends Component {
     const { firstName, lastName, address, city, state, zipCode, email } = this.state;
     return (
       <div>
-        <h2>Please enter your address in the fields below:</h2>
+        <p className='text-dark font-weight-medium mb-0 mr-3'>Please enter your address in the fields below:</p>
         <form onSubmit={ onSubmit }>
             <input 
               required
@@ -126,7 +126,7 @@ class AddressForm extends Component {
               onChange={ onChange }
               className='form-control'
             />
-            <button>Save</button>
+            <button className='btn btn-primary btn-minus'>Save</button>
         </form>
       </div>
     )

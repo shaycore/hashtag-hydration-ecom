@@ -58,7 +58,7 @@ class Account extends Component {
         const { logout } = this.props;
         return (
             <div>
-                <div className='cart-container'>
+                <div className='d-flex flex-column align-items-center justify-content-center'>
                     <div className="container-fluid bg-secondary mb-5">
                     <div className="d-flex flex-column align-items-center justify-content-center" >
                         <h1 className="font-weight-semi-bold text-uppercase mb-3">Account Info</h1>
@@ -68,22 +68,41 @@ class Account extends Component {
                     </div>
                 </div>
             </div> 
-    
-                <Link to={'/account/orderhistory'}>View Past Orders</Link>
+                <div className="text-center mb-4">
+                <div className='form-group'>
                 <form onSubmit={ save }>
-                    <p>Profile Picture</p>
-                    { avatar && <img src={ avatar } style={{ height: 150, width: 150 }} /> }<br />
+                    <h2 class="section-title px-5"><span class="px-2">Update and View Profile</span></h2>
+                    <div>
+                        <p>Profile Picture</p>
+                    </div>
+                    <div>
+                    { avatar && <img src={ avatar } style={{ height: 300, width: 300 }} /> }<br />
                     <input type='file' ref={ el => this.el = el }/>
-                    <Link to='/account/addressbook'>Address book</Link>
+                    </div>
                     <p>First Name</p>
                     <input value={ firstName || '' } onChange={ ev => this.setState({ firstName: ev.target.value })}></input>
                     <p>Last Name</p>
                     <input value={ lastName || ''} onChange={ ev => this.setState({ lastName: ev.target.value })}></input>
                     <p>Email Address</p>
                     <input value={ email || ''} onChange={ ev => this.setState({ email: ev.target.value })}></input><br />
-                    <button className="btn btn-primary px-3">Save Changes</button>
+                    <br></br>
+                        <button className="btn btn-primary px-3">Save Changes</button>
                 </form>
+                </div>
+                <div className='font-weight-semi-bold mb-3'>
+                <h2 class="section-title px-5"><span class="px-2">Address History</span></h2>
+                <div>
+                    <Link to='/account/addressbook'>Update Address</Link>
+                </div>
+                </div>
+                <div className='font-weight-semi-bold mb-3'>
+                <h2 class="section-title px-5"><span class="px-2">Review Past Orders</span></h2>
+                <div>
+                    <Link to={'/account/orderhistory'}>Order History</Link>
+                </div>
+                </div>
                 <button className="btn btn-primary px-3" onClick={ logout }>Logout</button>
+            </div>
             </div>
         </div>
         )

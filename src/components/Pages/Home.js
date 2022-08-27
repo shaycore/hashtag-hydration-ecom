@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+
 const Home = () => {
     const image1 =  <img
     src="https://www.hydroflask.com/media/wysiwyg/hf-3-our-story-sparks-lake-d.jpg"
@@ -57,9 +58,16 @@ return (
             </div>
         </div>
         </div>
-            <div className='jumbotron'>
-                <h1>HashTag Hydration</h1>
-            </div>
+        <div className="container-fluid">
+        <div className="container-fluid bg-secondary mb-5">
+
+          <div className="d-flex flex-column align-items-center justify-content-center" style={{minHeight: '300px'}}  >
+              <h1 className="font-weight-semi-bold text-uppercase mb-3">
+                  HashTag Hydration
+              </h1>
+          </div>
+          </div>
+          </div>
             <div className='carousel-container'>
                 { data.map((item, index) => {
                 return <h1 className='carousel-item'
