@@ -1,24 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchAddresses, } from "../../store";
-import axios from 'axios';
+import { deleteAddress, fetchAddresses } from "../../store";
 
 class AddressBook extends React.Component{
     constructor() {
         super();
         this.state= {
         };
+        this.deleteAddress = this.deleteAddress.bind(this);
     }
     componentDidMount(){
         this.props.fetchAddresses();
     }
     componentDidUpdate(){
     }
+    deleteAddress(address) {
+      this.props.deleteAddress(address);
+    }
     render() {
       const { addresses, auth } = this.props;
       const userAddresses = addresses.filter(address => address.userId === auth.id)
-
+      const { deleteAddress } = this;
       return (
         <div>
             <div className="container-fluid bg-secondary mb-5">
@@ -42,8 +45,8 @@ class AddressBook extends React.Component{
                                 { address.city }, { address.state } { address.zipCode }<br />
                                 { address.country }
                               </p>
-                              <Link to='/account/addressbook/edit' style={{ textDecoration: 'none'}}>Edit</Link>
-                              <button id='deleteButton' style={{ border: 'none' }}>Delete</button>
+                              <Link to='/account/addressbook/edit' style={{ textDecoration: 'none'}} id='editLink'>Edit</Link>
+                              <button onClick={ () => deleteAddress(address) } id='deleteButton' style={{ border: 'none' }}>Delete</button>
                             </li>
                         )
                     })
@@ -62,31 +65,10 @@ const mapStateToProps = ({ addresses, auth }) => {
 
 const mapDispatch = (dispatch)=> {
     return {
-        fetchAddresses: ()=> dispatch(fetchAddresses()),
+        fetchAddresses: () => dispatch(fetchAddresses()),
+        deleteAddress: (address) => dispatch(deleteAddress(address))
     };
 };
 
 
 export default connect(mapStateToProps, mapDispatch)(AddressBook);
-
-// render() {
-//   // const { addresses, auth } = this.props;
-//   // console.log(addresses);
-//   // const userAddresses = addresses.filter(address => address.userId === auth.id);
-//   return (
-//     <div>
-//       <div className="container-fluid bg-secondary mb-5">
-//         <div className="d-flex flex-column align-items-center justify-content-center" >
-//             <h1 className="font-weight-semi-bold text-uppercase mb-3">Address Book</h1>
-//             <div className="d-inline-flex">
-//                 <p className="m-0 px-2">-</p>
-//                 <p className="m-0">Address Book</p>
-//             </div>
-//         </div>
-//     </div> 
-//       <h3 className="font-weight-semi-bold">Your Address Book has () addresses</h3>
-//       <div><AddressForm /></div>
-//     </div>
-//   )
-// }
-  

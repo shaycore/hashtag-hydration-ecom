@@ -48,7 +48,6 @@ export const deleteAddress = (address) => {
         }
       });
       dispatch({ type: 'DELETE_ADDRESS', address});
-      history.push('/api/addresses')
     }
   }
 }
