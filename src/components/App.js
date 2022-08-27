@@ -70,7 +70,7 @@ class App extends React.Component{
               <Route exact path='/wishlist' component={ Wishlist } />
               <Route exact path='/cart' component={ Cart } />
               <Route exact path='/checkout' component={Checkout}/>
-              <Route path='/success' component={StripeSuccess}/>
+              <Route exact path='/success' component={StripeSuccess}/>
               <Route path="" component={NotFound} />
             </Switch>
               

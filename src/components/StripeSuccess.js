@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { processOrder } from "../store";
+
 class StripeSuccess extends Component {
+  componentDidMount(){
+    this.props.processOrder();
+  }
   render() {
     return (
       <div>
@@ -25,4 +31,10 @@ class StripeSuccess extends Component {
   }
 }
 
-export default StripeSuccess;
+const mapDispatch = (dispatch) => {
+  return {
+      processOrder: () => dispatch(processOrder())
+  };
+}
+
+export default connect((state) => state, mapDispatch)(StripeSuccess);
