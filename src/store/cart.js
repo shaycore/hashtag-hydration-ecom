@@ -13,6 +13,18 @@ const cart = (state = { lineItems: [ ] }, action)=> {
 };
 
 
+export const processOrder = ()=> {
+  return async(dispatch)=> {
+    const response = await axios.post('/api/orders', {
+      headers: {
+        authorization: window.localStorage.getItem('token')
+      }
+    });
+    console.log(response.data)
+    dispatch({ type: 'SET_CART', cart: response.data });
+  };
+};
+
 export const addToCart = (product, diff)=> {
   return async(dispatch, getState)=> {
     const lineItem = getState().cart.lineItems.find(lineItem => lineItem.productId === product.id) || { quantity: 0};
