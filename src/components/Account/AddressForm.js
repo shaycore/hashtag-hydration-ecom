@@ -1,146 +1,86 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createAddress } from '../../store/addressStore'
+import { createAddress } from '../../store';
+import { Link } from 'react-router-dom';
 
 class AddressForm extends Component {
-  constructor() {
-    super()
-    this.state = {
-      firstName: '',
-      lastName: '',
-      address: '',
-      city: '',
-      state: '',
-      zipCode: ''
-    }
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-  // componentDidMount(){
-  //   this.setState({ 
-  //     firstName: this.props.address.firstName,
-  //     lastName: this.props.address.lastName,
-  //     address: this.props.address.address,
-  //     city: this.props.address.city,
-  //     state: this.props.address.state,
-  //     zipCode: this.props.address.zipCode,
-  //   });
-  // }
-  // componentDidUpdate(prevProps){
-  //   if(!prevProps.address.id && this.props.address.id){
-  //     this.setState({ 
-  //       firstName: this.props.address.firstName,
-  //       lastName: this.props.address.lastName,
-  //       address: this.props.address.address,
-  //       city: this.props.address.city,
-  //       state: this.props.address.state,
-  //       zipCode: this.props.address.zipCode,
-  //     });
-  //   }
-  // }
-  async save(ev){
-    ev.preventDefault();
-    const updatedaddress = { 
-      firstName: this.props.address.firstName,
-      lastName: this.props.address.lastName,
-      address: this.props.address.address,
-      city: this.props.address.city,
-      state: this.props.address.state,
-      zipCode: this.props.address.zipCode,
-    };
-    console.log(updatedaddress)
-    try {
-      await this.props.update(updatedaddress);
-    }
-    catch(err){
-      this.setState({ error: err.response.data });
-    }
-  }
-  onChange(ev){
-    this.setState({ [ev.target.name]: ev.target.value });
-  }
-  async onSubmit(ev){
-    ev.preventDefault();
-    await this.props.createAddress({ ...this.state });
-  }
-  render() {
-    const { onChange, onSubmit } = this;
-    const { firstName, lastName, address, city, state, zipCode, email } = this.state;
-    return (
-      <div>
-        <p className='text-dark font-weight-medium mb-0 mr-3'>Please enter your address in the fields below:</p>
-        <form onSubmit={ onSubmit }>
-            <input 
-              required
-              placeholder='First Name' 
-              name='firstName'  
-              value={ firstName } 
-              onChange={ onChange }
-              className='form-control'
-            />
-            <input 
-              required
-              placeholder='Last Name' 
-              name='lastName'  
-              value={ lastName } 
-              onChange={ onChange }
-              className='form-control'
-            />
-            {/* <input 
-              required
-              placeholder='Email' 
-              name='email'  
-              value={ email } 
-              onChange={ onChange }
-              className='form-control'
-            /> */}
-            <input 
-              required
-              placeholder='Address' 
-              name='address'  
-              value={ address } 
-              onChange={ onChange }
-              className='form-control'
-            />
-            <input 
-              required
-              placeholder='City' 
-              name='city'  
-              value={ city } 
-              onChange={ onChange }
-              className='form-control'
-            />
-            <input 
-              required
-              placeholder='State' 
-              name='state'  
-              value={ state } 
-              onChange={ onChange }
-              className='form-control'
-            />
-            <input 
-              required
-              placeholder='Postal Code' 
-              name='zipCode'  
-              value={ zipCode } 
-              onChange={ onChange }
-              className='form-control'
-            />
-            <button className='btn btn-primary btn-minus'>Save</button>
-        </form>
-      </div>
-    )
-  }
-}
-
-const mapStateToProps = (state) => state;
-
-const mapDispatch = (dispatch)=> {
-    return {
-        createAddress: (address) => {
-          dispatch(createAddress(address))
+    constructor() {
+        super();
+        this.state = {
+            firstName: '',
+            lastName: '',
+            address: '',
+            city: '',
+            state: '',
+            zipCode: '',
+            country: ''
         }
-    };
+        this.save = this.save.bind(this);
+    }
+    save(ev) {
+        ev.preventDefault();
+        const newAddress = {
+            userId: this.props.auth.id,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            address: this.state.address,
+            city: this.state.city,
+            state: this.state.state,
+            zipCode: this.state.zipCode,
+            country: this.state.country
+        };
+        this.props.createAddress(newAddress);
+    }
+    render() {
+        const { firstName, lastName, address, city, state, zipCode, country } = this.state;
+        const { save } = this;
+        return (
+            <div className='mt-5' style={{ maxWidth: '800px', width: '50%', dislay: 'block', margin: '0 auto' }}>
+                <h4 className='text-center'>Add an Address</h4>
+                <form onSubmit={ save }>
+                    <div className="control-group">
+                        <p style={{ marginBottom: 0 }}>First Name</p>
+                        <input className="form-control" value={ firstName } onChange={ ev => this.setState({ firstName: ev.target.value })}></input><br />
+                    </div>
+                    <div className="control-group">
+                        <p style={{ marginBottom: 0 }}>Last Name</p>
+                        <input className="form-control" value={ lastName } onChange={ ev => this.setState({ lastName: ev.target.value })}></input><br />
+                    </div>
+                    <div className="control-group">
+                        <p style={{ marginBottom: 0 }}>Street Address</p>
+                        <input className="form-control" value={ address } onChange={ ev => this.setState({ address: ev.target.value })}></input><br />
+                    </div>
+                    <div className="control-group">
+                        <p style={{ marginBottom: 0 }}>City</p>
+                        <input className="form-control" value={ city } onChange={ ev => this.setState({ city: ev.target.value })}></input><br />
+                    </div>
+                    <div className="control-group">
+                        <p style={{ marginBottom: 0 }}>State</p>
+                        <input className="form-control" value={ state } onChange={ ev => this.setState({ state: ev.target.value })}></input><br />
+                    </div>
+                    <div className="control-group">
+                        <p style={{ marginBottom: 0 }}>Zip Code</p>
+                        <input className="form-control" value={ zipCode } onChange={ ev => this.setState({ zipCode: ev.target.value })}></input><br />
+                    </div>
+                    <div className="control-group">
+                        <p style={{ marginBottom: 0 }}>Country</p>
+                        <input className="form-control" value={ country } onChange={ ev => this.setState({ country: ev.target.value })}></input><br />
+                    </div>
+                    <div className='text-center'>
+                        <Link to='/account/addressbook'><button className="btn btn-primary py-2 px-4 mr-5" >Cancel</button></Link>
+                        <button className="btn btn-primary py-2 px-4 ml-5" disabled={ !firstName || !lastName || !address || !city || !state || !zipCode || !country}>Save</button>
+                    </div>
+                </form>
+            </div>
+
+        )
+    }
 };
 
-export default connect(mapStateToProps, mapDispatch)(AddressForm)
+const mapDispatchToProps = (dispatch, { history }) => {
+    return {
+        createAddress: (address) => dispatch(createAddress(address, history))
+    }
+}
+
+export default connect(state => state, mapDispatchToProps)(AddressForm);

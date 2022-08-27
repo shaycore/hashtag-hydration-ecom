@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const addressStore = (state = [], action)=> {
+const addresses = (state = [], action)=> {
   if (action.type === 'SET_ADDRESSES') {
     return action.addresses;
   }
@@ -19,12 +19,11 @@ const addressStore = (state = [], action)=> {
 export const fetchAddresses = ()=> {
   return async(dispatch) => {
     const addresses = (await axios.get('/api/addresses')).data;
-    console.log(addresses);
     dispatch({ type: 'SET_ADDRESSES', addresses });
   };
 };  
 
-export const createAddress = (address) => {
+export const createAddress = (address, history) => {
   return async(dispatch) => {
     const token = window.localStorage.getItem('token');
     if(token) {
@@ -33,7 +32,8 @@ export const createAddress = (address) => {
           authorization: token
         }
       })).data;
-      dispatch({ type: 'CREATE_ADDRESS', address })
+      dispatch({ type: 'CREATE_ADDRESS', address });
+      history.push('/account/addressbook')
     }
   };
 };
@@ -48,12 +48,11 @@ export const deleteAddress = (address) => {
         }
       });
       dispatch({ type: 'DELETE_ADDRESS', address});
-      history.push('/api/addresses')
     }
   }
 }
 
-export const updateAddress = (address) => {
+export const updateAddress = (address, history) => {
   return async(dispatch) => {
     const token = window.localStorage.getItem('token');
     if(token) {
@@ -62,9 +61,10 @@ export const updateAddress = (address) => {
           authorization: token
         }
       })).data;
-      dispatch({ type: 'UPDATE_ADDRESS', address })
+      dispatch({ type: 'UPDATE_ADDRESS', address });
+      history.push('/account/addressbook');
     }
   }
 }
 
-export default addressStore;
+export default addresses;
