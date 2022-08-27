@@ -103,7 +103,7 @@ const Cart = connect(
           </div>
           <p>Shipping: Your order qualifies for free shipping!</p>
           <p>Taxes: $ {(Math.round((cartTotal * 100) * 0.04) / 100)} Applied at checkout</p>
-          <button className="btn btn-block btn-primary my-3 py-3">
+          <button className="cart-checkout button">
               <Link to="/checkout">Checkout</Link>
           </button>
           <div className='cart-empty'>

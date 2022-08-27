@@ -17,7 +17,16 @@ class UserAddressBook extends Component {
     // const userAddresses = addresses.filter(address => address.userId === auth.id);
     return (
       <div>
-        <h2>Your Address Book has () addresses</h2>
+        <div className="container-fluid bg-secondary mb-5">
+          <div className="d-flex flex-column align-items-center justify-content-center" >
+              <h1 className="font-weight-semi-bold text-uppercase mb-3">Address Book</h1>
+              <div className="d-inline-flex">
+                  <p className="m-0 px-2">-</p>
+                  <p className="m-0">Address Book</p>
+              </div>
+          </div>
+      </div> 
+        <h3 className="font-weight-semi-bold">Your Address Book has () addresses</h3>
         <div><AddressForm /></div>
       </div>
     )
